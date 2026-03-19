@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alex Santos — Smile Through Pain</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0C0C0B;
+    --surface: #141412;
+    --surface2: #1C1C18;
+    --border: #2A2A24;
+    --text: #F0EDE6;
+    --muted: #6A6660;
+    --muted2: #4A4844;
+    --gold: #C9A84C;
+    --gold-mid: #E8C96A;
+    --gold-pale: rgba(201,168,76,0.1);
+    --red: #C03030;
+    --red-mid: #E05050;
+    --red-pale: rgba(192,48,48,0.1);
+    --green: #2E7D44;
+    --green-mid: #4AB860;
+    --green-pale: rgba(46,125,68,0.1);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+    cursor: default;
+  }
+
+  /* ── GRAIN OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0.4;
+  }
+
+  /* ── NAV ── */
+  .nav {
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: linear-gradient(to bottom, rgba(12,12,11,0.95), transparent);
+  }
+  .nav-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.12em;
+    color: var(--text);
+  }
+  .nav-name span { color: var(--gold); }
+  .nav-links {
+    display: flex;
+    gap: 28px;
+  }
+  .nav-link {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-link:hover { color: var(--gold); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 40px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg-number {
+    position: absolute;
+    right: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(280px, 40vw, 520px);
+    color: rgba(201,168,76,0.04);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+  .hero-tag {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.2s forwards;
+  }
+  .hero-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(72px, 14vw, 160px);
+    line-height: 0.88;
+    letter-spacing: 0.02em;
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.3s forwards;
+  }
+  .hero-name .first { color: var(--text); display: block; }
+  .hero-name .last { color: var(--gold); display: block; }
+  .hero-motto {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(18px, 3vw, 28px);
+    color: rgba(240,237,230,0.45);
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.4s forwards;
+  }
+  .hero-stats {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.5s forwards;
+  }
+  .hero-stat {}
+  .hero-stat-val {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    color: var(--text);
+    line-height: 1;
+    letter-spacing: 0.02em;
+  }
+  .hero-stat-val span { color: var(--gold); font-size: 24px; }
+  .hero-stat-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+  .hero-scroll {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.7s forwards;
+  }
+  .hero-scroll-line {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, transparent, var(--gold));
+    animation: scrollLine 2s ease infinite;
+  }
+  .hero-scroll-label {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    writing-mode: vertical-rl;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes scrollLine {
+    0%, 100% { transform: scaleY(1); opacity: 1; }
+    50% { transform: scaleY(0.6); opacity: 0.4; }
+  }
+
+  /* ── SECTIONS ── */
+  .section { padding: 100px 40px; }
+  .section-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    max-width: 60px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.4;
+  }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 8vw, 80px);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .section-title span { color: var(--gold); }
+
+  /* ── ABOUT ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+    margin-top: 52px;
+    max-width: 1000px;
+  }
+  .about-story {
+    font-size: 15px;
+    color: rgba(240,237,230,0.65);
+    line-height: 1.85;
+    font-weight: 300;
+  }
+  .about-story p { margin-bottom: 18px; }
+  .about-story p:last-child { margin-bottom: 0; }
+  .about-story strong { color: var(--text); font-weight: 500; }
+  .about-facts {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .fact-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .fact-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .fact-value {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    color: var(--text);
+    letter-spacing: 0.04em;
+    text-align: right;
+  }
+  .fact-value.gold { color: var(--gold); }
+  .fact-value.green { color: var(--green-mid); }
+  .fact-value.red { color: var(--red-mid); }
+
+  /* ── GOALS ── */
+  .goals-section {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .goals-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 52px;
+    background: var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    max-width: 960px;
+  }
+  .goal-card {
+    background: var(--surface);
+    padding: 36px 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .goal-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .goal-card.active::before { background: var(--gold); }
+  .goal-card.future::before { background: var(--muted2); }
+  .goal-card.dream::before { background: var(--red-mid); }
+  .goal-phase {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .goal-card.active .goal-phase { color: var(--gold); }
+  .goal-card.future .goal-phase { color: var(--muted); }
+  .goal-card.dream .goal-phase { color: var(--red-mid); }
+  .goal-time {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 64px;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    margin-bottom: 6px;
+  }
+  .goal-card.active .goal-time { color: var(--gold); }
+  .goal-card.future .goal-time { color: rgba(240,237,230,0.35); }
+  .goal-card.dream .goal-time { color: var(--red-mid); }
+  .goal-desc {
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+  .goal-timeline {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .goal-card.active .goal-timeline { color: var(--gold); }
+  .goal-card.future .goal-timeline { color: var(--muted2); }
+  .goal-card.dream .goal-timeline { color: var(--red); }
+
+  /* ── MAF PROGRESS ── */
+  .maf-section { max-width: 960px; }
+  .maf-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 52px;
+  }
+  .maf-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  .maf-card-head {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .maf-card-title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .maf-card-date { font-size: 11px; color: var(--muted2); }
+  .maf-card-body { padding: 24px; }
+  .maf-pace {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 56px;
+    color: var(--gold);
+    line-height: 1;
+    letter-spacing: 0.02em;
+    margin-bottom: 6px;
+  }
+  .maf-pace-label { font-size: 12px; color: var(--muted); font-weight: 300; margin-bottom: 16px; }
+  .maf-hr {
+    font-size: 13px;
+    color: rgba(240,237,230,0.5);
+    font-weight: 300;
+  }
+  .maf-log {
+    grid-column: 1 / -1;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  .maf-log-head {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .maf-log-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr auto;
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border);
+    align-items: center;
+    gap: 12px;
+    transition: background 0.15s;
+  }
+  .maf-log-row:last-child { border-bottom: none; }
+  .maf-log-row:hover { background: var(--surface2); }
+  .maf-log-row.empty { opacity: 0.3; }
+  .log-date { font-size: 12px; color: var(--muted); }
+  .log-pace {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    color: var(--text);
+    letter-spacing: 0.04em;
+  }
+  .log-hr { font-size: 12px; color: var(--muted); }
+  .log-notes { font-size: 12px; color: var(--muted); font-weight: 300; font-style: italic; }
+  .log-badge {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 99px;
+    white-space: nowrap;
+  }
+  .badge-baseline { background: var(--gold-pale); color: var(--gold-mid); border: 1px solid rgba(201,168,76,0.2); }
+  .badge-pending { background: rgba(74,72,68,0.3); color: var(--muted); border: 1px solid var(--border); }
+  .badge-pr { background: var(--green-pale); color: var(--green-mid); border: 1px solid rgba(46,125,68,0.2); }
+
+  /* ── RACES ── */
+  .races-section { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .races-list {
+    margin-top: 52px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    max-width: 960px;
+  }
+  .race-row {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px 28px;
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    gap: 20px;
+    align-items: center;
+    transition: border-color 0.15s;
+  }
+  .race-row:hover { border-color: var(--gold); }
+  .race-row.upcoming { border-color: rgba(201,168,76,0.3); background: var(--gold-pale); }
+  .race-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    color: var(--muted2);
+    letter-spacing: 0.04em;
+    min-width: 36px;
+  }
+  .race-info {}
+  .race-name {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .race-row.upcoming .race-name { color: var(--gold); }
+  .race-details {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 300;
+  }
+  .race-time {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: var(--text);
+    letter-spacing: 0.04em;
+    text-align: right;
+  }
+  .race-row.upcoming .race-time {
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--gold);
+    letter-spacing: 0;
+  }
+  .race-tag {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 99px;
+    white-space: nowrap;
+  }
+  .tag-upcoming { background: var(--gold-pale); color: var(--gold-mid); border: 1px solid rgba(201,168,76,0.3); }
+  .tag-completed { background: rgba(74,72,68,0.3); color: var(--muted); border: 1px solid var(--border); }
+  .tag-pr { background: var(--green-pale); color: var(--green-mid); border: 1px solid rgba(46,125,68,0.3); }
+
+  /* ── INJURY LOG ── */
+  .injury-list {
+    margin-top: 52px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    max-width: 960px;
+  }
+  .injury-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 22px 24px;
+    border-left: 3px solid;
+  }
+  .injury-item.resolved { border-left-color: var(--green-mid); }
+  .injury-item.managing { border-left-color: var(--gold); }
+  .injury-item.healed { border-left-color: var(--muted2); }
+  .injury-area {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .injury-item.resolved .injury-area { color: var(--green-mid); }
+  .injury-item.managing .injury-area { color: var(--gold); }
+  .injury-item.healed .injury-area { color: var(--muted); }
+  .injury-name {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .injury-protocol {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+    font-weight: 300;
+    margin-bottom: 12px;
+  }
+  .injury-status {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 99px;
+    display: inline-block;
+  }
+  .injury-item.resolved .injury-status { background: var(--green-pale); color: var(--green-mid); border: 1px solid rgba(46,125,68,0.2); }
+  .injury-item.managing .injury-status { background: var(--gold-pale); color: var(--gold-mid); border: 1px solid rgba(201,168,76,0.2); }
+  .injury-item.healed .injury-status { background: rgba(74,72,68,0.3); color: var(--muted); border: 1px solid var(--border); }
+
+  /* ── MANIFESTO ── */
+  .manifesto {
+    text-align: center;
+    padding: 120px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .manifesto::before {
+    content: '"';
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Playfair Display', serif;
+    font-size: 300px;
+    color: rgba(201,168,76,0.04);
+    line-height: 1;
+    pointer-events: none;
+  }
+  .manifesto-text {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(28px, 5vw, 56px);
+    color: var(--text);
+    line-height: 1.35;
+    max-width: 800px;
+    margin: 0 auto 28px;
+    position: relative;
+  }
+  .manifesto-text span { color: var(--gold); }
+  .manifesto-credit {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .footer-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    letter-spacing: 0.08em;
+    color: var(--text);
+  }
+  .footer-name span { color: var(--gold); }
+  .footer-motto {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .footer-club {
+    font-size: 11px;
+    color: var(--muted2);
+    font-weight: 300;
+    text-align: right;
+  }
+  .footer-club a { color: var(--gold); text-decoration: none; }
+
+  @media (max-width: 700px) {
+    .nav { padding: 16px 20px; }
+    .nav-links { display: none; }
+    .hero { padding: 0 20px 60px; }
+    .section { padding: 70px 20px; }
+    .about-grid { grid-template-columns: 1fr; gap: 36px; }
+    .goals-grid { grid-template-columns: 1fr; }
+    .maf-grid { grid-template-columns: 1fr; }
+    .injury-list { grid-template-columns: 1fr; }
+    .maf-log-row { grid-template-columns: 1fr 1fr 1fr; }
+    .log-notes { display: none; }
+    .race-row { grid-template-columns: 1fr auto; }
+    .race-num { display: none; }
+    .manifesto { padding: 80px 20px; }
+    .footer { padding: 28px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-name">Alex <span>Santos</span></div>
+  <div class="nav-links">
+    <a class="nav-link" href="#about">Story</a>
+    <a class="nav-link" href="#goals">Goals</a>
+    <a class="nav-link" href="#maf">MAF Log</a>
+    <a class="nav-link" href="#races">Races</a>
+    <a class="nav-link" href="#injuries">Injuries</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-number">153</div>
+  <div class="hero-tag">Runner · East Bay, CA</div>
+  <div class="hero-name">
+    <span class="first">Alex</span>
+    <span class="last">Santos</span>
+  </div>
+  <div class="hero-motto">"Smile through pain."</div>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-val">153 <span>bpm</span></div>
+      <div class="hero-stat-label">MAF ceiling</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-val">17:00 <span>/mi</span></div>
+      <div class="hero-stat-label">Current MAF pace</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-val">48–50</div>
+      <div class="hero-stat-label">VO2 Max</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-val">22:00</div>
+      <div class="hero-stat-label">5K PR (age 15)</div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-label">Scroll</div>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="section-label">My Story</div>
+  <div class="section-title">Built from <span>the ground up</span></div>
+  <div class="about-grid">
+    <div class="about-story">
+      <p>I ran cross country at 15 and hit a <strong>22 minute 5K in 5 months</strong> — but I was injury prone the whole time. Knee, back, hip, shin. I pushed through it because I didn't know any better. Then I stopped running and lost everything I built.</p>
+      <p>At 22, I'm rebuilding it the right way. I found <strong>Dr. Phil Maffetone's MAF method</strong> and it changed how I think about training entirely. Every run at or below 153 bpm. Walk when I need to. Build the aerobic base before touching any speedwork.</p>
+      <p>I also run the <strong>Run! Not Gasp Run Club</strong> in the East Bay — a free Saturday morning group built on Zone 2 training and the belief that running slow is the fastest way to get fast.</p>
+      <p>This site is my training journal. The numbers, the setbacks, the progress. All of it. <strong>Smile through pain.</strong></p>
+    </div>
+    <div class="about-facts">
+      <div class="fact-card">
+        <div class="fact-label">Age</div>
+        <div class="fact-value">22</div>
+      </div>
+      <div class="fact-card">
+        <div class="fact-label">Location</div>
+        <div class="fact-value" style="font-size:16px; font-family:'DM Sans',sans-serif; font-weight:500;">East Bay, CA</div>
+      </div>
+      <div class="fact-card">
+        <div class="fact-label">MAF Heart Rate</div>
+        <div class="fact-value gold">153 bpm</div>
+      </div>
+      <div class="fact-card">
+        <div class="fact-label">Resting HR</div>
+        <div class="fact-value green">53 bpm</div>
+      </div>
+      <div class="fact-card">
+        <div class="fact-label">VO2 Max</div>
+        <div class="fact-value">48–50</div>
+      </div>
+      <div class="fact-card">
+        <div class="fact-label">Training method</div>
+        <div class="fact-value gold" style="font-size:16px; font-family:'DM Sans',sans-serif; font-weight:500;">Maffetone MAF</div>
+      </div>
+      <div class="fact-card">
+        <div class="fact-label">5K PR</div>
+        <div class="fact-value gold">22:00</div>
+      </div>
+      <div class="fact-card">
+        <div class="fact-label">Run Club</div>
+        <div class="fact-value" style="font-size:14px; font-family:'DM Sans',sans-serif; font-weight:500; color:var(--green-mid);">Run! Not Gasp RC</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GOALS -->
+<section class="section goals-section" id="goals">
+  <div class="section-label">Where I'm Going</div>
+  <div class="section-title">The <span>Goals</span></div>
+  <div class="goals-grid">
+    <div class="goal-card active">
+      <div class="goal-phase">Now — Month 6</div>
+      <div class="goal-time">26:00</div>
+      <div class="goal-desc">Build the aerobic base. Run continuously in Zone 2 without walking. MAF pace from 17:00 down to 11–13 min/mile.</div>
+      <div class="goal-timeline">→ Pure MAF training</div>
+    </div>
+    <div class="goal-card future">
+      <div class="goal-phase">Month 12</div>
+      <div class="goal-time">22:00</div>
+      <div class="goal-desc">Back to my high school PR. This time on a real aerobic foundation with healthy connective tissue underneath it.</div>
+      <div class="goal-timeline">→ Base + threshold work</div>
+    </div>
+    <div class="goal-card dream">
+      <div class="goal-phase">Month 24–30</div>
+      <div class="goal-time">18:00</div>
+      <div class="goal-desc">The real target. 5:48/mile pace. Requires MAF pace at 7:30/mile and lactate threshold around 7:00/mile. It's coming.</div>
+      <div class="goal-timeline">→ Full Norwegian method</div>
+    </div>
+  </div>
+</section>
+
+<!-- MAF PROGRESS -->
+<section class="section" id="maf" style="max-width:1040px; margin:0 auto; padding-left:40px; padding-right:40px;">
+  <div class="section-label">Training Data</div>
+  <div class="section-title">MAF <span>Progress Log</span></div>
+  <div class="maf-grid">
+    <div class="maf-card">
+      <div class="maf-card-head">
+        <div class="maf-card-title">Current MAF Pace</div>
+        <div class="maf-card-date">Week 1 baseline</div>
+      </div>
+      <div class="maf-card-body">
+        <div class="maf-pace">17:00</div>
+        <div class="maf-pace-label">min/mile at 153 bpm</div>
+        <div class="maf-hr">Heart rate ceiling — 153 bpm · Age 22 − 5 health adjustment</div>
+      </div>
+    </div>
+    <div class="maf-card">
+      <div class="maf-card-head">
+        <div class="maf-card-title">Target MAF Pace</div>
+        <div class="maf-card-date">Month 6 goal</div>
+      </div>
+      <div class="maf-card-body">
+        <div class="maf-pace" style="color:rgba(201,168,76,0.35);">11:00</div>
+        <div class="maf-pace-label">min/mile at 153 bpm</div>
+        <div class="maf-hr">6 min/mile improvement over 6 months of pure Zone 2</div>
+      </div>
+    </div>
+    <div class="maf-log">
+      <div class="maf-log-head">MAF Test History — every 4 weeks, same flat route</div>
+      <div class="maf-log-row">
+        <div class="log-date">Week 1 · Mar 2026</div>
+        <div class="log-pace">17:00 /mi</div>
+        <div class="log-hr">153 bpm</div>
+        <div class="log-notes">Baseline. Lots of walking. Starting point.</div>
+        <div class="log-badge badge-baseline">Baseline</div>
+      </div>
+      <div class="maf-log-row empty">
+        <div class="log-date">Week 5 · Apr 2026</div>
+        <div class="log-pace">— /mi</div>
+        <div class="log-hr">153 bpm</div>
+        <div class="log-notes">Not yet</div>
+        <div class="log-badge badge-pending">Upcoming</div>
+      </div>
+      <div class="maf-log-row empty">
+        <div class="log-date">Week 9 · May 2026</div>
+        <div class="log-pace">— /mi</div>
+        <div class="log-hr">153 bpm</div>
+        <div class="log-notes">Not yet</div>
+        <div class="log-badge badge-pending">Upcoming</div>
+      </div>
+      <div class="maf-log-row empty">
+        <div class="log-date">Week 13 · Jun 2026</div>
+        <div class="log-pace">— /mi</div>
+        <div class="log-hr">153 bpm</div>
+        <div class="log-notes">Phase 2 checkpoint</div>
+        <div class="log-badge badge-pending">Upcoming</div>
+      </div>
+      <div class="maf-log-row empty">
+        <div class="log-date">Week 17 · Jul 2026</div>
+        <div class="log-pace">— /mi</div>
+        <div class="log-hr">153 bpm</div>
+        <div class="log-notes">Not yet</div>
+        <div class="log-badge badge-pending">Upcoming</div>
+      </div>
+      <div class="maf-log-row empty">
+        <div class="log-date">Week 25 · Sep 2026</div>
+        <div class="log-pace">— /mi</div>
+        <div class="log-hr">153 bpm</div>
+        <div class="log-notes">6 month milestone — most important test</div>
+        <div class="log-badge badge-pending">Milestone</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RACES -->
+<section class="section races-section" id="races">
+  <div class="section-label">Race History</div>
+  <div class="section-title">On the <span>Start Line</span></div>
+  <div class="races-list">
+    <div class="race-row upcoming">
+      <div class="race-num">01</div>
+      <div class="race-info">
+        <div class="race-name">Benchmark 5K — Month 12</div>
+        <div class="race-details">East Bay · December 2026 · Goal: 21–23 minutes</div>
+      </div>
+      <div class="race-time">TBD</div>
+      <div class="race-tag tag-upcoming">Upcoming</div>
+    </div>
+    <div class="race-row upcoming">
+      <div class="race-num">02</div>
+      <div class="race-info">
+        <div class="race-name">Goal Race 5K — Month 18</div>
+        <div class="race-details">East Bay · June 2027 · Target: sub-21 minutes</div>
+      </div>
+      <div class="race-time">TBD</div>
+      <div class="race-tag tag-upcoming">Upcoming</div>
+    </div>
+    <div class="race-row upcoming">
+      <div class="race-num">03</div>
+      <div class="race-info">
+        <div class="race-name">18 Minute Attempt — Month 24–30</div>
+        <div class="race-details">TBD · 2027–2028 · The real target</div>
+      </div>
+      <div class="race-time">TBD</div>
+      <div class="race-tag tag-upcoming">Dream Race</div>
+    </div>
+    <div class="race-row">
+      <div class="race-num">—</div>
+      <div class="race-info">
+        <div class="race-name">Cross Country 5K — High School</div>
+        <div class="race-details">Age 15 · 5 months of training · Personal best</div>
+      </div>
+      <div class="race-time">22:00</div>
+      <div class="race-tag tag-pr">All-time PR</div>
+    </div>
+  </div>
+</section>
+
+<!-- INJURIES -->
+<section class="section" id="injuries" style="max-width:1040px; margin:0 auto; padding-left:40px; padding-right:40px;">
+  <div class="section-label">Injury Prevention Log</div>
+  <div class="section-title">Staying <span>Unbroken</span></div>
+  <div class="injury-list">
+    <div class="injury-item managing">
+      <div class="injury-area">Knee</div>
+      <div class="injury-name">Runner's Knee — Patellofemoral Pain</div>
+      <div class="injury-protocol">Ben Patrick ATG protocol — tibialis raises, ATG split squat, clamshells, step-downs. 3x per week.</div>
+      <span class="injury-status">Managing — protocol active</span>
+    </div>
+    <div class="injury-item managing">
+      <div class="injury-area">Lower Back</div>
+      <div class="injury-name">Lumbar Pain — Spinal Instability</div>
+      <div class="injury-protocol">McGill Big Three daily — curl-up, bird dog, side plank. Every morning without exception.</div>
+      <span class="injury-status">Managing — daily routine</span>
+    </div>
+    <div class="injury-item managing">
+      <div class="injury-area">Hip</div>
+      <div class="injury-name">Hip Flexor Tightness — Glute Weakness</div>
+      <div class="injury-protocol">Starrett kneeling hip flexor stretch, 90/90 hip mobility, single leg glute bridge. Daily evening routine.</div>
+      <span class="injury-status">Managing — improving</span>
+    </div>
+    <div class="injury-item managing">
+      <div class="injury-area">Shin / Ankle</div>
+      <div class="injury-name">Shin Splints — Tibialis Weakness</div>
+      <div class="injury-protocol">Tibialis raises daily, eccentric calf raises, cadence drill at 170–175 bpm during runs. Dicharry gait work.</div>
+      <span class="injury-status">Managing — prevention focus</span>
+    </div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section class="manifesto">
+  <div class="manifesto-text">
+    "Run slow enough to build something <span>that lasts.</span> Then smile through every mile of the way there."
+  </div>
+  <div class="manifesto-credit">Alex Santos · East Bay, CA · 2026</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div>
+    <div class="footer-name">Alex <span>Santos</span></div>
+    <div class="footer-motto">"Smile through pain."</div>
+  </div>
+  <div class="footer-club">
+    Run! Not Gasp Run Club founder<br>
+    Saturdays 9am · East Bay<br>
+    <a href="https://rng-runclub.netlify.app" target="_blank">rng-runclub.netlify.app</a>
+  </div>
+</footer>
+
+</body>
+</html>
