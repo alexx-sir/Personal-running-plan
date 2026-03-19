@@ -590,6 +590,140 @@
     color: var(--muted);
   }
 
+  /* ── MAF WHY ── */
+  .maf-why-section { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .maf-why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 52px; max-width: 960px; }
+  .maf-why-card {
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 16px; padding: 28px; position: relative; overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .maf-why-card:hover { border-color: var(--gold); }
+  .maf-why-num {
+    font-family: 'Bebas Neue', sans-serif; font-size: 64px;
+    color: rgba(201,168,76,0.08); line-height: 1; margin-bottom: 12px;
+  }
+  .maf-why-title {
+    font-size: 16px; font-weight: 500; color: var(--text); margin-bottom: 10px;
+  }
+  .maf-why-title span { color: var(--gold); }
+  .maf-why-body { font-size: 13px; color: rgba(240,237,230,0.55); line-height: 1.75; font-weight: 300; }
+  .maf-why-body strong { color: rgba(240,237,230,0.8); font-weight: 500; }
+  .maf-formula {
+    grid-column: 1 / -1; background: var(--bg); border: 1px solid var(--border);
+    border-radius: 16px; padding: 28px; display: flex; align-items: center;
+    justify-content: center; gap: 16px; flex-wrap: wrap; text-align: center;
+  }
+  .formula-block {
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+  }
+  .formula-val {
+    font-family: 'Bebas Neue', sans-serif; font-size: 48px;
+    color: var(--gold); line-height: 1; letter-spacing: 0.04em;
+  }
+  .formula-desc { font-size: 11px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; }
+  .formula-op {
+    font-family: 'Bebas Neue', sans-serif; font-size: 40px;
+    color: var(--muted2); line-height: 1;
+  }
+  .formula-result .formula-val { color: var(--red-mid); font-size: 64px; }
+
+  /* ── TRAINING PLAN ── */
+  .training-section { max-width: 1040px; margin: 0 auto; padding-left: 40px; padding-right: 40px; }
+  .phases-list { display: flex; flex-direction: column; gap: 3px; margin-top: 52px; }
+  .plan-phase-row {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 16px; overflow: hidden;
+  }
+  .plan-phase-head {
+    padding: 20px 24px; display: grid;
+    grid-template-columns: auto 1fr auto; gap: 16px; align-items: center;
+    cursor: pointer; transition: background 0.15s;
+  }
+  .plan-phase-head:hover { background: var(--surface2); }
+  .plan-phase-dot {
+    width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+  }
+  .plan-phase-info {}
+  .plan-phase-name {
+    font-size: 15px; font-weight: 500; color: var(--text); margin-bottom: 3px;
+  }
+  .plan-phase-sub { font-size: 12px; color: var(--muted); font-weight: 300; }
+  .plan-phase-badge {
+    font-size: 11px; font-weight: 600; padding: 4px 12px;
+    border-radius: 99px; white-space: nowrap;
+  }
+  .plan-phase-body { padding: 0 24px 24px; display: none; }
+  .plan-phase-body.open { display: block; }
+  .plan-week-grid {
+    display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin-bottom: 16px;
+  }
+  .plan-day {
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 10px; padding: 10px 6px; text-align: center;
+  }
+  .plan-day-name {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 6px;
+  }
+  .plan-day-run { font-size: 11px; font-weight: 600; margin-bottom: 3px; line-height: 1.3; }
+  .plan-day-note { font-size: 10px; color: var(--muted); line-height: 1.4; font-weight: 300; }
+  .plan-day.z2 { border-color: rgba(46,125,68,0.3); background: rgba(46,125,68,0.08); }
+  .plan-day.z2 .plan-day-run { color: var(--green-mid); }
+  .plan-day.hrd { border-color: rgba(201,168,76,0.3); background: rgba(201,168,76,0.06); }
+  .plan-day.hrd .plan-day-run { color: var(--gold); }
+  .plan-day.cls { border-color: rgba(26,79,160,0.3); background: rgba(26,79,160,0.08); }
+  .plan-day.cls .plan-day-run { color: #6A9FE0; }
+  .plan-day.rst { opacity: 0.4; }
+  .plan-phase-focus {
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .plan-focus-item {
+    display: flex; gap: 10px; font-size: 13px;
+    color: rgba(240,237,230,0.55); line-height: 1.6; font-weight: 300;
+  }
+  .plan-focus-item::before {
+    content: '→'; color: var(--gold); flex-shrink: 0; font-weight: 500;
+  }
+  .plan-focus-item strong { color: rgba(240,237,230,0.85); font-weight: 500; }
+
+  /* ── INJURY WORKOUTS ── */
+  .injury-workouts-section { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .workouts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 52px; max-width: 960px; }
+  .workout-block {
+    background: var(--bg); border: 1px solid var(--border); border-radius: 16px; overflow: hidden;
+  }
+  .workout-block-head {
+    padding: 16px 20px; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .workout-block-title { font-size: 14px; font-weight: 500; color: var(--text); }
+  .workout-block-source { font-size: 10px; color: var(--muted); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; }
+  .workout-exercises { padding: 16px 20px; display: flex; flex-direction: column; gap: 12px; }
+  .workout-ex { display: flex; flex-direction: column; gap: 4px; }
+  .workout-ex-name { font-size: 13px; font-weight: 500; color: var(--text); }
+  .workout-ex-sets { font-size: 11px; color: var(--gold); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+  .workout-ex-how { font-size: 12px; color: rgba(240,237,230,0.45); line-height: 1.6; font-weight: 300; }
+  .workout-divider { height: 1px; background: var(--border); margin: 4px 0; }
+  .daily-strip {
+    grid-column: 1 / -1; background: var(--bg); border: 1px solid var(--border);
+    border-radius: 16px; padding: 24px; display: grid;
+    grid-template-columns: repeat(4, 1fr); gap: 12px;
+  }
+  .daily-strip-block {}
+  .daily-strip-title {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 10px;
+  }
+  .daily-strip-items { display: flex; flex-direction: column; gap: 6px; }
+  .daily-strip-item {
+    font-size: 12px; color: rgba(240,237,230,0.5); line-height: 1.5;
+    font-weight: 300; display: flex; gap: 6px; align-items: flex-start;
+  }
+  .daily-strip-item::before {
+    content: '·'; color: var(--gold); flex-shrink: 0;
+  }
+
   /* ── FOOTER ── */
   .footer {
     background: var(--surface);
@@ -648,6 +782,8 @@
   <div class="nav-links">
     <a class="nav-link" href="#about">Story</a>
     <a class="nav-link" href="#goals">Goals</a>
+    <a class="nav-link" href="#maf-why">MAF Method</a>
+    <a class="nav-link" href="#training">Training Plan</a>
     <a class="nav-link" href="#maf">MAF Log</a>
     <a class="nav-link" href="#races">Races</a>
     <a class="nav-link" href="#injuries">Injuries</a>
@@ -909,6 +1045,369 @@
       <div class="injury-protocol">Tibialis raises daily, eccentric calf raises, cadence drill at 170–175 bpm during runs. Dicharry gait work.</div>
       <span class="injury-status">Managing — prevention focus</span>
     </div>
+  </div>
+</section>
+
+<!-- MAF WHY -->
+<section class="section maf-why-section" id="maf-why">
+  <div class="section-label">Why I Train This Way</div>
+  <div class="section-title">The <span>MAF Method</span></div>
+  <div class="maf-why-grid">
+    <div class="maf-why-card">
+      <div class="maf-why-num">01</div>
+      <div class="maf-why-title">The <span>Aerobic Base</span></div>
+      <div class="maf-why-body">Your aerobic system uses oxygen and fat to produce energy. When it's underdeveloped your body compensates by going anaerobic — burning sugar, producing lactic acid, getting winded fast. <strong>Building this base is the most important thing a runner can do.</strong> Everything else — speed, endurance, recovery — depends on it.</div>
+    </div>
+    <div class="maf-why-card">
+      <div class="maf-why-num">02</div>
+      <div class="maf-why-title">The <span>Grey Zone Problem</span></div>
+      <div class="maf-why-body">Most runners live in the grey zone — too hard to build aerobic fitness, too easy to build real speed. It feels productive but it isn't. <strong>You accumulate fatigue without getting adaptation.</strong> Maffetone calls this aerobic deficiency syndrome. I had it. Most people do.</div>
+    </div>
+    <div class="maf-why-card">
+      <div class="maf-why-num">03</div>
+      <div class="maf-why-title">The <span>80/20 Rule</span></div>
+      <div class="maf-why-body">80% of every week's running is at or below MAF heart rate. 20% can be harder — but only after the base is built. <strong>Every elite endurance athlete in the world trains this way</strong>, from Eliud Kipchoge to Jakob Ingebrigtsen. Run slow to race fast.</div>
+    </div>
+    <div class="maf-why-card">
+      <div class="maf-why-num">04</div>
+      <div class="maf-why-title">Why It's <span>Personal</span></div>
+      <div class="maf-why-body">I have gastritis, a history of injuries in four areas, and spent years running too hard and getting hurt. <strong>The MAF method is the only training approach that builds fitness while letting my body heal.</strong> Low intensity means low cortisol. Low cortisol means less inflammation. Less inflammation means my gut calms down and my connective tissue adapts.</div>
+    </div>
+    <div class="maf-formula">
+      <div class="formula-block">
+        <div class="formula-val">180</div>
+        <div class="formula-desc">Base number</div>
+      </div>
+      <div class="formula-op">−</div>
+      <div class="formula-block">
+        <div class="formula-val">22</div>
+        <div class="formula-desc">My age</div>
+      </div>
+      <div class="formula-op">−</div>
+      <div class="formula-block">
+        <div class="formula-val">5</div>
+        <div class="formula-desc">Health adjustment</div>
+      </div>
+      <div class="formula-op">=</div>
+      <div class="formula-block formula-result">
+        <div class="formula-val">153</div>
+        <div class="formula-desc">My MAF ceiling · every easy run</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRAINING PLAN -->
+<section class="section training-section" id="training">
+  <div class="section-label">The Roadmap</div>
+  <div class="section-title">My <span>Training Plan</span></div>
+  <div class="phases-list">
+
+    <div class="plan-phase-row">
+      <div class="plan-phase-head" onclick="this.nextElementSibling.classList.toggle('open')">
+        <div class="plan-phase-dot" style="background:var(--green-mid);"></div>
+        <div class="plan-phase-info">
+          <div class="plan-phase-name">Phase 1 — The Foundation</div>
+          <div class="plan-phase-sub">Months 1–3 · Pure Zone 2 · Walk as needed · MAF test week 1 and week 12</div>
+        </div>
+        <div class="plan-phase-badge" style="background:rgba(46,125,68,0.15); color:var(--green-mid); border:1px solid rgba(46,125,68,0.2);">Active ↓</div>
+      </div>
+      <div class="plan-phase-body open">
+        <div class="plan-week-grid">
+          <div class="plan-day z2"><div class="plan-day-name">Mon</div><div class="plan-day-run">25 min</div><div class="plan-day-note">≤153 bpm</div></div>
+          <div class="plan-day rst"><div class="plan-day-name">Tue</div><div class="plan-day-run">Rest</div><div class="plan-day-note">Big Three</div></div>
+          <div class="plan-day z2"><div class="plan-day-name">Wed</div><div class="plan-day-run">25 min</div><div class="plan-day-note">≤153 bpm</div></div>
+          <div class="plan-day rst"><div class="plan-day-name">Thu</div><div class="plan-day-run">Rest</div><div class="plan-day-note">injury work</div></div>
+          <div class="plan-day rst"><div class="plan-day-name">Fri</div><div class="plan-day-run">Rest</div><div class="plan-day-note">or walk</div></div>
+          <div class="plan-day cls"><div class="plan-day-name">Sat</div><div class="plan-day-run">Club Run</div><div class="plan-day-note">30 min MAF</div></div>
+          <div class="plan-day rst"><div class="plan-day-name">Sun</div><div class="plan-day-run">Full Rest</div><div class="plan-day-note">always</div></div>
+        </div>
+        <div class="plan-phase-focus">
+          <div class="plan-focus-item"><strong>Walk as much as needed.</strong> Time on feet matters — not continuous running. Stay under 153 bpm at all costs.</div>
+          <div class="plan-focus-item"><strong>McGill Big Three every morning.</strong> Curl-up, bird dog, side plank. 6 minutes. Never skip it.</div>
+          <div class="plan-focus-item"><strong>Target by end of phase:</strong> MAF pace 14–16 min/mile. Estimated 5K: 27–28 min.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="plan-phase-row">
+      <div class="plan-phase-head" onclick="this.nextElementSibling.classList.toggle('open')">
+        <div class="plan-phase-dot" style="background:var(--green-mid); opacity:0.5;"></div>
+        <div class="plan-phase-info">
+          <div class="plan-phase-name">Phase 2 — Building Volume</div>
+          <div class="plan-phase-sub">Months 4–6 · Add 4th run day · Extend long run · No speedwork yet</div>
+        </div>
+        <div class="plan-phase-badge" style="background:var(--surface2); color:var(--muted); border:1px solid var(--border);">Upcoming ↓</div>
+      </div>
+      <div class="plan-phase-body">
+        <div class="plan-week-grid">
+          <div class="plan-day z2"><div class="plan-day-name">Mon</div><div class="plan-day-run">30 min</div><div class="plan-day-note">≤153 bpm</div></div>
+          <div class="plan-day z2"><div class="plan-day-name">Tue</div><div class="plan-day-run">25 min</div><div class="plan-day-note">≤153 bpm</div></div>
+          <div class="plan-day rst"><div class="plan-day-name">Wed</div><div class="plan-day-run">Rest</div><div class="plan-day-note">Big Three</div></div>
+          <div class="plan-day z2"><div class="plan-day-name">Thu</div><div class="plan-day-run">30 min</div><div class="plan-day-note">≤153 bpm</div></div>
+          <div class="plan-day rst"><div class="plan-day-name">Fri</div><div class="plan-day-run">Rest</div><div class="plan-day-note">or walk</div></div>
+          <div class="plan-day cls"><div class="plan-day-name">Sat</div><div class="plan-day-run">Club Run</div><div class="plan-day-note">40–45 min</div></div>
+          <div class="plan-day rst"><div class="plan-day-name">Sun</div><div class="plan-day-run">Full Rest</div><div class="plan-day-note">always</div></div>
+        </div>
+        <div class="plan-phase-focus">
+          <div class="plan-focus-item"><strong>Cross country memory activates.</strong> Body starts remembering how to run efficiently. Expect noticeable MAF pace improvements.</div>
+          <div class="plan-focus-item"><strong>Month 6 — biggest MAF test of the plan.</strong> This is the most important checkpoint. Determines readiness for speedwork.</div>
+          <div class="plan-focus-item"><strong>Target by end of phase:</strong> MAF pace 11–13 min/mile. Estimated 5K: 26–27 min.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="plan-phase-row">
+      <div class="plan-phase-head" onclick="this.nextElementSibling.classList.toggle('open')">
+        <div class="plan-phase-dot" style="background:var(--gold); opacity:0.5;"></div>
+        <div class="plan-phase-info">
+          <div class="plan-phase-name">Phase 3 — Strides & Hills</div>
+          <div class="plan-phase-sub">Months 7–8 · First intensity · Strides + hill repeats · Still 80% Zone 2</div>
+        </div>
+        <div class="plan-phase-badge" style="background:var(--surface2); color:var(--muted); border:1px solid var(--border);">Upcoming ↓</div>
+      </div>
+      <div class="plan-phase-body">
+        <div class="plan-week-grid">
+          <div class="plan-day z2"><div class="plan-day-name">Mon</div><div class="plan-day-run">30 min</div><div class="plan-day-note">+ strides</div></div>
+          <div class="plan-day z2"><div class="plan-day-name">Tue</div><div class="plan-day-run">25 min</div><div class="plan-day-note">easy MAF</div></div>
+          <div class="plan-day rst"><div class="plan-day-name">Wed</div><div class="plan-day-run">Rest</div><div class="plan-day-note">Big Three</div></div>
+          <div class="plan-day hrd"><div class="plan-day-name">Thu</div><div class="plan-day-run">Hill reps</div><div class="plan-day-note">6 × 60 sec</div></div>
+          <div class="plan-day rst"><div class="plan-day-name">Fri</div><div class="plan-day-run">Rest</div><div class="plan-day-note">recovery</div></div>
+          <div class="plan-day cls"><div class="plan-day-name">Sat</div><div class="plan-day-run">Club Run</div><div class="plan-day-note">40 min MAF</div></div>
+          <div class="plan-day rst"><div class="plan-day-name">Sun</div><div class="plan-day-run">Full Rest</div><div class="plan-day-note">always</div></div>
+        </div>
+        <div class="plan-phase-focus">
+          <div class="plan-focus-item"><strong>Strides at end of Monday run.</strong> 4–6 × 20 second gentle accelerations. Not sprinting — just faster turnover.</div>
+          <div class="plan-focus-item"><strong>Hill repeats are safer than flat intervals</strong> for injury-prone runners. Lower impact force on the shin and knee.</div>
+          <div class="plan-focus-item"><strong>Target by end of phase:</strong> MAF pace 10–12 min/mile. Estimated 5K: 24–25 min.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="plan-phase-row">
+      <div class="plan-phase-head" onclick="this.nextElementSibling.classList.toggle('open')">
+        <div class="plan-phase-dot" style="background:var(--gold); opacity:0.4;"></div>
+        <div class="plan-phase-info">
+          <div class="plan-phase-name">Phase 4 — Fartlek & Tempo</div>
+          <div class="plan-phase-sub">Months 9–12 · Threshold work · Benchmark race at month 12</div>
+        </div>
+        <div class="plan-phase-badge" style="background:var(--surface2); color:var(--muted); border:1px solid var(--border);">Upcoming ↓</div>
+      </div>
+      <div class="plan-phase-body">
+        <div class="plan-week-grid">
+          <div class="plan-day z2"><div class="plan-day-name">Mon</div><div class="plan-day-run">35 min</div><div class="plan-day-note">easy MAF</div></div>
+          <div class="plan-day z2"><div class="plan-day-name">Tue</div><div class="plan-day-run">30 min</div><div class="plan-day-note">easy MAF</div></div>
+          <div class="plan-day rst"><div class="plan-day-name">Wed</div><div class="plan-day-run">Rest</div><div class="plan-day-note">Big Three</div></div>
+          <div class="plan-day hrd"><div class="plan-day-name">Thu</div><div class="plan-day-run">Tempo</div><div class="plan-day-note">10→25 min</div></div>
+          <div class="plan-day rst"><div class="plan-day-name">Fri</div><div class="plan-day-run">Rest</div><div class="plan-day-note">recovery</div></div>
+          <div class="plan-day cls"><div class="plan-day-name">Sat</div><div class="plan-day-run">Club Run</div><div class="plan-day-note">45 min MAF</div></div>
+          <div class="plan-day rst"><div class="plan-day-name">Sun</div><div class="plan-day-run">Full Rest</div><div class="plan-day-note">always</div></div>
+        </div>
+        <div class="plan-phase-focus">
+          <div class="plan-focus-item"><strong>Month 9 — fartlek first.</strong> Unstructured surges during easy runs. Self-regulated. 4 weeks before moving to structured tempo.</div>
+          <div class="plan-focus-item"><strong>Tempo starts at 10 minutes</strong> and builds by 2 minutes per week up to 25 minutes by month 12.</div>
+          <div class="plan-focus-item"><strong>Month 12 benchmark race.</strong> First 5K since high school. Target: 21–23 minutes.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="plan-phase-row">
+      <div class="plan-phase-head" onclick="this.nextElementSibling.classList.toggle('open')">
+        <div class="plan-phase-dot" style="background:var(--red-mid); opacity:0.4;"></div>
+        <div class="plan-phase-info">
+          <div class="plan-phase-name">Phase 5 & 6 — Full Structure + 18 Min Target</div>
+          <div class="plan-phase-sub">Months 13–30 · Intervals added · Norwegian method · Sub-18 minute 5K</div>
+        </div>
+        <div class="plan-phase-badge" style="background:var(--red-pale); color:var(--red-mid); border:1px solid rgba(192,48,48,0.2);">The Goal ↓</div>
+      </div>
+      <div class="plan-phase-body">
+        <div class="plan-week-grid">
+          <div class="plan-day z2"><div class="plan-day-name">Mon</div><div class="plan-day-run">35 min</div><div class="plan-day-note">easy MAF</div></div>
+          <div class="plan-day hrd"><div class="plan-day-name">Tue</div><div class="plan-day-run">Intervals</div><div class="plan-day-note">200→800m</div></div>
+          <div class="plan-day z2"><div class="plan-day-name">Wed</div><div class="plan-day-run">30 min</div><div class="plan-day-note">easy MAF</div></div>
+          <div class="plan-day hrd"><div class="plan-day-name">Thu</div><div class="plan-day-run">Tempo</div><div class="plan-day-note">20–25 min</div></div>
+          <div class="plan-day rst"><div class="plan-day-name">Fri</div><div class="plan-day-run">Rest</div><div class="plan-day-note">recovery</div></div>
+          <div class="plan-day cls"><div class="plan-day-name">Sat</div><div class="plan-day-run">Long run</div><div class="plan-day-note">60–75 min</div></div>
+          <div class="plan-day rst"><div class="plan-day-name">Sun</div><div class="plan-day-run">Full Rest</div><div class="plan-day-note">always</div></div>
+        </div>
+        <div class="plan-phase-focus">
+          <div class="plan-focus-item"><strong>Never two hard days in a row.</strong> Tuesday intervals and Thursday tempo are always separated by Wednesday easy run. Non-negotiable.</div>
+          <div class="plan-focus-item"><strong>Norwegian double threshold</strong> introduced at month 18+ — one double threshold day per week with lactate testing at 2.0 mmol/L.</div>
+          <div class="plan-focus-item"><strong>Target month 18:</strong> sub-21 min 5K. <strong>Target month 24–30:</strong> 18 minute 5K. MAF pace 7:00–7:30/mile.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- INJURY PREVENTION WORKOUTS -->
+<section class="section injury-workouts-section" id="injury-workouts">
+  <div class="section-label">Staying on the Road</div>
+  <div class="section-title">Injury Prevention <span>Workouts</span></div>
+  <div class="workouts-grid">
+
+    <div class="workout-block">
+      <div class="workout-block-head">
+        <div class="workout-block-title">🦵 Knee Protocol</div>
+        <div class="workout-block-source">Ben Patrick · ATG</div>
+      </div>
+      <div class="workout-exercises">
+        <div class="workout-ex">
+          <div class="workout-ex-name">Tibialis raises</div>
+          <div class="workout-ex-sets">3 × 20 reps · Daily</div>
+          <div class="workout-ex-how">Back against wall, heels forward. Raise toes as high as possible, hold 2 sec, lower slowly. Foundation of knee health.</div>
+        </div>
+        <div class="workout-divider"></div>
+        <div class="workout-ex">
+          <div class="workout-ex-name">ATG split squat</div>
+          <div class="workout-ex-sets">3 × 10 each leg · 3x/week</div>
+          <div class="workout-ex-how">Lunge position, drive front knee as far over toes as possible. Start shallow, build depth over weeks.</div>
+        </div>
+        <div class="workout-divider"></div>
+        <div class="workout-ex">
+          <div class="workout-ex-name">Clamshells with band</div>
+          <div class="workout-ex-sets">3 × 15 each side · 3x/week</div>
+          <div class="workout-ex-how">Lie on side, band above knees. Rotate top knee up keeping feet together. Targets glute med — controls knee tracking.</div>
+        </div>
+        <div class="workout-divider"></div>
+        <div class="workout-ex">
+          <div class="workout-ex-name">Step-downs</div>
+          <div class="workout-ex-sets">3 × 12 each leg · 3x/week</div>
+          <div class="workout-ex-how">Stand on step, lower other foot toward floor with 3–4 second count. Knee must track over second toe — no inward collapse.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="workout-block">
+      <div class="workout-block-head">
+        <div class="workout-block-title">🔵 Back Protocol</div>
+        <div class="workout-block-source">McGill Big Three · Daily</div>
+      </div>
+      <div class="workout-exercises">
+        <div class="workout-ex">
+          <div class="workout-ex-name">McGill curl-up</div>
+          <div class="workout-ex-sets">3 × 8 reps · Hold 10 sec · Daily</div>
+          <div class="workout-ex-how">Lie on back, hands under lower back to maintain curve. Lift only head and shoulders slightly. Never flatten the spine.</div>
+        </div>
+        <div class="workout-divider"></div>
+        <div class="workout-ex">
+          <div class="workout-ex-name">Bird dog</div>
+          <div class="workout-ex-sets">3 × 8 each side · Hold 10 sec · Daily</div>
+          <div class="workout-ex-how">On hands and knees, extend opposite arm and leg parallel to floor. Hold 10 sec. Don't let hips rotate.</div>
+        </div>
+        <div class="workout-divider"></div>
+        <div class="workout-ex">
+          <div class="workout-ex-name">Side plank</div>
+          <div class="workout-ex-sets">3 × 30 seconds each side · Daily</div>
+          <div class="workout-ex-how">Propped on forearm, feet stacked, hips lifted. Targets quadratus lumborum — the deep lateral back muscle most runners never train.</div>
+        </div>
+        <div class="workout-divider"></div>
+        <div class="workout-ex">
+          <div class="workout-ex-name">Kneeling hip flexor stretch</div>
+          <div class="workout-ex-sets">60 sec each side · Daily evening</div>
+          <div class="workout-ex-how">Kneeling lunge, tuck pelvis, squeeze glute of back leg. Tight hip flexors are the #1 driver of lower back pain in runners.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="workout-block">
+      <div class="workout-block-head">
+        <div class="workout-block-title">🟡 Hip Protocol</div>
+        <div class="workout-block-source">Dicharry · Starrett</div>
+      </div>
+      <div class="workout-exercises">
+        <div class="workout-ex">
+          <div class="workout-ex-name">Single leg glute bridge</div>
+          <div class="workout-ex-sets">3 × 15 each leg · Hold 2 sec · 3x/week</div>
+          <div class="workout-ex-how">Lie on back, one knee bent, other leg straight. Push through heel, lift hips to straight line. Squeeze glute hard at top.</div>
+        </div>
+        <div class="workout-divider"></div>
+        <div class="workout-ex">
+          <div class="workout-ex-name">Lateral band walks</div>
+          <div class="workout-ex-sets">3 × 20 steps each direction · 3x/week</div>
+          <div class="workout-ex-how">Band above knees, slight squat. Walk sideways maintaining constant tension. Targets glute medius — controls lateral hip stability during every running stride.</div>
+        </div>
+        <div class="workout-divider"></div>
+        <div class="workout-ex">
+          <div class="workout-ex-name">90/90 hip stretch</div>
+          <div class="workout-ex-sets">60 sec each position · Daily evening</div>
+          <div class="workout-ex-how">Both legs at 90 degrees, one forward one to side. Lean forward over front leg. Addresses both hip rotation directions.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="workout-block">
+      <div class="workout-block-head">
+        <div class="workout-block-title">🟢 Shin & Ankle</div>
+        <div class="workout-block-source">Ben Patrick · Dicharry</div>
+      </div>
+      <div class="workout-exercises">
+        <div class="workout-ex">
+          <div class="workout-ex-name">Tibialis raises</div>
+          <div class="workout-ex-sets">3 × 20 · Daily everywhere</div>
+          <div class="workout-ex-how">Can be done anywhere — waiting for kettle, bus stop, TV. The more frequent the better. Directly prevents shin splints.</div>
+        </div>
+        <div class="workout-divider"></div>
+        <div class="workout-ex">
+          <div class="workout-ex-name">Eccentric calf raises</div>
+          <div class="workout-ex-sets">3 × 15 · 4 seconds down · 3x/week</div>
+          <div class="workout-ex-how">Rise on two feet, lower on one foot slowly counting 4 seconds. Builds Achilles and calf tendon resilience for running impact.</div>
+        </div>
+        <div class="workout-divider"></div>
+        <div class="workout-ex">
+          <div class="workout-ex-name">Single leg balance progression</div>
+          <div class="workout-ex-sets">3 × 30 sec each leg · Daily</div>
+          <div class="workout-ex-how">Week 1: eyes open. Week 2: eyes closed. Week 3: on folded towel. Week 4: towel + eyes closed. Builds ankle proprioception.</div>
+        </div>
+        <div class="workout-divider"></div>
+        <div class="workout-ex">
+          <div class="workout-ex-name">Cadence drill</div>
+          <div class="workout-ex-sets">5 min per run · 170–175 bpm</div>
+          <div class="workout-ex-how">Metronome app set to 170. Run to the beat — stride shortens, foot lands under hips. Reduces shin impact by up to 20%.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="daily-strip">
+      <div class="daily-strip-block">
+        <div class="daily-strip-title">Every Morning</div>
+        <div class="daily-strip-items">
+          <div class="daily-strip-item">McGill curl-up</div>
+          <div class="daily-strip-item">Bird dog</div>
+          <div class="daily-strip-item">Side plank</div>
+          <div class="daily-strip-item">Tibialis raises × 20</div>
+        </div>
+      </div>
+      <div class="daily-strip-block">
+        <div class="daily-strip-title">Before Every Run</div>
+        <div class="daily-strip-items">
+          <div class="daily-strip-item">Leg swings 10 each</div>
+          <div class="daily-strip-item">Hip circles 10 each</div>
+          <div class="daily-strip-item">Walking lunges 10</div>
+          <div class="daily-strip-item">Ankle rolls 10 each</div>
+        </div>
+      </div>
+      <div class="daily-strip-block">
+        <div class="daily-strip-title">After Every Run</div>
+        <div class="daily-strip-items">
+          <div class="daily-strip-item">Calf stretch 45 sec</div>
+          <div class="daily-strip-item">Quad stretch 30 sec</div>
+          <div class="daily-strip-item">Glute bridge 20 reps</div>
+          <div class="daily-strip-item">Figure-four stretch</div>
+        </div>
+      </div>
+      <div class="daily-strip-block">
+        <div class="daily-strip-title">Every Evening</div>
+        <div class="daily-strip-items">
+          <div class="daily-strip-item">90/90 hip stretch</div>
+          <div class="daily-strip-item">Hip flexor stretch</div>
+          <div class="daily-strip-item">Figure-four stretch</div>
+          <div class="daily-strip-item">Single leg balance</div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
