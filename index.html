@@ -7,653 +7,642 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --black: #0e0e0e;
-    --white: #fafaf8;
-    --gray-100: #f4f4f2;
-    --gray-200: #e8e8e4;
-    --gray-400: #a0a098;
-    --gray-600: #6b6b64;
-    --accent: #c8402a;
-    --blue: #1A4FA0;
-    --text: #1c1c1a;
+    --black:#0e0e0e; --white:#fafaf8; --gray-100:#f4f4f2; --gray-200:#e8e8e4;
+    --gray-400:#a0a098; --gray-600:#6b6b64; --accent:#c8402a; --blue:#1A4FA0; --text:#1c1c1a;
+    --green:#16a34a; --orange:#ea580c;
   }
+  *{margin:0;padding:0;box-sizing:border-box;} html{scroll-behavior:smooth;}
+  body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--text);font-size:15px;line-height:1.7;}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 28px;background:rgba(250,250,248,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--gray-200);}
+  .nav-name{font-family:'DM Serif Display',serif;font-size:17px;}
+  .nav-links{display:flex;gap:18px;flex-wrap:wrap;}
+  .nav-links a{text-decoration:none;color:var(--gray-600);font-size:11px;font-weight:500;letter-spacing:0.5px;text-transform:uppercase;transition:color 0.2s;}
+  .nav-links a:hover{color:var(--text);}
+  .hero{padding:120px 28px 64px;max-width:740px;margin:0 auto;}
+  .hero-eyebrow{font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:16px;opacity:0;animation:fadeUp 0.6s 0.1s forwards;}
+  .hero h1{font-family:'DM Serif Display',serif;font-size:clamp(36px,6vw,64px);line-height:1.08;letter-spacing:-1.5px;color:var(--black);margin-bottom:18px;opacity:0;animation:fadeUp 0.6s 0.2s forwards;}
+  .hero h1 em{font-style:italic;color:var(--accent);}
+  .hero-desc{font-size:16px;color:var(--gray-600);max-width:480px;line-height:1.75;opacity:0;animation:fadeUp 0.6s 0.3s forwards;}
+  .hero-stats{display:flex;gap:36px;flex-wrap:wrap;margin-top:44px;padding-top:32px;border-top:1px solid var(--gray-200);opacity:0;animation:fadeUp 0.6s 0.4s forwards;}
+  .hero-stat-val{font-family:'DM Serif Display',serif;font-size:28px;color:var(--black);line-height:1;}
+  .hero-stat-label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-400);margin-top:3px;}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+  section{padding:64px 28px;max-width:740px;margin:0 auto;border-top:1px solid var(--gray-200);}
+  .section-label{font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:8px;}
+  .section-title{font-family:'DM Serif Display',serif;font-size:32px;letter-spacing:-0.8px;line-height:1.1;color:var(--black);margin-bottom:24px;}
+  .card{background:var(--gray-100);border-radius:12px;padding:20px;margin-bottom:12px;}
+  .card-white{background:var(--white);border:1px solid var(--gray-200);border-radius:12px;padding:20px;margin-bottom:12px;}
+  .card-dark{background:var(--black);color:white;border-radius:12px;padding:22px;margin-bottom:12px;}
+  .card-title{font-family:'DM Serif Display',serif;font-size:18px;color:var(--black);margin-bottom:10px;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;}
+  .form-group{display:flex;flex-direction:column;gap:4px;margin-bottom:10px;}
+  .form-group label{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--gray-400);}
+  .form-group input,.form-group select,.form-group textarea{font-family:'DM Sans',sans-serif;font-size:14px;padding:9px 11px;border:1px solid var(--gray-200);border-radius:8px;background:var(--white);color:var(--text);outline:none;transition:border-color 0.15s;}
+  .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--blue);}
+  .form-group textarea{resize:vertical;min-height:64px;}
+  .btn{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;padding:9px 18px;border-radius:8px;border:none;cursor:pointer;transition:all 0.15s;}
+  .btn-primary{background:var(--black);color:white;} .btn-primary:hover{background:#333;}
+  .btn-ghost{background:none;border:1px solid var(--gray-200);color:var(--gray-600);} .btn-ghost:hover{background:var(--gray-100);}
+  .btn-sm{font-size:11px;padding:4px 10px;}
+  .tag{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border-radius:10px;display:inline-block;}
+  .tag-maf{background:#dbeafe;color:var(--blue);} .tag-long{background:#fef3c7;color:#92400e;}
+  .tag-xt{background:#dcfce7;color:#166534;} .tag-rest{background:var(--gray-200);color:var(--gray-400);}
+  .tag-str{background:#fae8ff;color:#7e22ce;} .tag-rec{background:#fff7ed;color:#c2410c;}
+  .tag-injury{background:#fee2e2;color:#991b1b;} .tag-ok{background:#dcfce7;color:#166534;}
+  .tag-tempo{background:#fef9c3;color:#854d0e;} .tag-strides{background:#f3e8ff;color:#6b21a8;}
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  /* WEEK BROWSER */
+  .week-browser{background:var(--black);color:white;border-radius:14px;padding:22px;margin-bottom:22px;}
+  .wb-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;}
+  .wb-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.35);}
+  .wb-title{font-family:'DM Serif Display',serif;font-size:21px;margin-top:3px;}
+  .wb-desc{font-size:12px;color:rgba(255,255,255,0.5);margin-top:3px;}
+  .wb-meta{text-align:right;flex-shrink:0;padding-left:10px;}
+  .wb-miles{font-size:12px;color:rgba(255,255,255,0.35);}
+  .wb-dates{font-size:11px;color:rgba(255,255,255,0.25);}
+  .wb-nav{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+  .wb-btn{background:rgba(255,255,255,0.1);border:none;color:white;border-radius:8px;padding:7px 14px;cursor:pointer;font-size:13px;transition:background 0.15s;}
+  .wb-btn:hover:not(:disabled){background:rgba(255,255,255,0.2);} .wb-btn:disabled{opacity:0.2;cursor:default;}
+  .wb-wnum{font-size:11px;color:rgba(255,255,255,0.35);flex:1;text-align:center;}
+  .wb-days{display:flex;flex-direction:column;gap:4px;}
+  .wb-day{display:flex;align-items:center;gap:9px;padding:9px 11px;border-radius:8px;background:rgba(255,255,255,0.05);}
+  .wb-day.today{background:rgba(200,64,42,0.25);border:1px solid rgba(200,64,42,0.35);}
+  .wb-day.is-rest{opacity:0.3;}
+  .wb-day-name{font-family:'DM Serif Display',serif;font-size:13px;color:rgba(255,255,255,0.45);width:30px;flex-shrink:0;}
+  .wb-day.today .wb-day-name{color:var(--accent);}
+  .wb-day-text{font-size:12px;color:rgba(255,255,255,0.75);flex:1;}
+  .wb-day-shoe{font-size:10px;color:rgba(255,255,255,0.25);flex-shrink:0;}
+  .now-badge{font-size:9px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;background:var(--accent);color:white;padding:2px 7px;border-radius:8px;margin-left:8px;vertical-align:middle;}
 
-  html { scroll-behavior: smooth; }
+  /* PHASE LIST */
+  .phase-list{display:flex;flex-direction:column;gap:1px;background:var(--gray-200);border-radius:12px;overflow:hidden;}
+  .phase-item{display:flex;align-items:flex-start;gap:16px;padding:18px 20px;background:var(--white);transition:background 0.15s;}
+  .phase-item:hover{background:var(--gray-100);}
+  .phase-num{font-family:'DM Serif Display',serif;font-size:12px;color:var(--gray-400);width:20px;flex-shrink:0;padding-top:3px;}
+  .phase-content{flex:1;}
+  .phase-title{font-family:'DM Serif Display',serif;font-size:17px;color:var(--black);margin-bottom:2px;}
+  .phase-weeks{font-size:11px;color:var(--gray-400);margin-bottom:3px;}
+  .phase-desc{font-size:13px;color:var(--gray-600);line-height:1.55;}
+  .phase-miles{font-size:11px;font-weight:500;color:var(--blue);background:#eff6ff;padding:3px 9px;border-radius:10px;flex-shrink:0;align-self:flex-start;margin-top:3px;}
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--white);
-    color: var(--text);
-    font-size: 15px;
-    line-height: 1.7;
-  }
-
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 20px 40px;
-    background: rgba(250,250,248,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--gray-200);
-  }
-  .nav-name {
-    font-family: 'DM Serif Display', serif;
-    font-size: 18px; letter-spacing: -0.3px;
-  }
-  .nav-links { display: flex; gap: 32px; }
-  .nav-links a {
-    text-decoration: none; color: var(--gray-600);
-    font-size: 13px; font-weight: 500; letter-spacing: 0.5px;
-    text-transform: uppercase; transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--text); }
-
-  /* HERO */
-  .hero {
-    padding: 140px 40px 80px;
-    max-width: 780px;
-    margin: 0 auto;
-  }
-  .hero-eyebrow {
-    font-size: 11px; font-weight: 500; letter-spacing: 3px;
-    text-transform: uppercase; color: var(--accent);
-    margin-bottom: 20px;
-    opacity: 0; animation: fadeUp 0.6s 0.1s forwards;
-  }
-  .hero h1 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(42px, 7vw, 72px);
-    line-height: 1.08; letter-spacing: -1.5px;
-    color: var(--black); margin-bottom: 24px;
-    opacity: 0; animation: fadeUp 0.6s 0.2s forwards;
-  }
-  .hero h1 em { font-style: italic; color: var(--accent); }
-  .hero-desc {
-    font-size: 17px; color: var(--gray-600);
-    max-width: 520px; line-height: 1.75;
-    opacity: 0; animation: fadeUp 0.6s 0.3s forwards;
-  }
-
-  .hero-stats {
-    display: flex; gap: 48px; margin-top: 52px; padding-top: 40px;
-    border-top: 1px solid var(--gray-200);
-    opacity: 0; animation: fadeUp 0.6s 0.4s forwards;
-  }
-  .hero-stat-val {
-    font-family: 'DM Serif Display', serif;
-    font-size: 32px; color: var(--black); line-height: 1;
-  }
-  .hero-stat-label {
-    font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
-    color: var(--gray-400); margin-top: 4px;
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* SECTIONS */
-  section {
-    padding: 80px 40px;
-    max-width: 780px;
-    margin: 0 auto;
-    border-top: 1px solid var(--gray-200);
-  }
-  .section-label {
-    font-size: 11px; font-weight: 500; letter-spacing: 3px;
-    text-transform: uppercase; color: var(--accent); margin-bottom: 12px;
-  }
-  .section-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: 36px; letter-spacing: -0.8px; line-height: 1.1;
-    color: var(--black); margin-bottom: 32px;
-  }
-
-  /* TRAINING PLAN */
-  .phase-list { display: flex; flex-direction: column; gap: 1px; background: var(--gray-200); border-radius: 12px; overflow: hidden; }
-  .phase-item {
-    display: flex; align-items: flex-start; gap: 24px;
-    padding: 22px 24px; background: var(--white);
-    transition: background 0.15s; cursor: default;
-  }
-  .phase-item:hover { background: var(--gray-100); }
-  .phase-num-wrap { flex-shrink: 0; padding-top: 2px; }
-  .phase-num {
-    font-family: 'DM Serif Display', serif;
-    font-size: 13px; color: var(--gray-400);
-  }
-  .phase-content { flex: 1; }
-  .phase-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: 19px; color: var(--black); margin-bottom: 3px;
-  }
-  .phase-weeks { font-size: 12px; color: var(--gray-400); margin-bottom: 6px; letter-spacing: 0.3px; }
-  .phase-desc { font-size: 14px; color: var(--gray-600); line-height: 1.6; }
-  .phase-miles {
-    flex-shrink: 0; font-size: 13px; font-weight: 500;
-    color: var(--blue); background: #eff6ff;
-    padding: 4px 12px; border-radius: 20px; align-self: flex-start; margin-top: 4px;
-  }
-
-  /* CURRENT WEEK */
-  .current-week {
-    background: var(--black); color: var(--white);
-    border-radius: 14px; padding: 28px; margin-bottom: 24px;
-  }
-  .current-week-label {
-    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
-    color: var(--gray-400); margin-bottom: 16px;
-  }
-  .current-week-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: 26px; margin-bottom: 8px;
-  }
-  .current-week-desc { font-size: 14px; color: rgba(255,255,255,0.55); margin-bottom: 20px; }
-  .day-pills { display: flex; gap: 8px; flex-wrap: wrap; }
-  .day-pill {
-    font-size: 12px; font-weight: 500; padding: 6px 14px;
-    border-radius: 20px; border: 1px solid rgba(255,255,255,0.12);
-    color: rgba(255,255,255,0.7);
-  }
-  .day-pill.active { background: var(--accent); border-color: var(--accent); color: white; }
-  .day-pill.xt { background: rgba(26,79,160,0.4); border-color: rgba(26,79,160,0.5); color: #93c5fd; }
-  .day-pill.rest { opacity: 0.4; }
-
-  /* MAF EDUCATION */
-  .maf-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px; }
-  .maf-card {
-    background: var(--gray-100); border-radius: 12px; padding: 22px;
-  }
-  .maf-card-icon { font-size: 24px; margin-bottom: 12px; }
-  .maf-card-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: 17px; color: var(--black); margin-bottom: 6px;
-  }
-  .maf-card-text { font-size: 13px; color: var(--gray-600); line-height: 1.65; }
-
-  .maf-explainer {
-    background: var(--white); border: 1px solid var(--gray-200);
-    border-radius: 12px; padding: 28px; margin-bottom: 16px;
-  }
-  .maf-explainer h4 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 20px; margin-bottom: 12px; color: var(--black);
-  }
-  .maf-explainer p {
-    font-size: 14px; color: var(--gray-600); line-height: 1.75; margin-bottom: 12px;
-  }
-  .maf-explainer p:last-child { margin-bottom: 0; }
-  .maf-explainer blockquote {
-    border-left: 3px solid var(--accent); padding-left: 16px;
-    margin: 16px 0; font-size: 14px; color: var(--gray-600);
-    font-style: italic; line-height: 1.7;
-  }
-
-  .hr-formula {
-    background: var(--black); color: white;
-    border-radius: 12px; padding: 24px; margin-bottom: 16px;
-    display: flex; align-items: center; gap: 24px;
-  }
-  .formula-text {
-    font-family: 'DM Serif Display', serif;
-    font-size: 22px; line-height: 1.4; flex: 1;
-  }
-  .formula-text span { color: var(--accent); }
-  .formula-result {
-    text-align: center; flex-shrink: 0;
-    border-left: 1px solid rgba(255,255,255,0.1); padding-left: 24px;
-  }
-  .formula-num {
-    font-family: 'DM Serif Display', serif;
-    font-size: 44px; color: white; line-height: 1;
-  }
-  .formula-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-top: 4px; }
+  /* MAF CHART */
+  .maf-graph-wrap{background:var(--white);border:1px solid var(--gray-200);border-radius:12px;padding:20px;margin-bottom:20px;}
+  .maf-graph-title{font-family:'DM Serif Display',serif;font-size:17px;color:var(--black);margin-bottom:14px;}
 
   /* RUN LOG */
-  .log-table { width: 100%; border-collapse: collapse; }
-  .log-table th {
-    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
-    color: var(--gray-400); font-weight: 500; text-align: left;
-    padding: 0 0 14px; border-bottom: 1px solid var(--gray-200);
-  }
-  .log-table td {
-    padding: 16px 0; border-bottom: 1px solid var(--gray-200);
-    font-size: 14px; color: var(--text);
-    vertical-align: top;
-  }
-  .log-table tr:last-child td { border-bottom: none; }
-  .log-pace {
-    font-family: 'DM Serif Display', serif;
-    font-size: 18px; color: var(--black);
-  }
-  .log-hr { font-size: 13px; color: var(--accent); font-weight: 500; }
-  .log-note { font-size: 12px; color: var(--gray-400); margin-top: 3px; }
-  .log-tag {
-    font-size: 10px; font-weight: 500; letter-spacing: 1px;
-    text-transform: uppercase; padding: 3px 8px; border-radius: 10px;
-  }
-  .tag-maf { background: #dbeafe; color: var(--blue); }
-  .tag-long { background: #fef3c7; color: #92400e; }
-  .tag-xt { background: #f0fdf4; color: #166534; }
+  .run-entry{display:flex;align-items:flex-start;gap:12px;padding:14px 0;border-bottom:1px solid var(--gray-200);}
+  .run-entry:last-child{border-bottom:none;}
+  .run-date{font-size:11px;color:var(--gray-400);width:52px;flex-shrink:0;padding-top:2px;}
+  .run-main{flex:1;}
+  .run-pace{font-family:'DM Serif Display',serif;font-size:19px;color:var(--black);line-height:1;}
+  .run-meta{font-size:12px;color:var(--gray-600);margin-top:2px;}
+  .run-note-text{font-size:12px;color:var(--gray-400);margin-top:2px;font-style:italic;}
+  .empty-state{text-align:center;padding:28px;color:var(--gray-400);font-size:13px;}
 
-  .maf-test-result {
-    background: var(--gray-100); border-radius: 12px;
-    padding: 20px 24px; display: flex; align-items: center;
-    gap: 24px; margin-bottom: 12px;
-  }
-  .maf-test-date {
-    font-size: 12px; color: var(--gray-400); width: 80px; flex-shrink: 0;
-  }
-  .maf-test-pace {
-    font-family: 'DM Serif Display', serif;
-    font-size: 26px; color: var(--black); flex: 1;
-  }
-  .maf-test-pace span { font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--gray-400); }
-  .maf-test-note { font-size: 13px; color: var(--gray-600); }
-  .maf-baseline {
-    background: var(--black); color: white;
-  }
-  .maf-baseline .maf-test-date { color: rgba(255,255,255,0.4); }
-  .maf-baseline .maf-test-pace { color: white; }
-  .maf-baseline .maf-test-note { color: rgba(255,255,255,0.5); }
+  /* STRENGTH */
+  .routine-tabs{display:flex;gap:8px;margin-bottom:14px;}
+  .routine-tab{font-size:12px;font-weight:500;padding:6px 14px;border-radius:20px;border:1px solid var(--gray-200);background:none;cursor:pointer;color:var(--gray-600);transition:all 0.15s;}
+  .routine-tab.active{background:var(--black);color:white;border-color:var(--black);}
+  .sc-grid{display:flex;flex-direction:column;gap:5px;}
+  .sc-item{display:flex;align-items:center;gap:10px;padding:11px 13px;border-radius:9px;background:var(--gray-100);cursor:pointer;transition:all 0.15s;user-select:none;}
+  .sc-item.done{background:#dcfce7;}
+  .sc-item.done .sc-name{text-decoration:line-through;color:var(--gray-400);}
+  .sc-check{width:19px;height:19px;border-radius:5px;border:2px solid var(--gray-200);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;transition:all 0.15s;}
+  .sc-item.done .sc-check{background:var(--green);border-color:var(--green);color:white;}
+  .sc-name{font-size:14px;font-weight:500;flex:1;}
+  .sc-sets{font-size:12px;color:var(--gray-400);}
+  .reset-link{font-size:12px;color:var(--gray-400);text-decoration:underline;cursor:pointer;display:block;margin-top:10px;}
 
-  /* SHOE ROTATION */
-  .shoe-grid { display: flex; flex-direction: column; gap: 1px; background: var(--gray-200); border-radius: 12px; overflow: hidden; }
-  .shoe-item {
-    display: flex; align-items: center; gap: 20px;
-    padding: 18px 22px; background: var(--white);
-    transition: background 0.15s;
-  }
-  .shoe-item:hover { background: var(--gray-100); }
-  .shoe-emoji { font-size: 22px; flex-shrink: 0; }
-  .shoe-info { flex: 1; }
-  .shoe-name {
-    font-family: 'DM Serif Display', serif;
-    font-size: 17px; color: var(--black); margin-bottom: 2px;
-  }
-  .shoe-use { font-size: 13px; color: var(--gray-600); }
-  .shoe-status {
-    font-size: 11px; font-weight: 500; letter-spacing: 1px;
-    text-transform: uppercase; padding: 4px 10px; border-radius: 20px; flex-shrink: 0;
-  }
-  .status-active { background: #dcfce7; color: #166534; }
-  .status-special { background: #fef3c7; color: #92400e; }
-  .status-gym { background: #f3f4f6; color: #6b7280; }
-  .status-race { background: #fee2e2; color: #991b1b; }
+  /* KNEE */
+  .pain-scale{display:flex;gap:5px;margin:10px 0;flex-wrap:wrap;}
+  .pain-btn{width:40px;height:40px;border-radius:9px;border:2px solid var(--gray-200);background:none;cursor:pointer;font-size:14px;font-weight:600;color:var(--gray-400);transition:all 0.15s;font-family:'DM Sans',sans-serif;}
+  .pain-btn:hover{border-color:var(--blue);color:var(--blue);}
+  .pain-btn.sel{color:white;border-color:transparent;}
+  .pain-btn.sel.p0{background:#16a34a;} .pain-btn.sel.p1{background:#4ade80;color:#14532d;}
+  .pain-btn.sel.p2{background:#a3e635;color:#365314;} .pain-btn.sel.p3{background:#facc15;color:#713f12;}
+  .pain-btn.sel.p4,.pain-btn.sel.p5,.pain-btn.sel.p6{background:#f97316;}
+  .pain-btn.sel.p7,.pain-btn.sel.p8{background:#ef4444;}
+  .pain-btn.sel.p9,.pain-btn.sel.p10{background:#991b1b;}
+  .checkin-log{display:flex;flex-direction:column;gap:5px;max-height:240px;overflow-y:auto;}
+  .checkin-item{display:flex;align-items:center;gap:10px;padding:9px 11px;border-radius:8px;background:var(--gray-100);font-size:13px;}
+  .checkin-pain{font-family:'DM Serif Display',serif;font-size:19px;width:26px;flex-shrink:0;}
+  .checkin-info{flex:1;}
+  .checkin-date{font-size:11px;color:var(--gray-400);}
+  .pain-alert{background:#fff1f2;border:1px solid #fecdd3;border-radius:9px;padding:11px 13px;font-size:13px;color:#9f1239;margin-top:8px;display:none;}
+
+  /* INJURY */
+  .injury-entry{display:flex;align-items:flex-start;gap:10px;padding:13px 0;border-bottom:1px solid var(--gray-200);}
+  .injury-entry:last-child{border-bottom:none;}
+  .inj-date{font-size:11px;color:var(--gray-400);width:52px;flex-shrink:0;padding-top:2px;}
+  .inj-body{flex:1;}
+  .inj-location{font-size:14px;font-weight:500;color:var(--text);}
+  .inj-note-text{font-size:12px;color:var(--gray-600);margin-top:2px;}
+
+  /* SHOES */
+  .shoe-track{padding:14px 0;border-bottom:1px solid var(--gray-200);}
+  .shoe-track:last-child{border-bottom:none;}
+  .shoe-track-name{font-family:'DM Serif Display',serif;font-size:16px;margin-bottom:5px;}
+  .shoe-track-bar-wrap{background:var(--gray-200);border-radius:20px;height:5px;overflow:hidden;margin:6px 0 8px;}
+  .shoe-track-bar{height:100%;border-radius:20px;background:var(--blue);transition:width 0.4s;}
+
+  /* REFLECTION */
+  .reflection-entry{padding:14px 0;border-bottom:1px solid var(--gray-200);}
+  .reflection-entry:last-child{border-bottom:none;}
+  .reflection-week{font-family:'DM Serif Display',serif;font-size:16px;color:var(--black);margin-bottom:3px;}
+  .reflection-text{font-size:13px;color:var(--gray-600);line-height:1.65;}
+  .reflection-date{font-size:11px;color:var(--gray-400);margin-top:3px;}
+
+  /* MAF EDU */
+  .maf-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;}
+  .maf-card{background:var(--gray-100);border-radius:12px;padding:18px;}
+  .maf-card-icon{font-size:20px;margin-bottom:8px;}
+  .maf-card-title{font-family:'DM Serif Display',serif;font-size:16px;color:var(--black);margin-bottom:4px;}
+  .maf-card-text{font-size:13px;color:var(--gray-600);line-height:1.6;}
+  .maf-explainer{background:var(--white);border:1px solid var(--gray-200);border-radius:12px;padding:22px;margin-bottom:12px;}
+  .maf-explainer h4{font-family:'DM Serif Display',serif;font-size:18px;margin-bottom:8px;color:var(--black);}
+  .maf-explainer p{font-size:14px;color:var(--gray-600);line-height:1.75;margin-bottom:8px;}
+  .maf-explainer p:last-child{margin-bottom:0;}
+  .maf-explainer blockquote{border-left:3px solid var(--accent);padding-left:13px;margin:12px 0;font-size:14px;color:var(--gray-600);font-style:italic;line-height:1.7;}
+  .hr-formula{background:var(--black);color:white;border-radius:12px;padding:20px;margin-bottom:12px;display:flex;align-items:center;gap:16px;}
+  .formula-text{font-family:'DM Serif Display',serif;font-size:19px;line-height:1.4;flex:1;}
+  .formula-text span{color:var(--accent);}
+  .formula-result{text-align:center;flex-shrink:0;border-left:1px solid rgba(255,255,255,0.1);padding-left:18px;}
+  .formula-num{font-family:'DM Serif Display',serif;font-size:40px;color:white;line-height:1;}
+  .formula-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:2px;}
 
   /* INJURY NOTE */
-  .injury-note {
-    background: #fff7ed; border: 1px solid #fed7aa;
-    border-radius: 12px; padding: 20px 22px; margin-bottom: 24px;
-    display: flex; gap: 14px; align-items: flex-start;
-  }
-  .injury-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
-  .injury-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: 16px; color: #92400e; margin-bottom: 4px;
-  }
-  .injury-text { font-size: 13px; color: #78350f; line-height: 1.6; }
+  .injury-note{background:#fff7ed;border:1px solid #fed7aa;border-radius:12px;padding:16px 18px;margin-bottom:18px;display:flex;gap:10px;align-items:flex-start;}
+  .injury-icon{font-size:17px;flex-shrink:0;margin-top:2px;}
+  .injury-title{font-family:'DM Serif Display',serif;font-size:14px;color:#92400e;margin-bottom:2px;}
+  .injury-text{font-size:13px;color:#78350f;line-height:1.55;}
 
   /* FOOTER */
-  footer {
-    border-top: 1px solid var(--gray-200);
-    padding: 40px;
-    max-width: 780px; margin: 0 auto;
-    display: flex; justify-content: space-between; align-items: center;
-  }
-  .footer-name {
-    font-family: 'DM Serif Display', serif;
-    font-size: 16px; color: var(--black);
-  }
-  .footer-sub { font-size: 12px; color: var(--gray-400); margin-top: 2px; }
-  .footer-right { font-size: 12px; color: var(--gray-400); text-align: right; }
+  footer{border-top:1px solid var(--gray-200);padding:32px 28px;max-width:740px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;}
+  .footer-name{font-family:'DM Serif Display',serif;font-size:15px;color:var(--black);}
+  .footer-sub{font-size:12px;color:var(--gray-400);margin-top:2px;}
+  .footer-right{font-size:12px;color:var(--gray-400);text-align:right;}
 
-  /* RESPONSIVE */
-  @media (max-width: 600px) {
-    nav { padding: 16px 20px; }
-    .nav-links { gap: 20px; }
-    .hero { padding: 110px 20px 60px; }
-    .hero-stats { gap: 28px; flex-wrap: wrap; }
-    section { padding: 60px 20px; }
-    .maf-grid { grid-template-columns: 1fr; }
-    .hr-formula { flex-direction: column; gap: 16px; }
-    .formula-result { border-left: none; border-top: 1px solid rgba(255,255,255,0.1); padding-left: 0; padding-top: 16px; }
-    footer { flex-direction: column; gap: 12px; padding: 30px 20px; }
-    .footer-right { text-align: left; }
+  @media(max-width:580px){
+    nav{padding:12px 16px;} .nav-links{gap:12px;}
+    .hero{padding:104px 16px 52px;} .hero-stats{gap:20px;}
+    section{padding:52px 16px;}
+    .maf-grid,.form-row{grid-template-columns:1fr;}
+    .hr-formula{flex-direction:column;}
+    .formula-result{border-left:none;border-top:1px solid rgba(255,255,255,0.1);padding-left:0;padding-top:12px;}
+    footer{flex-direction:column;gap:8px;padding:24px 16px;} .footer-right{text-align:left;}
   }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-name">Alex Santos</div>
   <div class="nav-links">
-    <a href="#plan">Plan</a>
-    <a href="#maf">MAF</a>
-    <a href="#log">Log</a>
-    <a href="#shoes">Shoes</a>
+    <a href="#plan">Plan</a><a href="#log">Log</a><a href="#strength">Strength</a>
+    <a href="#knee">Knee</a><a href="#injuries">Injuries</a><a href="#shoes">Shoes</a>
+    <a href="#reflect">Reflect</a><a href="#maf">MAF</a>
   </div>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
   <div class="hero-eyebrow">Personal Running Journal</div>
   <h1>Training with <em>intention,</em> not ego.</h1>
-  <p class="hero-desc">Documenting my journey through MAF training — building an aerobic base the right way, one slow mile at a time. Based in the East Bay, CA.</p>
+  <p class="hero-desc">Documenting my MAF training journey — building an aerobic base the right way, one slow mile at a time. East Bay, CA.</p>
   <div class="hero-stats">
-    <div>
-      <div class="hero-stat-val">153</div>
-      <div class="hero-stat-label">MAF Ceiling (bpm)</div>
-    </div>
-    <div>
-      <div class="hero-stat-val">17:02</div>
-      <div class="hero-stat-label">Current MAF Pace</div>
-    </div>
-    <div>
-      <div class="hero-stat-val">~22 min</div>
-      <div class="hero-stat-label">5K Goal</div>
-    </div>
-    <div>
-      <div class="hero-stat-val">Wk 0</div>
-      <div class="hero-stat-label">Recovery Phase</div>
-    </div>
+    <div><div class="hero-stat-val">153</div><div class="hero-stat-label">MAF Ceiling</div></div>
+    <div><div class="hero-stat-val" id="hero-pace">17:02</div><div class="hero-stat-label">MAF Pace</div></div>
+    <div><div class="hero-stat-val">~22 min</div><div class="hero-stat-label">5K Goal</div></div>
+    <div><div class="hero-stat-val" id="hero-week">Wk 0</div><div class="hero-stat-label">Current Phase</div></div>
   </div>
 </div>
 
-<!-- TRAINING PLAN -->
+<!-- PLAN -->
 <section id="plan">
   <div class="section-label">Training</div>
   <div class="section-title">18-Week MAF 5K Plan</div>
-
   <div class="injury-note">
     <div class="injury-icon">🦵</div>
-    <div>
-      <div class="injury-title">Currently in Recovery — Phase 0</div>
-      <div class="injury-text">Left knee medial irritation. Taking a full week off before Phase 1 begins. Pain level: 2–3/10. Icing daily, no running until pain-free on stairs.</div>
-    </div>
+    <div><div class="injury-title">Currently in Recovery — Phase 0</div>
+    <div class="injury-text">Left knee medial irritation. Full week off before Phase 1. No running until pain-free on stairs.</div></div>
   </div>
-
-  <div class="current-week">
-    <div class="current-week-label">This Week</div>
-    <div class="current-week-title">Phase 0 — Full Stop</div>
-    <div class="current-week-desc">Rest, ice, heal. No running until the knee passes the green light checklist.</div>
-    <div class="day-pills">
-      <div class="day-pill active">Mon · Ice</div>
-      <div class="day-pill">Tue · Strength</div>
-      <div class="day-pill xt">Wed · Swim</div>
-      <div class="day-pill">Thu · Strength</div>
-      <div class="day-pill rest">Fri · Rest</div>
-      <div class="day-pill">Sat · Walk</div>
-      <div class="day-pill rest">Sun · Rest</div>
+  <div class="week-browser">
+    <div class="wb-header">
+      <div><div class="wb-label" id="wb-label">This Week</div><div class="wb-title" id="wb-title"></div><div class="wb-desc" id="wb-desc"></div></div>
+      <div class="wb-meta"><div class="wb-miles" id="wb-miles"></div><div class="wb-dates" id="wb-dates"></div></div>
     </div>
+    <div class="wb-nav">
+      <button class="wb-btn" id="btn-prev" onclick="changeWeek(-1)">←</button>
+      <div class="wb-wnum" id="wb-wnum"></div>
+      <button class="wb-btn" id="btn-next" onclick="changeWeek(1)">→</button>
+    </div>
+    <div class="wb-days" id="wb-days"></div>
   </div>
-
   <div class="phase-list">
-    <div class="phase-item">
-      <div class="phase-num-wrap"><div class="phase-num">00</div></div>
-      <div class="phase-content">
-        <div class="phase-title">Knee Recovery</div>
-        <div class="phase-weeks">This week · No running</div>
-        <div class="phase-desc">Ice, rest, upper body strength only. Green light: zero pain on stairs, no swelling.</div>
-      </div>
-      <div class="phase-miles">0 mi/wk</div>
-    </div>
-    <div class="phase-item">
-      <div class="phase-num-wrap"><div class="phase-num">01</div></div>
-      <div class="phase-content">
-        <div class="phase-title">Return to Running</div>
-        <div class="phase-weeks">Weeks 1–4 · Kayano 30 only</div>
-        <div class="phase-desc">Short runs, walk breaks welcome. Connective tissue re-adapting. Strength routines begin.</div>
-      </div>
-      <div class="phase-miles">4–6 mi/wk</div>
-    </div>
-    <div class="phase-item">
-      <div class="phase-num-wrap"><div class="phase-num">02</div></div>
-      <div class="phase-content">
-        <div class="phase-title">Building Confidence</div>
-        <div class="phase-weeks">Weeks 5–8 · First MAF test week 8</div>
-        <div class="phase-desc">Runs getting longer. Pace at same HR should start visibly improving.</div>
-      </div>
-      <div class="phase-miles">6–10 mi/wk</div>
-    </div>
-    <div class="phase-item">
-      <div class="phase-num-wrap"><div class="phase-num">03</div></div>
-      <div class="phase-content">
-        <div class="phase-title">Real Base Building</div>
-        <div class="phase-weeks">Weeks 9–12 · Second MAF test week 12</div>
-        <div class="phase-desc">Where most plans start. I'll be ready for it now. Aerobic engine genuinely growing.</div>
-      </div>
-      <div class="phase-miles">10–15 mi/wk</div>
-    </div>
-    <div class="phase-item">
-      <div class="phase-num-wrap"><div class="phase-num">04</div></div>
-      <div class="phase-content">
-        <div class="phase-title">Aerobic Strength + Strides</div>
-        <div class="phase-weeks">Weeks 13–16 · Third MAF test week 16</div>
-        <div class="phase-desc">One strides session per week. Everything else stays aerobic.</div>
-      </div>
-      <div class="phase-miles">15–20 mi/wk</div>
-    </div>
-    <div class="phase-item">
-      <div class="phase-num-wrap"><div class="phase-num">05</div></div>
-      <div class="phase-content">
-        <div class="phase-title">5K Race Prep</div>
-        <div class="phase-weeks">Weeks 17–18 · Final MAF test</div>
-        <div class="phase-desc">One tempo session per week. Race week: volume drops 40%. Streakfly laced up.</div>
-      </div>
-      <div class="phase-miles">20–22 mi/wk</div>
-    </div>
-  </div>
-</section>
-
-<!-- MAF EDUCATION -->
-<section id="maf">
-  <div class="section-label">Method</div>
-  <div class="section-title">Understanding MAF Training</div>
-
-  <div class="hr-formula">
-    <div class="formula-text">
-      180 <span>−</span> age (22) <span>−</span> 5 (health adj.) <span>=</span>
-    </div>
-    <div class="formula-result">
-      <div class="formula-num">153</div>
-      <div class="formula-label">My MAF Ceiling</div>
-    </div>
-  </div>
-
-  <div class="maf-grid">
-    <div class="maf-card">
-      <div class="maf-card-icon">❤️</div>
-      <div class="maf-card-title">What is MAF?</div>
-      <div class="maf-card-text">Maximum Aerobic Function — a method by Dr. Phil Maffetone that uses HR to build a deep aerobic base before adding speed work.</div>
-    </div>
-    <div class="maf-card">
-      <div class="maf-card-icon">🔥</div>
-      <div class="maf-card-title">Fat as Fuel</div>
-      <div class="maf-card-text">Below your MAF ceiling, your body burns primarily fat. Above it, you shift to carbohydrates — burning through glycogen and generating more stress.</div>
-    </div>
-    <div class="maf-card">
-      <div class="maf-card-icon">⏳</div>
-      <div class="maf-card-title">The Grey Zone</div>
-      <div class="maf-card-text">Most recreational runners spend too much time at moderate intensity — too hard to recover, too easy to stimulate. MAF fixes this.</div>
-    </div>
-    <div class="maf-card">
-      <div class="maf-card-icon">📈</div>
-      <div class="maf-card-title">The Proof</div>
-      <div class="maf-card-text">Mark Allen trained so slowly cyclists asked if he was okay. A year later he was running faster at MAF HR than ever before at all-out effort.</div>
-    </div>
-  </div>
-
-  <div class="maf-explainer">
-    <h4>Why slow running feels harder than running fast</h4>
-    <p>This is the question every MAF runner asks in the first few weeks. When you run below your natural comfortable rhythm, you're fighting your own biomechanics. Your body has a preferred stride frequency designed for efficiency — running significantly slower than that feels clunky and uncoordinated.</p>
-    <p>Think of it like driving at 15 mph in a gear designed for 40 mph. The engine is working harder, not less. At very slow paces you also spend more time on one foot per stride, which demands more stability from muscles that haven't been trained for it yet.</p>
-    <blockquote>The awkwardness is temporary. As your aerobic base develops, your natural comfortable pace drops into MAF range — instead of shuffling at 17:00/mile, you'll cruise at 12:00/mile at the same heart rate.</blockquote>
-    <p>The body is also adapting at the cellular level — building mitochondrial density, improving fat oxidation, developing new capillary networks. None of this feels like progress. It is.</p>
-  </div>
-
-  <div class="maf-explainer">
-    <h4>Why your pace varies at the same heart rate</h4>
-    <p>Heart rate reflects the total demand on your body — not just running. Sleep, heat, stress, hydration, cumulative fatigue, and even time of day all change how hard your heart has to work to maintain a given pace.</p>
-    <p>A poor night's sleep raises resting HR by 5–10 bpm and makes every pace feel harder. Heat forces your heart to pump extra blood to your skin to cool you down on top of fueling your muscles. This is why MAF uses HR as the guide instead of pace — HR is the truth, pace is just the output.</p>
-    <p>When your MAF pace is slower than usual at the same HR, your body is telling you something. The slower pace on those days isn't weakness — it's your system correctly protecting itself.</p>
+    <div class="phase-item"><div class="phase-num">00</div><div class="phase-content"><div class="phase-title">Knee Recovery</div><div class="phase-weeks">Recovery week · No running</div><div class="phase-desc">Ice, rest, upper body only. Green light: zero pain on stairs.</div></div><div class="phase-miles">0 mi/wk</div></div>
+    <div class="phase-item"><div class="phase-num">01</div><div class="phase-content"><div class="phase-title">Return to Running</div><div class="phase-weeks">Weeks 1–4 · Kayano 30 only</div><div class="phase-desc">Short runs, walk breaks welcome. Connective tissue re-adapting.</div></div><div class="phase-miles">4–6 mi/wk</div></div>
+    <div class="phase-item"><div class="phase-num">02</div><div class="phase-content"><div class="phase-title">Building Confidence</div><div class="phase-weeks">Weeks 5–8 · MAF test week 8</div><div class="phase-desc">Runs getting longer. MAF pace visibly improving.</div></div><div class="phase-miles">6–10 mi/wk</div></div>
+    <div class="phase-item"><div class="phase-num">03</div><div class="phase-content"><div class="phase-title">Real Base Building</div><div class="phase-weeks">Weeks 9–12 · MAF test week 12</div><div class="phase-desc">Where most plans start. Aerobic engine genuinely growing.</div></div><div class="phase-miles">10–15 mi/wk</div></div>
+    <div class="phase-item"><div class="phase-num">04</div><div class="phase-content"><div class="phase-title">Aerobic Strength + Strides</div><div class="phase-weeks">Weeks 13–16 · MAF test week 16</div><div class="phase-desc">One strides session Thursday. Everything else strict MAF.</div></div><div class="phase-miles">15–20 mi/wk</div></div>
+    <div class="phase-item"><div class="phase-num">05</div><div class="phase-content"><div class="phase-title">5K Race Prep</div><div class="phase-weeks">Weeks 17–18 · Final MAF test</div><div class="phase-desc">One tempo per week. Race week volume drops 40%.</div></div><div class="phase-miles">20–22 mi/wk</div></div>
   </div>
 </section>
 
 <!-- RUN LOG -->
 <section id="log">
-  <div class="section-label">Progress</div>
-  <div class="section-title">Run Log & MAF Tests</div>
-
-  <div style="margin-bottom: 32px;">
-    <div style="font-family: 'DM Serif Display', serif; font-size: 18px; margin-bottom: 16px; color: var(--black);">MAF Test Results</div>
-    <div class="maf-test-result maf-baseline">
-      <div class="maf-test-date">Baseline</div>
-      <div class="maf-test-pace">17:02 <span>/mi at 145 bpm</span></div>
-      <div class="maf-test-note">Starting point. Aerobic base thin. Normal.</div>
+  <div class="section-label">Log</div>
+  <div class="section-title">Run Journal</div>
+  <div class="maf-graph-wrap">
+    <div class="maf-graph-title">MAF Test Progress</div>
+    <canvas id="mafChart" height="150"></canvas>
+    <div style="margin-top:16px;border-top:1px solid var(--gray-200);padding-top:14px;">
+      <div style="font-size:13px;color:var(--gray-600);margin-bottom:10px;">Log a MAF test result</div>
+      <div class="form-row">
+        <div class="form-group"><label>Week #</label><input type="number" id="maf-week" placeholder="8" min="1" max="18"></div>
+        <div class="form-group"><label>Avg Pace (min/mi)</label><input type="text" id="maf-pace-in" placeholder="14:30"></div>
+      </div>
+      <button class="btn btn-primary" onclick="addMAFTest()">Save MAF Test</button>
     </div>
-    <div class="maf-test-result" style="opacity: 0.4;">
-      <div class="maf-test-date">Week 8</div>
-      <div class="maf-test-pace">— <span>/mi</span></div>
-      <div class="maf-test-note">Upcoming</div>
-    </div>
-    <div class="maf-test-result" style="opacity: 0.4;">
-      <div class="maf-test-date">Week 12</div>
-      <div class="maf-test-pace">— <span>/mi</span></div>
-      <div class="maf-test-note">Upcoming</div>
-    </div>
-    <div class="maf-test-result" style="opacity: 0.4;">
-      <div class="maf-test-date">Week 16</div>
-      <div class="maf-test-pace">— <span>/mi</span></div>
-      <div class="maf-test-note">Upcoming</div>
-    </div>
+    <div id="maf-list" style="margin-top:12px;"></div>
   </div>
-
-  <div style="font-family: 'DM Serif Display', serif; font-size: 18px; margin-bottom: 16px; color: var(--black);">Recent Runs</div>
-  <table class="log-table">
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Distance</th>
-        <th>Pace / HR</th>
-        <th>Type</th>
-        <th>Notes</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="color: var(--gray-400); font-size: 13px;">Today</td>
-        <td><div class="log-pace">1.47 mi</div></td>
-        <td><div class="log-pace">17:02</div><div class="log-hr">145 avg · 156 max bpm</div></td>
-        <td><span class="log-tag tag-maf">MAF</span></td>
-        <td><div class="log-note">Knee at 2–3/10. Should have rested.</div></td>
-      </tr>
-      <tr>
-        <td style="color: var(--gray-400); font-size: 13px; opacity: 0.5;" colspan="5" style="text-align: center; padding: 24px 0;">
-          Add your runs here as you go →
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="card-white" style="margin-bottom:18px;">
+    <div class="card-title">Log a Run</div>
+    <div class="form-row">
+      <div class="form-group"><label>Date</label><input type="date" id="run-date"></div>
+      <div class="form-group"><label>Distance (mi)</label><input type="number" id="run-dist" placeholder="1.47" step="0.01"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label>Avg Pace (min/mi)</label><input type="text" id="run-pace" placeholder="17:02"></div>
+      <div class="form-group"><label>Avg HR</label><input type="number" id="run-hr" placeholder="145"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label>Max HR</label><input type="number" id="run-maxhr" placeholder="156"></div>
+      <div class="form-group"><label>Type</label><select id="run-type"><option value="maf">MAF Easy</option><option value="long">Long Run</option><option value="xt">Cross-Train</option><option value="tempo">Tempo</option><option value="strides">Strides</option></select></div>
+    </div>
+    <div class="form-group"><label>Shoe</label><select id="run-shoe"><option>Kayano 30</option><option>Bondi X</option><option>Nimbus 25</option><option>Novablast 3</option><option>Streakfly</option><option>Speedgoat 5</option><option>Other</option></select></div>
+    <div class="form-group"><label>Notes / How it felt</label><textarea id="run-notes" placeholder="e.g. Felt strong, HR stable. Knee quiet."></textarea></div>
+    <button class="btn btn-primary" onclick="addRun()">Save Run</button>
+  </div>
+  <div id="run-list"></div>
 </section>
 
-<!-- SHOES -->
+<!-- STRENGTH -->
+<section id="strength">
+  <div class="section-label">Strength</div>
+  <div class="section-title">Weekly Routines</div>
+  <p style="font-size:13px;color:var(--gray-600);margin-bottom:18px;">Tap to check off. Resets every Monday.</p>
+  <div class="routine-tabs">
+    <button class="routine-tab active" onclick="switchRoutine('A',this)">Routine A — Glutes & Knee</button>
+    <button class="routine-tab" onclick="switchRoutine('B',this)">Routine B — Calves & Core</button>
+  </div>
+  <div id="routine-A" class="sc-grid">
+    <div class="sc-item" onclick="toggleSC('A','gb')"><div class="sc-check" id="sc-A-gb"></div><div class="sc-name">Glute Bridges</div><div class="sc-sets">3 × 15</div></div>
+    <div class="sc-item" onclick="toggleSC('A','sldl')"><div class="sc-check" id="sc-A-sldl"></div><div class="sc-name">Single-Leg Deadlift</div><div class="sc-sets">3 × 8 each</div></div>
+    <div class="sc-item" onclick="toggleSC('A','clam')"><div class="sc-check" id="sc-A-clam"></div><div class="sc-name">Clamshells</div><div class="sc-sets">3 × 15 each</div></div>
+    <div class="sc-item" onclick="toggleSC('A','db')"><div class="sc-check" id="sc-A-db"></div><div class="sc-name">Dead Bug</div><div class="sc-sets">3 × 8 each</div></div>
+  </div>
+  <div id="routine-B" class="sc-grid" style="display:none;">
+    <div class="sc-item" onclick="toggleSC('B','cr')"><div class="sc-check" id="sc-B-cr"></div><div class="sc-name">Single-Leg Calf Raises</div><div class="sc-sets">3 × 15 each</div></div>
+    <div class="sc-item" onclick="toggleSC('B','tr')"><div class="sc-check" id="sc-B-tr"></div><div class="sc-name">Tibialis Raises</div><div class="sc-sets">3 × 20</div></div>
+    <div class="sc-item" onclick="toggleSC('B','ts')"><div class="sc-check" id="sc-B-ts"></div><div class="sc-name">Towel Scrunches</div><div class="sc-sets">2 × 30 sec each</div></div>
+    <div class="sc-item" onclick="toggleSC('B','pl')"><div class="sc-check" id="sc-B-pl"></div><div class="sc-name">Plank</div><div class="sc-sets">3 × 45 sec</div></div>
+  </div>
+  <span class="reset-link" onclick="resetSC()">Reset all exercises</span>
+</section>
+
+<!-- KNEE CHECK-IN -->
+<section id="knee">
+  <div class="section-label">Check-In</div>
+  <div class="section-title">Daily Knee Log</div>
+  <p style="font-size:14px;color:var(--gray-600);margin-bottom:18px;">Log pain before each run. Catching trends early is everything.</p>
+  <div class="card-white" style="margin-bottom:18px;">
+    <div class="card-title">How's the left knee today?</div>
+    <div style="font-size:12px;color:var(--gray-400);margin-bottom:8px;">0 = zero pain · 10 = severe</div>
+    <div class="pain-scale" id="pain-scale">
+      <button class="pain-btn p0" onclick="selectPain(0)">0</button><button class="pain-btn p1" onclick="selectPain(1)">1</button>
+      <button class="pain-btn p2" onclick="selectPain(2)">2</button><button class="pain-btn p3" onclick="selectPain(3)">3</button>
+      <button class="pain-btn p4" onclick="selectPain(4)">4</button><button class="pain-btn p5" onclick="selectPain(5)">5</button>
+      <button class="pain-btn p6" onclick="selectPain(6)">6</button><button class="pain-btn p7" onclick="selectPain(7)">7</button>
+      <button class="pain-btn p8" onclick="selectPain(8)">8</button><button class="pain-btn p9" onclick="selectPain(9)">9</button>
+      <button class="pain-btn p10" onclick="selectPain(10)">10</button>
+    </div>
+    <div class="form-group"><label>Notes (optional)</label><input type="text" id="knee-note" placeholder="e.g. Felt it on stairs this morning"></div>
+    <button class="btn btn-primary" onclick="saveCheckin()" style="margin-top:4px;">Log Check-In</button>
+    <div class="pain-alert" id="pain-alert">⚠️ Pain at 4+: no running today. Ice, rest, monitor. If it persists 3+ days, see a physio.</div>
+  </div>
+  <div style="font-family:'DM Serif Display',serif;font-size:17px;margin-bottom:10px;">Recent Check-Ins</div>
+  <div class="checkin-log" id="checkin-log"></div>
+</section>
+
+<!-- INJURY TRACKER -->
+<section id="injuries">
+  <div class="section-label">Health</div>
+  <div class="section-title">Injury Tracker</div>
+  <p style="font-size:14px;color:var(--gray-600);margin-bottom:18px;">Log any pain as soon as it appears. Patterns matter.</p>
+  <div class="card-white" style="margin-bottom:18px;">
+    <div class="card-title">Log an Issue</div>
+    <div class="form-row">
+      <div class="form-group"><label>Date</label><input type="date" id="inj-date"></div>
+      <div class="form-group"><label>Body Part</label><select id="inj-loc"><option>Left knee (inner)</option><option>Left knee (outer)</option><option>Right knee</option><option>Left shin</option><option>Right shin</option><option>Left foot / plantar</option><option>Right foot / plantar</option><option>Lower back</option><option>IT band</option><option>Achilles</option><option>Other</option></select></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label>Pain Level (0–10)</label><input type="number" id="inj-pain" min="0" max="10" placeholder="3"></div>
+      <div class="form-group"><label>Status</label><select id="inj-status"><option value="new">New issue</option><option value="ongoing">Ongoing</option><option value="resolved">Resolved</option></select></div>
+    </div>
+    <div class="form-group"><label>Notes</label><textarea id="inj-notes" placeholder="e.g. Inner knee ache during mile 2, 2–3/10 all day"></textarea></div>
+    <button class="btn btn-primary" onclick="addInjury()">Log Issue</button>
+  </div>
+  <div id="injury-list"></div>
+</section>
+
+<!-- SHOE MILEAGE -->
 <section id="shoes">
   <div class="section-label">Gear</div>
-  <div class="section-title">Shoe Rotation</div>
+  <div class="section-title">Shoe Mileage Tracker</div>
+  <p style="font-size:14px;color:var(--gray-600);margin-bottom:18px;">Shoes last 300–500 miles. Miles auto-populate from your run log.</p>
+  <div class="card-white" id="shoe-tracker"></div>
+</section>
 
-  <div class="shoe-grid">
-    <div class="shoe-item">
-      <div class="shoe-emoji">👟</div>
-      <div class="shoe-info">
-        <div class="shoe-name">ASICS Kayano 30</div>
-        <div class="shoe-use">Return-to-run · stability · borderline knee days</div>
-      </div>
-      <div class="shoe-status status-active">Phase 1 Default</div>
-    </div>
-    <div class="shoe-item">
-      <div class="shoe-emoji">👟</div>
-      <div class="shoe-info">
-        <div class="shoe-name">Hoka Bondi X</div>
-        <div class="shoe-use">Long runs · recovery · rocker reduces knee stress</div>
-      </div>
-      <div class="shoe-status status-active">Long Run</div>
-    </div>
-    <div class="shoe-item">
-      <div class="shoe-emoji">👟</div>
-      <div class="shoe-info">
-        <div class="shoe-name">ASICS Gel Nimbus 25</div>
-        <div class="shoe-use">Primary daily trainer from Phase 2 onward</div>
-      </div>
-      <div class="shoe-status status-active">Daily Trainer</div>
-    </div>
-    <div class="shoe-item">
-      <div class="shoe-emoji">👟</div>
-      <div class="shoe-info">
-        <div class="shoe-name">ASICS Novablast 3</div>
-        <div class="shoe-use">Feeling-good MAF days · Phase 3 onward only</div>
-      </div>
-      <div class="shoe-status status-active">Phase 3+</div>
-    </div>
-    <div class="shoe-item">
-      <div class="shoe-emoji">👟</div>
-      <div class="shoe-info">
-        <div class="shoe-name">Nike Metcon 7</div>
-        <div class="shoe-use">Strength routines A & B only — never run in this</div>
-      </div>
-      <div class="shoe-status status-gym">Gym Only</div>
-    </div>
-    <div class="shoe-item">
-      <div class="shoe-emoji">👟</div>
-      <div class="shoe-info">
-        <div class="shoe-name">Hoka Speedgoat 5</div>
-        <div class="shoe-use">Trail running only</div>
-      </div>
-      <div class="shoe-status status-special">Trail Only</div>
-    </div>
-    <div class="shoe-item">
-      <div class="shoe-emoji">👟</div>
-      <div class="shoe-info">
-        <div class="shoe-name">Nike Streakfly</div>
-        <div class="shoe-use">Road race day only</div>
-      </div>
-      <div class="shoe-status status-race">Race Day</div>
-    </div>
-    <div class="shoe-item">
-      <div class="shoe-emoji">👟</div>
-      <div class="shoe-info">
-        <div class="shoe-name">Nike Dragonfly (Track)</div>
-        <div class="shoe-use">Track races and time trials only</div>
-      </div>
-      <div class="shoe-status status-race">Track Only</div>
-    </div>
-    <div class="shoe-item">
-      <div class="shoe-emoji">👟</div>
-      <div class="shoe-info">
-        <div class="shoe-name">Nike Dragonfly XC</div>
-        <div class="shoe-use">Cross country and grass racing only</div>
-      </div>
-      <div class="shoe-status status-race">XC Only</div>
-    </div>
+<!-- REFLECTION -->
+<section id="reflect">
+  <div class="section-label">Reflection</div>
+  <div class="section-title">Weekly Notes</div>
+  <p style="font-size:14px;color:var(--gray-600);margin-bottom:18px;">One thought on how the week went. Future you will love reading this.</p>
+  <div class="card-white" style="margin-bottom:18px;">
+    <div class="card-title" id="reflect-label">This Week's Reflection</div>
+    <div class="form-group"><label>How did the week go?</label><textarea id="reflect-text" placeholder="e.g. Stayed disciplined. Knee feels better. Pace improving on Thursday run." style="min-height:90px;"></textarea></div>
+    <button class="btn btn-primary" onclick="saveReflection()">Save Reflection</button>
+  </div>
+  <div id="reflection-list"></div>
+</section>
+
+<!-- MAF EDUCATION -->
+<section id="maf">
+  <div class="section-label">Method</div>
+  <div class="section-title">Understanding MAF</div>
+  <div class="hr-formula">
+    <div class="formula-text">180 <span>−</span> age (22) <span>−</span> 5 (health adj.) <span>=</span></div>
+    <div class="formula-result"><div class="formula-num">153</div><div class="formula-label">My MAF Ceiling</div></div>
+  </div>
+  <div class="maf-grid">
+    <div class="maf-card"><div class="maf-card-icon">❤️</div><div class="maf-card-title">What is MAF?</div><div class="maf-card-text">Maximum Aerobic Function — Dr. Phil Maffetone's method using HR to build a deep aerobic base before adding speed.</div></div>
+    <div class="maf-card"><div class="maf-card-icon">🔥</div><div class="maf-card-title">Fat as Fuel</div><div class="maf-card-text">Below MAF ceiling you burn primarily fat. Above it you shift to glycogen — generating more stress and fatigue.</div></div>
+    <div class="maf-card"><div class="maf-card-icon">⏳</div><div class="maf-card-title">The Grey Zone</div><div class="maf-card-text">Most runners spend too much time at moderate intensity — too hard to recover, too easy to stimulate. MAF fixes this.</div></div>
+    <div class="maf-card"><div class="maf-card-icon">📈</div><div class="maf-card-title">The Proof</div><div class="maf-card-text">Mark Allen trained so slowly cyclists stopped to ask if he was okay. A year later he was faster at MAF HR than ever before.</div></div>
+  </div>
+  <div class="maf-explainer">
+    <h4>Why slow running feels harder than running fast</h4>
+    <p>When you run below your natural comfortable rhythm, you're fighting your own biomechanics. Your body has a preferred stride frequency — running significantly slower feels clunky and uncoordinated.</p>
+    <p>Think of it like driving at 15 mph in a gear designed for 40 mph. At very slow paces you also spend more time on one foot per stride, demanding more stability from muscles not yet trained for it.</p>
+    <blockquote>The awkwardness is temporary. As your base develops your natural pace drops into MAF range — instead of shuffling at 17:00/mile, you'll cruise at 12:00/mile at the same heart rate.</blockquote>
+    <p>The body adapts at the cellular level — building mitochondrial density, improving fat oxidation, developing capillary networks. None of this feels like progress. It is.</p>
+  </div>
+  <div class="maf-explainer">
+    <h4>Why your pace varies at the same heart rate</h4>
+    <p>HR reflects the total demand on your body — not just running. Sleep, heat, stress, hydration, and cumulative fatigue all change how hard your heart works at a given pace.</p>
+    <p>A poor night's sleep raises resting HR by 5–10 bpm. Heat forces your heart to cool your skin on top of fueling your muscles. HR is the truth. Pace is just the output.</p>
+    <p>When your MAF pace is slower than usual, your body is telling you something. Listen to it — the same way you should have listened to that knee last week.</p>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
-  <div>
-    <div class="footer-name">Alex Santos</div>
-    <div class="footer-sub">East Bay, CA · MAF Method · Run! Not Gasp Run Club</div>
-  </div>
-  <div class="footer-right">
-    Built with intention.<br>One slow mile at a time.
-  </div>
+  <div><div class="footer-name">Alex Santos</div><div class="footer-sub">East Bay, CA · MAF Method · Run! Not Gasp Run Club</div></div>
+  <div class="footer-right">Built with intention.<br>One slow mile at a time.</div>
 </footer>
 
+<script>
+// ── STORAGE ──────────────────────────────────────────────────────
+const ld=(k,f)=>{try{const v=localStorage.getItem(k);return v?JSON.parse(v):f;}catch{return f;}};
+const sv=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v));}catch{}};
+
+// ── PLAN DATA ─────────────────────────────────────────────────────
+const PLAN_START=new Date('2026-03-23');
+const TOTAL_WEEKS=19;
+const tagMap={maf:'tag-maf',long:'tag-long',xt:'tag-xt',rest:'tag-rest',str:'tag-str',rec:'tag-rec',tempo:'tag-tempo'};
+
+const buildWeeks=()=>{
+  const w=[];
+  // Week 0
+  w.push({phase:'Phase 0',title:'Full Stop — Knee Recovery',desc:'Rest, ice, heal. No running until pain-free on stairs.',miles:'0 mi',
+    days:[{n:'Mon',t:'rec',tl:'RICE',tx:'Ice knee 3× · 15–20 min · elevate',sh:''},{n:'Tue',t:'str',tl:'STR',tx:'Upper body + core only · Metcon 7',sh:''},{n:'Wed',t:'xt',tl:'CROSS',tx:'Swim if pain-free · or rest',sh:''},{n:'Thu',t:'str',tl:'STR',tx:'Upper body + dead bug + plank',sh:''},{n:'Fri',t:'rest',tl:'REST',tx:'Full rest',sh:''},{n:'Sat',t:'rec',tl:'WALK',tx:'20–30 min easy walk · assess knee',sh:'Kayano'},{n:'Sun',t:'rest',tl:'REST',tx:'Full rest',sh:''}]});
+  // Phase 1
+  for(let i=0;i<4;i++) w.push({phase:'Phase 1',title:`Return to Running — Week ${i+1}`,desc:'Short runs, walk breaks welcome. Kayano 30 only.',miles:`${(4.4*Math.pow(1.1,i)).toFixed(1)} mi`,
+    days:[{n:'Mon',t:'maf',tl:'MAF',tx:'20 min easy run/walk',sh:'Kayano 30'},{n:'Tue',t:'str',tl:'STR',tx:'Strength Routine A · 15 min',sh:'Metcon 7'},{n:'Wed',t:'xt',tl:'CROSS',tx:'25 min bike/swim · ≤148 bpm',sh:''},{n:'Thu',t:'maf',tl:'MAF',tx:'20 min easy run + Strength B',sh:'Kayano 30'},{n:'Fri',t:'rest',tl:'REST',tx:'Full rest · foot roll',sh:''},{n:'Sat',t:'long',tl:'LONG',tx:'25–30 min long MAF · Run Club!',sh:'Bondi X'},{n:'Sun',t:'rest',tl:'REST',tx:'Full rest',sh:''}]});
+  // Phase 2
+  for(let i=0;i<4;i++) w.push({phase:'Phase 2',title:`Building Confidence — Week ${i+5}`,desc:i===3?'MAF TEST this week! Flat route, 20 min at 148–150 bpm.':'Runs getting longer. MAF pace visibly improving.',miles:`${6+i}–${7+i} mi`,
+    days:[{n:'Mon',t:'maf',tl:'MAF',tx:'25–30 min easy run',sh:'Nimbus 25'},{n:'Tue',t:'str',tl:'STR',tx:'Strength A + resistance band',sh:'Metcon 7'},{n:'Wed',t:'xt',tl:'CROSS',tx:'35 min bike/swim · 145–148 bpm',sh:''},{n:'Thu',t:'maf',tl:'MAF',tx:'30 min easy run + Strength B',sh:'Kayano 30'},{n:'Fri',t:'rest',tl:'REST',tx:'Full rest',sh:''},{n:'Sat',t:'long',tl:i===3?'TEST':'LONG',tx:i===3?'MAF TEST + Run Club!':'35–40 min long MAF · Run Club!',sh:'Bondi X'},{n:'Sun',t:'rest',tl:'REST',tx:'Full rest',sh:''}]});
+  // Phase 3
+  for(let i=0;i<4;i++) w.push({phase:'Phase 3',title:`Real Base Building — Week ${i+9}`,desc:i===3?'MAF TEST! Aerobic gains should be very visible.':'Aerobic engine growing. Where most plans start — you\'re ready.',miles:`${10+Math.round(i*1.2)}–${12+Math.round(i*1.2)} mi`,
+    days:[{n:'Mon',t:'maf',tl:'MAF',tx:'35–40 min easy run',sh:'Nimbus 25'},{n:'Tue',t:'maf',tl:'MAF',tx:'35 min easy run + Strength A',sh:'Kayano 30'},{n:'Wed',t:'xt',tl:'CROSS',tx:'40 min bike/swim',sh:''},{n:'Thu',t:'maf',tl:'MAF',tx:'40 min easy run + Strength B',sh:'Nimbus 25'},{n:'Fri',t:'rest',tl:'REST',tx:'Full rest',sh:''},{n:'Sat',t:'long',tl:i===3?'TEST':'LONG',tx:i===3?'MAF TEST + Run Club!':'50–55 min long MAF · Run Club!',sh:'Bondi X'},{n:'Sun',t:'rest',tl:'REST',tx:'Full rest',sh:''}]});
+  // Phase 4
+  for(let i=0;i<4;i++) w.push({phase:'Phase 4',title:`Aerobic Strength + Strides — Week ${i+13}`,desc:i===3?'MAF TEST! Strides translating to pace.':'One strides Thursday. Everything else strict MAF.',miles:`${15+Math.round(i*1.2)}–${17+Math.round(i*1.2)} mi`,
+    days:[{n:'Mon',t:'maf',tl:'MAF',tx:'40 min easy run',sh:'Nimbus 25'},{n:'Tue',t:'maf',tl:'MAF',tx:'40 min easy run + Strength A',sh:'Kayano 30'},{n:'Wed',t:'xt',tl:'CROSS',tx:'40 min bike/swim',sh:''},{n:'Thu',t:'maf',tl:'MAF',tx:'40 min MAF + 4–6×20sec strides + Strength B',sh:'Novablast 3'},{n:'Fri',t:'rest',tl:'REST',tx:'Full rest',sh:''},{n:'Sat',t:'long',tl:i===3?'TEST':'LONG',tx:i===3?'MAF TEST + Run Club!':'60 min long MAF · Run Club!',sh:'Bondi X'},{n:'Sun',t:'rest',tl:'REST',tx:'Full rest',sh:''}]});
+  // Phase 5
+  w.push({phase:'Phase 5',title:'Race Prep — Week 17',desc:'One tempo Thursday. Final MAF test Saturday.',miles:'20–22 mi',
+    days:[{n:'Mon',t:'maf',tl:'MAF',tx:'40 min easy run',sh:'Nimbus 25'},{n:'Tue',t:'maf',tl:'MAF',tx:'40 min easy run + Strength A',sh:'Kayano 30'},{n:'Wed',t:'xt',tl:'CROSS',tx:'35 min bike/swim',sh:''},{n:'Thu',t:'tempo',tl:'TEMPO',tx:'30 min MAF + 10 min tempo',sh:'Novablast 3'},{n:'Fri',t:'rest',tl:'REST',tx:'Full rest',sh:''},{n:'Sat',t:'long',tl:'TEST',tx:'Final MAF TEST + Run Club!',sh:'Nimbus 25'},{n:'Sun',t:'rest',tl:'REST',tx:'Full rest',sh:''}]});
+  w.push({phase:'Phase 5',title:'🏁 Race Week — Week 18',desc:'Volume drops 40%. Stay sharp, stay fresh. Race day Sunday.',miles:'12–14 mi',
+    days:[{n:'Mon',t:'maf',tl:'MAF',tx:'25 min easy shakeout',sh:'Nimbus 25'},{n:'Tue',t:'maf',tl:'MAF',tx:'20 min easy + 4×strides',sh:'Novablast 3'},{n:'Wed',t:'xt',tl:'CROSS',tx:'20 min easy bike',sh:''},{n:'Thu',t:'maf',tl:'MAF',tx:'20 min easy shakeout',sh:'Nimbus 25'},{n:'Fri',t:'rest',tl:'REST',tx:'Full rest · lay out gear',sh:''},{n:'Sat',t:'rest',tl:'REST',tx:'Rest · easy walk',sh:''},{n:'Sun',t:'long',tl:'5K!',tx:'🏁 Race Day',sh:'Streakfly'}]});
+  return w;
+};
+const WEEKS=buildWeeks();
+
+const getCurWeek=()=>Math.max(0,Math.min(Math.floor((new Date()-PLAN_START)/(7*24*60*60*1000)),TOTAL_WEEKS-1));
+const getTodayIdx=()=>{const d=new Date().getDay();return d===0?6:d-1;};
+const dateRange=wi=>{const s=new Date(PLAN_START.getTime()+wi*7*24*60*60*1000),e=new Date(s.getTime()+6*24*60*60*1000),f=d=>d.toLocaleDateString('en-US',{month:'short',day:'numeric'});return`${f(s)} – ${f(e)}`;};
+
+let viewW=getCurWeek();
+function renderWeek(wi){
+  const data=WEEKS[wi],cur=getCurWeek(),isCur=wi===cur,todayI=getTodayIdx();
+  document.getElementById('wb-label').textContent=isCur?'This Week':'Week Preview';
+  document.getElementById('wb-title').innerHTML=data.title+(isCur?'<span class="now-badge">NOW</span>':'');
+  document.getElementById('wb-desc').textContent=data.desc;
+  document.getElementById('wb-miles').textContent=data.miles;
+  document.getElementById('wb-dates').textContent=dateRange(wi);
+  document.getElementById('wb-wnum').textContent=wi===0?'Recovery Week':`Week ${wi} of 18`;
+  document.getElementById('btn-prev').disabled=wi===0;
+  document.getElementById('btn-next').disabled=wi===TOTAL_WEEKS-1;
+  document.getElementById('wb-days').innerHTML=data.days.map((d,i)=>{
+    const isT=isCur&&i===todayI,isR=d.t==='rest';
+    return`<div class="wb-day${isT?' today':''}${isR&&!isT?' is-rest':''}">
+      <div class="wb-day-name">${d.n}${isT?' →':''}</div>
+      <span class="tag ${tagMap[d.t]||'tag-rest'}" style="font-size:9px;flex-shrink:0;">${d.tl}</span>
+      <div class="wb-day-text">${d.tx}</div>
+      ${d.sh?`<div class="wb-day-shoe">${d.sh}</div>`:''}
+    </div>`;
+  }).join('');
+  document.getElementById('hero-week').textContent=wi===0?'Ph.0':`Wk${wi}`;
+}
+function changeWeek(dir){viewW=Math.max(0,Math.min(TOTAL_WEEKS-1,viewW+dir));renderWeek(viewW);}
+
+// ── MAF TESTS ─────────────────────────────────────────────────────
+const paceToMin=s=>{const p=s.split(':');return p.length===2?+p[0]+(+p[1])/60:parseFloat(s);};
+function addMAFTest(){
+  const wk=+document.getElementById('maf-week').value,pace=document.getElementById('maf-pace-in').value.trim();
+  if(!wk||!pace)return;
+  const tests=ld('maf-tests',[]).filter(t=>t.week!==wk);
+  tests.push({week:wk,pace,date:new Date().toLocaleDateString()});
+  tests.sort((a,b)=>a.week-b.week);
+  sv('maf-tests',tests);
+  document.getElementById('maf-week').value='';
+  document.getElementById('maf-pace-in').value='';
+  const latest=tests[tests.length-1];
+  if(latest)document.getElementById('hero-pace').textContent=latest.pace;
+  renderMAF();
+}
+function delMAF(wk){sv('maf-tests',ld('maf-tests',[]).filter(t=>t.week!==wk));renderMAF();}
+function renderMAF(){
+  const tests=ld('maf-tests',[]);
+  const pts=[{week:0,pace:'17:02',label:'Base'},...tests];
+  const canvas=document.getElementById('mafChart');
+  const ctx=canvas.getContext('2d');
+  const W=canvas.parentElement.clientWidth-40,H=150;
+  canvas.width=W;canvas.height=H;ctx.clearRect(0,0,W,H);
+  if(pts.length<2){ctx.fillStyle='#a0a098';ctx.font='13px DM Sans';ctx.fillText('Add MAF test results to see your progress chart.',16,H/2);document.getElementById('maf-list').innerHTML='';return;}
+  const paces=pts.map(p=>paceToMin(p.pace)),maxP=Math.max(...paces),minP=Math.min(...paces);
+  const pX=28,pY=18,gW=W-pX*2,gH=H-pY*2;
+  const xS=i=>pX+(i/(pts.length-1))*gW,yS=p=>pY+((maxP-p)/(maxP-minP||1))*gH;
+  ctx.strokeStyle='#e8e8e4';ctx.lineWidth=1;
+  for(let i=0;i<=4;i++){const y=pY+(i/4)*gH;ctx.beginPath();ctx.moveTo(pX,y);ctx.lineTo(W-pX,y);ctx.stroke();}
+  ctx.beginPath();ctx.strokeStyle='#1A4FA0';ctx.lineWidth=2.5;ctx.lineJoin='round';
+  pts.forEach((p,i)=>{const x=xS(i),y=yS(paceToMin(p.pace));i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});ctx.stroke();
+  ctx.beginPath();ctx.fillStyle='rgba(26,79,160,0.07)';
+  pts.forEach((p,i)=>{const x=xS(i),y=yS(paceToMin(p.pace));i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});
+  ctx.lineTo(xS(pts.length-1),H-pY);ctx.lineTo(pX,H-pY);ctx.closePath();ctx.fill();
+  pts.forEach((p,i)=>{
+    const x=xS(i),y=yS(paceToMin(p.pace));
+    ctx.beginPath();ctx.arc(x,y,4,0,Math.PI*2);ctx.fillStyle=i===0?'#a0a098':'#1A4FA0';ctx.fill();
+    ctx.fillStyle='#1c1c1a';ctx.font='11px DM Sans';ctx.textAlign='center';ctx.fillText(p.pace,x,y-9);
+    ctx.fillStyle='#a0a098';ctx.font='10px DM Sans';ctx.fillText(i===0?'Base':`W${p.week}`,x,H-3);
+  });
+  document.getElementById('maf-list').innerHTML=tests.map(t=>`<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--gray-200);">
+    <div style="font-family:'DM Serif Display',serif;font-size:18px;">${t.pace}<span style="font-size:11px;color:var(--gray-400);font-family:'DM Sans',sans-serif;">/mi</span></div>
+    <div style="flex:1;font-size:12px;color:var(--gray-600);">Week ${t.week} · ${t.date}</div>
+    <button class="btn btn-ghost btn-sm" onclick="delMAF(${t.week})">×</button>
+  </div>`).join('');
+}
+
+// ── RUN LOG ───────────────────────────────────────────────────────
+function addRun(){
+  const date=document.getElementById('run-date').value,dist=document.getElementById('run-dist').value,pace=document.getElementById('run-pace').value.trim();
+  if(!date||!dist||!pace){alert('Date, distance and pace are required.');return;}
+  const r={id:Date.now(),date,dist:+dist,pace,hr:document.getElementById('run-hr').value,maxhr:document.getElementById('run-maxhr').value,type:document.getElementById('run-type').value,shoe:document.getElementById('run-shoe').value,notes:document.getElementById('run-notes').value.trim()};
+  const runs=ld('runs',[]);runs.unshift(r);sv('runs',runs);
+  ['run-dist','run-pace','run-hr','run-maxhr','run-notes'].forEach(id=>document.getElementById(id).value='');
+  if(r.shoe&&r.dist){const sm=ld('shoe-miles',{});sm[r.shoe]=(sm[r.shoe]||0)+r.dist;sv('shoe-miles',sm);renderShoes();}
+  renderRuns();
+}
+function delRun(id){sv('runs',ld('runs',[]).filter(r=>r.id!==id));renderRuns();}
+function renderRuns(){
+  const runs=ld('runs',[]),el=document.getElementById('run-list');
+  if(!runs.length){el.innerHTML='<div class="empty-state">No runs logged yet.</div>';return;}
+  const tl={maf:'MAF',long:'Long',xt:'Cross',tempo:'Tempo',strides:'Strides'};
+  el.innerHTML=`<div class="card-white">${runs.map(r=>`<div class="run-entry">
+    <div class="run-date">${r.date}</div>
+    <div class="run-main">
+      <div class="run-pace">${r.pace}<span style="font-size:12px;color:var(--gray-400);font-family:'DM Sans',sans-serif;"> /mi</span> · ${r.dist} mi</div>
+      <div class="run-meta">${r.hr?r.hr+' avg HR · ':''}${r.maxhr?r.maxhr+' max · ':''}${r.shoe||''}</div>
+      ${r.notes?`<div class="run-note-text">${r.notes}</div>`:''}
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:5px;">
+      <span class="tag tag-${r.type}">${tl[r.type]||r.type}</span>
+      <button class="btn btn-ghost btn-sm" onclick="delRun(${r.id})">×</button>
+    </div>
+  </div>`).join('')}</div>`;
+}
+
+// ── STRENGTH ─────────────────────────────────────────────────────
+const scKey=()=>{const w=Math.max(0,Math.floor((new Date()-PLAN_START)/(7*24*60*60*1000)));return`sc-wk${w}`;};
+function toggleSC(r,k){const key=scKey(),d=ld(key,{});const id=`${r}-${k}`;d[id]=!d[id];sv(key,d);renderSC();}
+function resetSC(){sv(scKey(),{});renderSC();}
+function renderSC(){
+  const d=ld(scKey(),{});
+  ['A-gb','A-sldl','A-clam','A-db','B-cr','B-tr','B-ts','B-pl'].forEach(id=>{
+    const el=document.getElementById(`sc-${id}`),row=el?.closest('.sc-item');
+    if(!el||!row)return;
+    if(d[id]){row.classList.add('done');el.textContent='✓';}else{row.classList.remove('done');el.textContent='';}
+  });
+}
+function switchRoutine(name,btn){
+  document.querySelectorAll('.routine-tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
+  document.getElementById('routine-A').style.display=name==='A'?'flex':'none';
+  document.getElementById('routine-B').style.display=name==='B'?'flex':'none';
+}
+
+// ── KNEE ─────────────────────────────────────────────────────────
+let selPain=null;
+function selectPain(v){selPain=v;document.querySelectorAll('.pain-btn').forEach(b=>b.classList.remove('sel'));document.querySelectorAll('.pain-btn')[v].classList.add('sel');document.getElementById('pain-alert').style.display=v>=4?'block':'none';}
+function saveCheckin(){
+  if(selPain===null){alert('Select a pain level first.');return;}
+  const note=document.getElementById('knee-note').value.trim();
+  const c=ld('knee-checkins',[]);c.unshift({id:Date.now(),pain:selPain,note,date:new Date().toLocaleDateString()});
+  sv('knee-checkins',c.slice(0,60));document.getElementById('knee-note').value='';selPain=null;
+  document.querySelectorAll('.pain-btn').forEach(b=>b.classList.remove('sel'));document.getElementById('pain-alert').style.display='none';renderCheckins();
+}
+function delCheckin(id){sv('knee-checkins',ld('knee-checkins',[]).filter(c=>c.id!==id));renderCheckins();}
+function renderCheckins(){
+  const c=ld('knee-checkins',[]),el=document.getElementById('checkin-log');
+  if(!c.length){el.innerHTML='<div class="empty-state">No check-ins yet.</div>';return;}
+  const cols=['#16a34a','#4ade80','#a3e635','#facc15','#fb923c','#f97316','#f97316','#ef4444','#ef4444','#991b1b','#7f1d1d'];
+  el.innerHTML=c.map(x=>`<div class="checkin-item"><div class="checkin-pain" style="color:${cols[x.pain]}">${x.pain}</div><div class="checkin-info"><div>${x.note||'No notes'}</div><div class="checkin-date">${x.date}</div></div><button class="btn btn-ghost btn-sm" onclick="delCheckin(${x.id})">×</button></div>`).join('');
+}
+
+// ── INJURY ────────────────────────────────────────────────────────
+function addInjury(){
+  const date=document.getElementById('inj-date').value;if(!date){alert('Date required.');return;}
+  const i={id:Date.now(),date,location:document.getElementById('inj-loc').value,pain:document.getElementById('inj-pain').value,status:document.getElementById('inj-status').value,notes:document.getElementById('inj-notes').value.trim()};
+  const inj=ld('injuries',[]);inj.unshift(i);sv('injuries',inj);
+  document.getElementById('inj-pain').value='';document.getElementById('inj-notes').value='';renderInjuries();
+}
+function delInjury(id){sv('injuries',ld('injuries',[]).filter(x=>x.id!==id));renderInjuries();}
+function renderInjuries(){
+  const inj=ld('injuries',[]),el=document.getElementById('injury-list');
+  if(!inj.length){el.innerHTML='<div class="empty-state">No issues logged. Keep it that way. 🤞</div>';return;}
+  const sc={new:'tag-injury',ongoing:'tag-injury',resolved:'tag-ok'};
+  el.innerHTML=`<div class="card-white">${inj.map(x=>`<div class="injury-entry"><div class="inj-date">${x.date}</div><div class="inj-body"><div class="inj-location">${x.location}${x.pain?' · '+x.pain+'/10':''}</div>${x.notes?`<div class="inj-note-text">${x.notes}</div>`:''}</div><span class="tag ${sc[x.status]||'tag-injury'}" style="flex-shrink:0;align-self:flex-start;">${x.status}</span><button class="btn btn-ghost btn-sm" onclick="delInjury(${x.id})" style="margin-left:5px;flex-shrink:0;">×</button></div>`).join('')}</div>`;
+}
+
+// ── SHOES ─────────────────────────────────────────────────────────
+const SHOES=[{name:'Kayano 30',max:450},{name:'Bondi X',max:450},{name:'Nimbus 25',max:450},{name:'Novablast 3',max:400},{name:'Speedgoat 5',max:400},{name:'Streakfly',max:300}];
+function addShoeMiles(name){
+  const inp=document.getElementById(`si-${name.replace(/\s/g,'_')}`),v=parseFloat(inp.value);
+  if(!v||v<=0)return;const sm=ld('shoe-miles',{});sm[name]=(sm[name]||0)+v;sv('shoe-miles',sm);inp.value='';renderShoes();
+}
+function resetShoe(name){if(!confirm(`Reset ${name} to 0?`))return;const sm=ld('shoe-miles',{});sm[name]=0;sv('shoe-miles',sm);renderShoes();}
+function renderShoes(){
+  const sm=ld('shoe-miles',{});
+  document.getElementById('shoe-tracker').innerHTML=SHOES.map(s=>{
+    const mi=sm[s.name]||0,pct=Math.min(100,Math.round(mi/s.max*100));
+    const bc=pct>=85?'var(--accent)':pct>=65?'var(--orange)':'var(--blue)';
+    const badge=pct>=85?'<span class="tag tag-injury">Replace Soon</span>':pct>=65?'<span class="tag" style="background:#fff7ed;color:#c2410c;">Monitor</span>':'<span class="tag tag-ok">Good</span>';
+    const sid=s.name.replace(/\s/g,'_');
+    return`<div class="shoe-track"><div style="display:flex;align-items:center;gap:10px;margin-bottom:5px;"><div class="shoe-track-name">${s.name}</div>${badge}<div style="margin-left:auto;font-size:12px;color:var(--gray-600);">${mi.toFixed(1)} / ${s.max} mi</div></div><div class="shoe-track-bar-wrap"><div class="shoe-track-bar" style="width:${pct}%;background:${bc};"></div></div><div style="display:flex;gap:7px;align-items:center;"><input id="si-${sid}" type="number" placeholder="Add miles" step="0.1" style="width:95px;padding:6px 9px;border:1px solid var(--gray-200);border-radius:7px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;"><button class="btn btn-ghost btn-sm" onclick="addShoeMiles('${s.name}')">+ Add</button><button class="btn btn-ghost btn-sm" style="color:var(--accent);" onclick="resetShoe('${s.name}')">Reset</button></div></div>`;
+  }).join('');
+}
+
+// ── REFLECTION ────────────────────────────────────────────────────
+function saveReflection(){
+  const text=document.getElementById('reflect-text').value.trim();if(!text)return;
+  const wi=getCurWeek(),refs=ld('reflections',[]).filter(r=>r.week!==wi);
+  refs.unshift({week:wi,text,date:new Date().toLocaleDateString()});sv('reflections',refs);
+  document.getElementById('reflect-text').value='';renderReflections();
+}
+function delReflection(wk){sv('reflections',ld('reflections',[]).filter(r=>r.week!==wk));renderReflections();}
+function renderReflections(){
+  const refs=ld('reflections',[]),el=document.getElementById('reflection-list');
+  if(!refs.length){el.innerHTML='<div class="empty-state">No reflections yet. Write your first one above.</div>';return;}
+  el.innerHTML=`<div class="card-white">${refs.map(r=>`<div class="reflection-entry"><div style="display:flex;justify-content:space-between;"><div class="reflection-week">${r.week===0?'Recovery Week':`Week ${r.week}`}</div><button class="btn btn-ghost btn-sm" onclick="delReflection(${r.week})">×</button></div><div class="reflection-text">${r.text}</div><div class="reflection-date">${r.date}</div></div>`).join('')}</div>`;
+}
+
+// ── INIT ──────────────────────────────────────────────────────────
+(function init(){
+  const today=new Date().toISOString().split('T')[0];
+  document.getElementById('run-date').value=today;
+  document.getElementById('inj-date').value=today;
+  const wi=getCurWeek();
+  document.getElementById('reflect-label').textContent=wi===0?'Recovery Week Reflection':`Week ${wi} Reflection`;
+  renderWeek(viewW);renderMAF();renderRuns();renderSC();renderCheckins();renderInjuries();renderShoes();renderReflections();
+  // update hero pace from latest MAF test
+  const tests=ld('maf-tests',[]);if(tests.length)document.getElementById('hero-pace').textContent=tests[tests.length-1].pace;
+})();
+</script>
 </body>
 </html>
