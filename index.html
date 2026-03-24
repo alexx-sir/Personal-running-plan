@@ -3,1432 +3,655 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alex Santos — Smile Through Pain</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Alex Santos — Running</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0C0C0B;
-    --surface: #141412;
-    --surface2: #1C1C18;
-    --border: #2A2A24;
-    --text: #F0EDE6;
-    --muted: #6A6660;
-    --muted2: #4A4844;
-    --gold: #C9A84C;
-    --gold-mid: #E8C96A;
-    --gold-pale: rgba(201,168,76,0.1);
-    --red: #C03030;
-    --red-mid: #E05050;
-    --red-pale: rgba(192,48,48,0.1);
-    --green: #2E7D44;
-    --green-mid: #4AB860;
-    --green-pale: rgba(46,125,68,0.1);
+    --black: #0e0e0e;
+    --white: #fafaf8;
+    --gray-100: #f4f4f2;
+    --gray-200: #e8e8e4;
+    --gray-400: #a0a098;
+    --gray-600: #6b6b64;
+    --accent: #c8402a;
+    --blue: #1A4FA0;
+    --text: #1c1c1a;
   }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
   html { scroll-behavior: smooth; }
 
   body {
-    background: var(--bg);
     font-family: 'DM Sans', sans-serif;
+    background: var(--white);
     color: var(--text);
-    cursor: default;
+    font-size: 15px;
+    line-height: 1.7;
   }
 
-  /* ── GRAIN OVERLAY ── */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 999;
-    opacity: 0.4;
-  }
-
-  /* ── NAV ── */
-  .nav {
-    padding: 20px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
     z-index: 100;
-    background: linear-gradient(to bottom, rgba(12,12,11,0.95), transparent);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 40px;
+    background: rgba(250,250,248,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--gray-200);
   }
   .nav-name {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 20px;
-    letter-spacing: 0.12em;
-    color: var(--text);
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px; letter-spacing: -0.3px;
   }
-  .nav-name span { color: var(--gold); }
-  .nav-links {
-    display: flex;
-    gap: 28px;
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a {
+    text-decoration: none; color: var(--gray-600);
+    font-size: 13px; font-weight: 500; letter-spacing: 0.5px;
+    text-transform: uppercase; transition: color 0.2s;
   }
-  .nav-link {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--muted);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .nav-link:hover { color: var(--gold); }
+  .nav-links a:hover { color: var(--text); }
 
-  /* ── HERO ── */
+  /* HERO */
   .hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 0 40px 80px;
-    position: relative;
-    overflow: hidden;
+    padding: 140px 40px 80px;
+    max-width: 780px;
+    margin: 0 auto;
   }
-  .hero-bg-number {
-    position: absolute;
-    right: -40px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(280px, 40vw, 520px);
-    color: rgba(201,168,76,0.04);
-    line-height: 1;
-    pointer-events: none;
-    user-select: none;
-  }
-  .hero-tag {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.24em;
-    text-transform: uppercase;
-    color: var(--gold);
+  .hero-eyebrow {
+    font-size: 11px; font-weight: 500; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--accent);
     margin-bottom: 20px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.2s forwards;
+    opacity: 0; animation: fadeUp 0.6s 0.1s forwards;
   }
-  .hero-name {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(72px, 14vw, 160px);
-    line-height: 0.88;
-    letter-spacing: 0.02em;
-    margin-bottom: 28px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.3s forwards;
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(42px, 7vw, 72px);
+    line-height: 1.08; letter-spacing: -1.5px;
+    color: var(--black); margin-bottom: 24px;
+    opacity: 0; animation: fadeUp 0.6s 0.2s forwards;
   }
-  .hero-name .first { color: var(--text); display: block; }
-  .hero-name .last { color: var(--gold); display: block; }
-  .hero-motto {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: clamp(18px, 3vw, 28px);
-    color: rgba(240,237,230,0.45);
-    margin-bottom: 48px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.4s forwards;
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  .hero-desc {
+    font-size: 17px; color: var(--gray-600);
+    max-width: 520px; line-height: 1.75;
+    opacity: 0; animation: fadeUp 0.6s 0.3s forwards;
   }
+
   .hero-stats {
-    display: flex;
-    gap: 40px;
-    flex-wrap: wrap;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.5s forwards;
+    display: flex; gap: 48px; margin-top: 52px; padding-top: 40px;
+    border-top: 1px solid var(--gray-200);
+    opacity: 0; animation: fadeUp 0.6s 0.4s forwards;
   }
-  .hero-stat {}
   .hero-stat-val {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 42px;
-    color: var(--text);
-    line-height: 1;
-    letter-spacing: 0.02em;
+    font-family: 'DM Serif Display', serif;
+    font-size: 32px; color: var(--black); line-height: 1;
   }
-  .hero-stat-val span { color: var(--gold); font-size: 24px; }
   .hero-stat-label {
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-top: 4px;
-  }
-  .hero-scroll {
-    position: absolute;
-    bottom: 40px;
-    right: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.7s forwards;
-  }
-  .hero-scroll-line {
-    width: 1px;
-    height: 60px;
-    background: linear-gradient(to bottom, transparent, var(--gold));
-    animation: scrollLine 2s ease infinite;
-  }
-  .hero-scroll-label {
-    font-size: 9px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--muted);
-    writing-mode: vertical-rl;
+    font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--gray-400); margin-top: 4px;
   }
 
   @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
+    from { opacity: 0; transform: translateY(16px); }
     to { opacity: 1; transform: translateY(0); }
   }
-  @keyframes scrollLine {
-    0%, 100% { transform: scaleY(1); opacity: 1; }
-    50% { transform: scaleY(0.6); opacity: 0.4; }
-  }
 
-  /* ── SECTIONS ── */
-  .section { padding: 100px 40px; }
-  .section-label {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
+  /* SECTIONS */
+  section {
+    padding: 80px 40px;
+    max-width: 780px;
+    margin: 0 auto;
+    border-top: 1px solid var(--gray-200);
   }
-  .section-label::after {
-    content: '';
-    flex: 1;
-    max-width: 60px;
-    height: 1px;
-    background: var(--gold);
-    opacity: 0.4;
+  .section-label {
+    font-size: 11px; font-weight: 500; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 12px;
   }
   .section-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(48px, 8vw, 80px);
-    line-height: 0.9;
-    letter-spacing: 0.02em;
-    color: var(--text);
-    margin-bottom: 8px;
+    font-family: 'DM Serif Display', serif;
+    font-size: 36px; letter-spacing: -0.8px; line-height: 1.1;
+    color: var(--black); margin-bottom: 32px;
   }
-  .section-title span { color: var(--gold); }
 
-  /* ── ABOUT ── */
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: start;
-    margin-top: 52px;
-    max-width: 1000px;
+  /* TRAINING PLAN */
+  .phase-list { display: flex; flex-direction: column; gap: 1px; background: var(--gray-200); border-radius: 12px; overflow: hidden; }
+  .phase-item {
+    display: flex; align-items: flex-start; gap: 24px;
+    padding: 22px 24px; background: var(--white);
+    transition: background 0.15s; cursor: default;
   }
-  .about-story {
-    font-size: 15px;
-    color: rgba(240,237,230,0.65);
-    line-height: 1.85;
-    font-weight: 300;
+  .phase-item:hover { background: var(--gray-100); }
+  .phase-num-wrap { flex-shrink: 0; padding-top: 2px; }
+  .phase-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 13px; color: var(--gray-400);
   }
-  .about-story p { margin-bottom: 18px; }
-  .about-story p:last-child { margin-bottom: 0; }
-  .about-story strong { color: var(--text); font-weight: 500; }
-  .about-facts {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
+  .phase-content { flex: 1; }
+  .phase-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 19px; color: var(--black); margin-bottom: 3px;
   }
-  .fact-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 20px 22px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
+  .phase-weeks { font-size: 12px; color: var(--gray-400); margin-bottom: 6px; letter-spacing: 0.3px; }
+  .phase-desc { font-size: 14px; color: var(--gray-600); line-height: 1.6; }
+  .phase-miles {
+    flex-shrink: 0; font-size: 13px; font-weight: 500;
+    color: var(--blue); background: #eff6ff;
+    padding: 4px 12px; border-radius: 20px; align-self: flex-start; margin-top: 4px;
   }
-  .fact-label {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-  .fact-value {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 22px;
-    color: var(--text);
-    letter-spacing: 0.04em;
-    text-align: right;
-  }
-  .fact-value.gold { color: var(--gold); }
-  .fact-value.green { color: var(--green-mid); }
-  .fact-value.red { color: var(--red-mid); }
 
-  /* ── GOALS ── */
-  .goals-section {
-    background: var(--surface);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
+  /* CURRENT WEEK */
+  .current-week {
+    background: var(--black); color: var(--white);
+    border-radius: 14px; padding: 28px; margin-bottom: 24px;
   }
-  .goals-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-    margin-top: 52px;
-    background: var(--border);
-    border-radius: 20px;
-    overflow: hidden;
-    max-width: 960px;
+  .current-week-label {
+    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gray-400); margin-bottom: 16px;
   }
-  .goal-card {
-    background: var(--surface);
-    padding: 36px 28px;
-    position: relative;
-    overflow: hidden;
+  .current-week-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 26px; margin-bottom: 8px;
   }
-  .goal-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
+  .current-week-desc { font-size: 14px; color: rgba(255,255,255,0.55); margin-bottom: 20px; }
+  .day-pills { display: flex; gap: 8px; flex-wrap: wrap; }
+  .day-pill {
+    font-size: 12px; font-weight: 500; padding: 6px 14px;
+    border-radius: 20px; border: 1px solid rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.7);
   }
-  .goal-card.active::before { background: var(--gold); }
-  .goal-card.future::before { background: var(--muted2); }
-  .goal-card.dream::before { background: var(--red-mid); }
-  .goal-phase {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    margin-bottom: 16px;
-  }
-  .goal-card.active .goal-phase { color: var(--gold); }
-  .goal-card.future .goal-phase { color: var(--muted); }
-  .goal-card.dream .goal-phase { color: var(--red-mid); }
-  .goal-time {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 64px;
-    line-height: 1;
-    letter-spacing: 0.02em;
-    margin-bottom: 6px;
-  }
-  .goal-card.active .goal-time { color: var(--gold); }
-  .goal-card.future .goal-time { color: rgba(240,237,230,0.35); }
-  .goal-card.dream .goal-time { color: var(--red-mid); }
-  .goal-desc {
-    font-size: 13px;
-    color: var(--muted);
-    font-weight: 300;
-    line-height: 1.6;
-    margin-bottom: 16px;
-  }
-  .goal-timeline {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-  .goal-card.active .goal-timeline { color: var(--gold); }
-  .goal-card.future .goal-timeline { color: var(--muted2); }
-  .goal-card.dream .goal-timeline { color: var(--red); }
+  .day-pill.active { background: var(--accent); border-color: var(--accent); color: white; }
+  .day-pill.xt { background: rgba(26,79,160,0.4); border-color: rgba(26,79,160,0.5); color: #93c5fd; }
+  .day-pill.rest { opacity: 0.4; }
 
-  /* ── MAF PROGRESS ── */
-  .maf-section { max-width: 960px; }
-  .maf-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    margin-top: 52px;
-  }
+  /* MAF EDUCATION */
+  .maf-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px; }
   .maf-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    overflow: hidden;
+    background: var(--gray-100); border-radius: 12px; padding: 22px;
   }
-  .maf-card-head {
-    padding: 20px 24px;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+  .maf-card-icon { font-size: 24px; margin-bottom: 12px; }
   .maf-card-title {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--muted);
+    font-family: 'DM Serif Display', serif;
+    font-size: 17px; color: var(--black); margin-bottom: 6px;
   }
-  .maf-card-date { font-size: 11px; color: var(--muted2); }
-  .maf-card-body { padding: 24px; }
-  .maf-pace {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 56px;
-    color: var(--gold);
-    line-height: 1;
-    letter-spacing: 0.02em;
-    margin-bottom: 6px;
+  .maf-card-text { font-size: 13px; color: var(--gray-600); line-height: 1.65; }
+
+  .maf-explainer {
+    background: var(--white); border: 1px solid var(--gray-200);
+    border-radius: 12px; padding: 28px; margin-bottom: 16px;
   }
-  .maf-pace-label { font-size: 12px; color: var(--muted); font-weight: 300; margin-bottom: 16px; }
-  .maf-hr {
-    font-size: 13px;
-    color: rgba(240,237,230,0.5);
-    font-weight: 300;
+  .maf-explainer h4 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px; margin-bottom: 12px; color: var(--black);
   }
-  .maf-log {
-    grid-column: 1 / -1;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    overflow: hidden;
+  .maf-explainer p {
+    font-size: 14px; color: var(--gray-600); line-height: 1.75; margin-bottom: 12px;
   }
-  .maf-log-head {
-    padding: 20px 24px;
-    border-bottom: 1px solid var(--border);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--muted);
+  .maf-explainer p:last-child { margin-bottom: 0; }
+  .maf-explainer blockquote {
+    border-left: 3px solid var(--accent); padding-left: 16px;
+    margin: 16px 0; font-size: 14px; color: var(--gray-600);
+    font-style: italic; line-height: 1.7;
   }
-  .maf-log-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr auto;
-    padding: 16px 24px;
-    border-bottom: 1px solid var(--border);
-    align-items: center;
-    gap: 12px;
+
+  .hr-formula {
+    background: var(--black); color: white;
+    border-radius: 12px; padding: 24px; margin-bottom: 16px;
+    display: flex; align-items: center; gap: 24px;
+  }
+  .formula-text {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px; line-height: 1.4; flex: 1;
+  }
+  .formula-text span { color: var(--accent); }
+  .formula-result {
+    text-align: center; flex-shrink: 0;
+    border-left: 1px solid rgba(255,255,255,0.1); padding-left: 24px;
+  }
+  .formula-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 44px; color: white; line-height: 1;
+  }
+  .formula-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-top: 4px; }
+
+  /* RUN LOG */
+  .log-table { width: 100%; border-collapse: collapse; }
+  .log-table th {
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gray-400); font-weight: 500; text-align: left;
+    padding: 0 0 14px; border-bottom: 1px solid var(--gray-200);
+  }
+  .log-table td {
+    padding: 16px 0; border-bottom: 1px solid var(--gray-200);
+    font-size: 14px; color: var(--text);
+    vertical-align: top;
+  }
+  .log-table tr:last-child td { border-bottom: none; }
+  .log-pace {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px; color: var(--black);
+  }
+  .log-hr { font-size: 13px; color: var(--accent); font-weight: 500; }
+  .log-note { font-size: 12px; color: var(--gray-400); margin-top: 3px; }
+  .log-tag {
+    font-size: 10px; font-weight: 500; letter-spacing: 1px;
+    text-transform: uppercase; padding: 3px 8px; border-radius: 10px;
+  }
+  .tag-maf { background: #dbeafe; color: var(--blue); }
+  .tag-long { background: #fef3c7; color: #92400e; }
+  .tag-xt { background: #f0fdf4; color: #166534; }
+
+  .maf-test-result {
+    background: var(--gray-100); border-radius: 12px;
+    padding: 20px 24px; display: flex; align-items: center;
+    gap: 24px; margin-bottom: 12px;
+  }
+  .maf-test-date {
+    font-size: 12px; color: var(--gray-400); width: 80px; flex-shrink: 0;
+  }
+  .maf-test-pace {
+    font-family: 'DM Serif Display', serif;
+    font-size: 26px; color: var(--black); flex: 1;
+  }
+  .maf-test-pace span { font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--gray-400); }
+  .maf-test-note { font-size: 13px; color: var(--gray-600); }
+  .maf-baseline {
+    background: var(--black); color: white;
+  }
+  .maf-baseline .maf-test-date { color: rgba(255,255,255,0.4); }
+  .maf-baseline .maf-test-pace { color: white; }
+  .maf-baseline .maf-test-note { color: rgba(255,255,255,0.5); }
+
+  /* SHOE ROTATION */
+  .shoe-grid { display: flex; flex-direction: column; gap: 1px; background: var(--gray-200); border-radius: 12px; overflow: hidden; }
+  .shoe-item {
+    display: flex; align-items: center; gap: 20px;
+    padding: 18px 22px; background: var(--white);
     transition: background 0.15s;
   }
-  .maf-log-row:last-child { border-bottom: none; }
-  .maf-log-row:hover { background: var(--surface2); }
-  .maf-log-row.empty { opacity: 0.3; }
-  .log-date { font-size: 12px; color: var(--muted); }
-  .log-pace {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 20px;
-    color: var(--text);
-    letter-spacing: 0.04em;
+  .shoe-item:hover { background: var(--gray-100); }
+  .shoe-emoji { font-size: 22px; flex-shrink: 0; }
+  .shoe-info { flex: 1; }
+  .shoe-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 17px; color: var(--black); margin-bottom: 2px;
   }
-  .log-hr { font-size: 12px; color: var(--muted); }
-  .log-notes { font-size: 12px; color: var(--muted); font-weight: 300; font-style: italic; }
-  .log-badge {
-    font-size: 10px;
-    font-weight: 600;
-    padding: 3px 10px;
-    border-radius: 99px;
-    white-space: nowrap;
+  .shoe-use { font-size: 13px; color: var(--gray-600); }
+  .shoe-status {
+    font-size: 11px; font-weight: 500; letter-spacing: 1px;
+    text-transform: uppercase; padding: 4px 10px; border-radius: 20px; flex-shrink: 0;
   }
-  .badge-baseline { background: var(--gold-pale); color: var(--gold-mid); border: 1px solid rgba(201,168,76,0.2); }
-  .badge-pending { background: rgba(74,72,68,0.3); color: var(--muted); border: 1px solid var(--border); }
-  .badge-pr { background: var(--green-pale); color: var(--green-mid); border: 1px solid rgba(46,125,68,0.2); }
+  .status-active { background: #dcfce7; color: #166534; }
+  .status-special { background: #fef3c7; color: #92400e; }
+  .status-gym { background: #f3f4f6; color: #6b7280; }
+  .status-race { background: #fee2e2; color: #991b1b; }
 
-  /* ── RACES ── */
-  .races-section { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-  .races-list {
-    margin-top: 52px;
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    max-width: 960px;
+  /* INJURY NOTE */
+  .injury-note {
+    background: #fff7ed; border: 1px solid #fed7aa;
+    border-radius: 12px; padding: 20px 22px; margin-bottom: 24px;
+    display: flex; gap: 14px; align-items: flex-start;
   }
-  .race-row {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 24px 28px;
-    display: grid;
-    grid-template-columns: auto 1fr auto auto;
-    gap: 20px;
-    align-items: center;
-    transition: border-color 0.15s;
+  .injury-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+  .injury-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 16px; color: #92400e; margin-bottom: 4px;
   }
-  .race-row:hover { border-color: var(--gold); }
-  .race-row.upcoming { border-color: rgba(201,168,76,0.3); background: var(--gold-pale); }
-  .race-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 32px;
-    color: var(--muted2);
-    letter-spacing: 0.04em;
-    min-width: 36px;
-  }
-  .race-info {}
-  .race-name {
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--text);
-    margin-bottom: 4px;
-  }
-  .race-row.upcoming .race-name { color: var(--gold); }
-  .race-details {
-    font-size: 12px;
-    color: var(--muted);
-    font-weight: 300;
-  }
-  .race-time {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 28px;
-    color: var(--text);
-    letter-spacing: 0.04em;
-    text-align: right;
-  }
-  .race-row.upcoming .race-time {
-    font-size: 16px;
-    font-weight: 500;
-    font-family: 'DM Sans', sans-serif;
-    color: var(--gold);
-    letter-spacing: 0;
-  }
-  .race-tag {
-    font-size: 10px;
-    font-weight: 600;
-    padding: 4px 12px;
-    border-radius: 99px;
-    white-space: nowrap;
-  }
-  .tag-upcoming { background: var(--gold-pale); color: var(--gold-mid); border: 1px solid rgba(201,168,76,0.3); }
-  .tag-completed { background: rgba(74,72,68,0.3); color: var(--muted); border: 1px solid var(--border); }
-  .tag-pr { background: var(--green-pale); color: var(--green-mid); border: 1px solid rgba(46,125,68,0.3); }
+  .injury-text { font-size: 13px; color: #78350f; line-height: 1.6; }
 
-  /* ── INJURY LOG ── */
-  .injury-list {
-    margin-top: 52px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-    max-width: 960px;
-  }
-  .injury-item {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 22px 24px;
-    border-left: 3px solid;
-  }
-  .injury-item.resolved { border-left-color: var(--green-mid); }
-  .injury-item.managing { border-left-color: var(--gold); }
-  .injury-item.healed { border-left-color: var(--muted2); }
-  .injury-area {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    margin-bottom: 6px;
-  }
-  .injury-item.resolved .injury-area { color: var(--green-mid); }
-  .injury-item.managing .injury-area { color: var(--gold); }
-  .injury-item.healed .injury-area { color: var(--muted); }
-  .injury-name {
-    font-size: 16px;
-    font-weight: 500;
-    color: var(--text);
-    margin-bottom: 8px;
-  }
-  .injury-protocol {
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.6;
-    font-weight: 300;
-    margin-bottom: 12px;
-  }
-  .injury-status {
-    font-size: 11px;
-    font-weight: 600;
-    padding: 4px 10px;
-    border-radius: 99px;
-    display: inline-block;
-  }
-  .injury-item.resolved .injury-status { background: var(--green-pale); color: var(--green-mid); border: 1px solid rgba(46,125,68,0.2); }
-  .injury-item.managing .injury-status { background: var(--gold-pale); color: var(--gold-mid); border: 1px solid rgba(201,168,76,0.2); }
-  .injury-item.healed .injury-status { background: rgba(74,72,68,0.3); color: var(--muted); border: 1px solid var(--border); }
-
-  /* ── MANIFESTO ── */
-  .manifesto {
-    text-align: center;
-    padding: 120px 40px;
-    position: relative;
-    overflow: hidden;
-  }
-  .manifesto::before {
-    content: '"';
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-family: 'Playfair Display', serif;
-    font-size: 300px;
-    color: rgba(201,168,76,0.04);
-    line-height: 1;
-    pointer-events: none;
-  }
-  .manifesto-text {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: clamp(28px, 5vw, 56px);
-    color: var(--text);
-    line-height: 1.35;
-    max-width: 800px;
-    margin: 0 auto 28px;
-    position: relative;
-  }
-  .manifesto-text span { color: var(--gold); }
-  .manifesto-credit {
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-
-  /* ── MAF WHY ── */
-  .maf-why-section { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-  .maf-why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 52px; max-width: 960px; }
-  .maf-why-card {
-    background: var(--bg); border: 1px solid var(--border);
-    border-radius: 16px; padding: 28px; position: relative; overflow: hidden;
-    transition: border-color 0.2s;
-  }
-  .maf-why-card:hover { border-color: var(--gold); }
-  .maf-why-num {
-    font-family: 'Bebas Neue', sans-serif; font-size: 64px;
-    color: rgba(201,168,76,0.08); line-height: 1; margin-bottom: 12px;
-  }
-  .maf-why-title {
-    font-size: 16px; font-weight: 500; color: var(--text); margin-bottom: 10px;
-  }
-  .maf-why-title span { color: var(--gold); }
-  .maf-why-body { font-size: 13px; color: rgba(240,237,230,0.55); line-height: 1.75; font-weight: 300; }
-  .maf-why-body strong { color: rgba(240,237,230,0.8); font-weight: 500; }
-  .maf-formula {
-    grid-column: 1 / -1; background: var(--bg); border: 1px solid var(--border);
-    border-radius: 16px; padding: 28px; display: flex; align-items: center;
-    justify-content: center; gap: 16px; flex-wrap: wrap; text-align: center;
-  }
-  .formula-block {
-    display: flex; flex-direction: column; align-items: center; gap: 4px;
-  }
-  .formula-val {
-    font-family: 'Bebas Neue', sans-serif; font-size: 48px;
-    color: var(--gold); line-height: 1; letter-spacing: 0.04em;
-  }
-  .formula-desc { font-size: 11px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; }
-  .formula-op {
-    font-family: 'Bebas Neue', sans-serif; font-size: 40px;
-    color: var(--muted2); line-height: 1;
-  }
-  .formula-result .formula-val { color: var(--red-mid); font-size: 64px; }
-
-  /* ── TRAINING PLAN ── */
-  .training-section { max-width: 1040px; margin: 0 auto; padding-left: 40px; padding-right: 40px; }
-  .phases-list { display: flex; flex-direction: column; gap: 3px; margin-top: 52px; }
-  .plan-phase-row {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 16px; overflow: hidden;
-  }
-  .plan-phase-head {
-    padding: 20px 24px; display: grid;
-    grid-template-columns: auto 1fr auto; gap: 16px; align-items: center;
-    cursor: pointer; transition: background 0.15s;
-  }
-  .plan-phase-head:hover { background: var(--surface2); }
-  .plan-phase-dot {
-    width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
-  }
-  .plan-phase-info {}
-  .plan-phase-name {
-    font-size: 15px; font-weight: 500; color: var(--text); margin-bottom: 3px;
-  }
-  .plan-phase-sub { font-size: 12px; color: var(--muted); font-weight: 300; }
-  .plan-phase-badge {
-    font-size: 11px; font-weight: 600; padding: 4px 12px;
-    border-radius: 99px; white-space: nowrap;
-  }
-  .plan-phase-body { padding: 0 24px 24px; display: none; }
-  .plan-phase-body.open { display: block; }
-  .plan-week-grid {
-    display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin-bottom: 16px;
-  }
-  .plan-day {
-    background: var(--bg); border: 1px solid var(--border);
-    border-radius: 10px; padding: 10px 6px; text-align: center;
-  }
-  .plan-day-name {
-    font-size: 9px; font-weight: 700; letter-spacing: 0.12em;
-    text-transform: uppercase; color: var(--muted); margin-bottom: 6px;
-  }
-  .plan-day-run { font-size: 11px; font-weight: 600; margin-bottom: 3px; line-height: 1.3; }
-  .plan-day-note { font-size: 10px; color: var(--muted); line-height: 1.4; font-weight: 300; }
-  .plan-day.z2 { border-color: rgba(46,125,68,0.3); background: rgba(46,125,68,0.08); }
-  .plan-day.z2 .plan-day-run { color: var(--green-mid); }
-  .plan-day.hrd { border-color: rgba(201,168,76,0.3); background: rgba(201,168,76,0.06); }
-  .plan-day.hrd .plan-day-run { color: var(--gold); }
-  .plan-day.cls { border-color: rgba(26,79,160,0.3); background: rgba(26,79,160,0.08); }
-  .plan-day.cls .plan-day-run { color: #6A9FE0; }
-  .plan-day.rst { opacity: 0.4; }
-  .plan-phase-focus {
-    display: flex; flex-direction: column; gap: 8px;
-  }
-  .plan-focus-item {
-    display: flex; gap: 10px; font-size: 13px;
-    color: rgba(240,237,230,0.55); line-height: 1.6; font-weight: 300;
-  }
-  .plan-focus-item::before {
-    content: '→'; color: var(--gold); flex-shrink: 0; font-weight: 500;
-  }
-  .plan-focus-item strong { color: rgba(240,237,230,0.85); font-weight: 500; }
-
-  /* ── INJURY WORKOUTS ── */
-  .injury-workouts-section { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-  .workouts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 52px; max-width: 960px; }
-  .workout-block {
-    background: var(--bg); border: 1px solid var(--border); border-radius: 16px; overflow: hidden;
-  }
-  .workout-block-head {
-    padding: 16px 20px; border-bottom: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .workout-block-title { font-size: 14px; font-weight: 500; color: var(--text); }
-  .workout-block-source { font-size: 10px; color: var(--muted); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; }
-  .workout-exercises { padding: 16px 20px; display: flex; flex-direction: column; gap: 12px; }
-  .workout-ex { display: flex; flex-direction: column; gap: 4px; }
-  .workout-ex-name { font-size: 13px; font-weight: 500; color: var(--text); }
-  .workout-ex-sets { font-size: 11px; color: var(--gold); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
-  .workout-ex-how { font-size: 12px; color: rgba(240,237,230,0.45); line-height: 1.6; font-weight: 300; }
-  .workout-divider { height: 1px; background: var(--border); margin: 4px 0; }
-  .daily-strip {
-    grid-column: 1 / -1; background: var(--bg); border: 1px solid var(--border);
-    border-radius: 16px; padding: 24px; display: grid;
-    grid-template-columns: repeat(4, 1fr); gap: 12px;
-  }
-  .daily-strip-block {}
-  .daily-strip-title {
-    font-size: 10px; font-weight: 700; letter-spacing: 0.16em;
-    text-transform: uppercase; color: var(--gold); margin-bottom: 10px;
-  }
-  .daily-strip-items { display: flex; flex-direction: column; gap: 6px; }
-  .daily-strip-item {
-    font-size: 12px; color: rgba(240,237,230,0.5); line-height: 1.5;
-    font-weight: 300; display: flex; gap: 6px; align-items: flex-start;
-  }
-  .daily-strip-item::before {
-    content: '·'; color: var(--gold); flex-shrink: 0;
-  }
-
-  /* ── FOOTER ── */
-  .footer {
-    background: var(--surface);
-    border-top: 1px solid var(--border);
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--gray-200);
     padding: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 16px;
+    max-width: 780px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
   }
   .footer-name {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 24px;
-    letter-spacing: 0.08em;
-    color: var(--text);
+    font-family: 'DM Serif Display', serif;
+    font-size: 16px; color: var(--black);
   }
-  .footer-name span { color: var(--gold); }
-  .footer-motto {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 14px;
-    color: var(--muted);
-  }
-  .footer-club {
-    font-size: 11px;
-    color: var(--muted2);
-    font-weight: 300;
-    text-align: right;
-  }
-  .footer-club a { color: var(--gold); text-decoration: none; }
+  .footer-sub { font-size: 12px; color: var(--gray-400); margin-top: 2px; }
+  .footer-right { font-size: 12px; color: var(--gray-400); text-align: right; }
 
-  @media (max-width: 700px) {
-    .nav { padding: 16px 20px; }
-    .nav-links { display: none; }
-    .hero { padding: 0 20px 60px; }
-    .section { padding: 70px 20px; }
-    .about-grid { grid-template-columns: 1fr; gap: 36px; }
-    .goals-grid { grid-template-columns: 1fr; }
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    nav { padding: 16px 20px; }
+    .nav-links { gap: 20px; }
+    .hero { padding: 110px 20px 60px; }
+    .hero-stats { gap: 28px; flex-wrap: wrap; }
+    section { padding: 60px 20px; }
     .maf-grid { grid-template-columns: 1fr; }
-    .injury-list { grid-template-columns: 1fr; }
-    .maf-log-row { grid-template-columns: 1fr 1fr 1fr; }
-    .log-notes { display: none; }
-    .race-row { grid-template-columns: 1fr auto; }
-    .race-num { display: none; }
-    .manifesto { padding: 80px 20px; }
-    .footer { padding: 28px 20px; }
+    .hr-formula { flex-direction: column; gap: 16px; }
+    .formula-result { border-left: none; border-top: 1px solid rgba(255,255,255,0.1); padding-left: 0; padding-top: 16px; }
+    footer { flex-direction: column; gap: 12px; padding: 30px 20px; }
+    .footer-right { text-align: left; }
   }
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav class="nav">
-  <div class="nav-name">Alex <span>Santos</span></div>
+<nav>
+  <div class="nav-name">Alex Santos</div>
   <div class="nav-links">
-    <a class="nav-link" href="#about">Story</a>
-    <a class="nav-link" href="#goals">Goals</a>
-    <a class="nav-link" href="#maf-why">MAF Method</a>
-    <a class="nav-link" href="#training">Training Plan</a>
-    <a class="nav-link" href="#maf">MAF Log</a>
-    <a class="nav-link" href="#races">Races</a>
-    <a class="nav-link" href="#injuries">Injuries</a>
+    <a href="#plan">Plan</a>
+    <a href="#maf">MAF</a>
+    <a href="#log">Log</a>
+    <a href="#shoes">Shoes</a>
   </div>
 </nav>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="hero-bg-number">153</div>
-  <div class="hero-tag">Runner · East Bay, CA</div>
-  <div class="hero-name">
-    <span class="first">Alex</span>
-    <span class="last">Santos</span>
-  </div>
-  <div class="hero-motto">"Smile through pain."</div>
+<div class="hero">
+  <div class="hero-eyebrow">Personal Running Journal</div>
+  <h1>Training with <em>intention,</em> not ego.</h1>
+  <p class="hero-desc">Documenting my journey through MAF training — building an aerobic base the right way, one slow mile at a time. Based in the East Bay, CA.</p>
   <div class="hero-stats">
-    <div class="hero-stat">
-      <div class="hero-stat-val">153 <span>bpm</span></div>
-      <div class="hero-stat-label">MAF ceiling</div>
+    <div>
+      <div class="hero-stat-val">153</div>
+      <div class="hero-stat-label">MAF Ceiling (bpm)</div>
     </div>
-    <div class="hero-stat">
-      <div class="hero-stat-val">17:00 <span>/mi</span></div>
-      <div class="hero-stat-label">Current MAF pace</div>
+    <div>
+      <div class="hero-stat-val">17:02</div>
+      <div class="hero-stat-label">Current MAF Pace</div>
     </div>
-    <div class="hero-stat">
-      <div class="hero-stat-val">48–50</div>
-      <div class="hero-stat-label">VO2 Max</div>
+    <div>
+      <div class="hero-stat-val">~22 min</div>
+      <div class="hero-stat-label">5K Goal</div>
     </div>
-    <div class="hero-stat">
-      <div class="hero-stat-val">22:00</div>
-      <div class="hero-stat-label">5K PR (age 15)</div>
-    </div>
-  </div>
-  <div class="hero-scroll">
-    <div class="hero-scroll-label">Scroll</div>
-    <div class="hero-scroll-line"></div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section class="section" id="about">
-  <div class="section-label">My Story</div>
-  <div class="section-title">Built from <span>the ground up</span></div>
-  <div class="about-grid">
-    <div class="about-story">
-      <p>I ran cross country at 15 and hit a <strong>22 minute 5K in 5 months</strong> — but I was injury prone the whole time. Knee, back, hip, shin. I pushed through it because I didn't know any better. Then I stopped running and lost everything I built.</p>
-      <p>At 22, I'm rebuilding it the right way. I found <strong>Dr. Phil Maffetone's MAF method</strong> and it changed how I think about training entirely. Every run at or below 153 bpm. Walk when I need to. Build the aerobic base before touching any speedwork.</p>
-      <p>I also run the <strong>Run! Not Gasp Run Club</strong> in the East Bay — a free Saturday morning group built on Zone 2 training and the belief that running slow is the fastest way to get fast.</p>
-      <p>This site is my training journal. The numbers, the setbacks, the progress. All of it. <strong>Smile through pain.</strong></p>
-    </div>
-    <div class="about-facts">
-      <div class="fact-card">
-        <div class="fact-label">Age</div>
-        <div class="fact-value">22</div>
-      </div>
-      <div class="fact-card">
-        <div class="fact-label">Location</div>
-        <div class="fact-value" style="font-size:16px; font-family:'DM Sans',sans-serif; font-weight:500;">East Bay, CA</div>
-      </div>
-      <div class="fact-card">
-        <div class="fact-label">MAF Heart Rate</div>
-        <div class="fact-value gold">153 bpm</div>
-      </div>
-      <div class="fact-card">
-        <div class="fact-label">Resting HR</div>
-        <div class="fact-value green">53 bpm</div>
-      </div>
-      <div class="fact-card">
-        <div class="fact-label">VO2 Max</div>
-        <div class="fact-value">48–50</div>
-      </div>
-      <div class="fact-card">
-        <div class="fact-label">Training method</div>
-        <div class="fact-value gold" style="font-size:16px; font-family:'DM Sans',sans-serif; font-weight:500;">Maffetone MAF</div>
-      </div>
-      <div class="fact-card">
-        <div class="fact-label">5K PR</div>
-        <div class="fact-value gold">22:00</div>
-      </div>
-      <div class="fact-card">
-        <div class="fact-label">Run Club</div>
-        <div class="fact-value" style="font-size:14px; font-family:'DM Sans',sans-serif; font-weight:500; color:var(--green-mid);">Run! Not Gasp RC</div>
-      </div>
+    <div>
+      <div class="hero-stat-val">Wk 0</div>
+      <div class="hero-stat-label">Recovery Phase</div>
     </div>
   </div>
-</section>
-
-<!-- GOALS -->
-<section class="section goals-section" id="goals">
-  <div class="section-label">Where I'm Going</div>
-  <div class="section-title">The <span>Goals</span></div>
-  <div class="goals-grid">
-    <div class="goal-card active">
-      <div class="goal-phase">Now — Month 6</div>
-      <div class="goal-time">26:00</div>
-      <div class="goal-desc">Build the aerobic base. Run continuously in Zone 2 without walking. MAF pace from 17:00 down to 11–13 min/mile.</div>
-      <div class="goal-timeline">→ Pure MAF training</div>
-    </div>
-    <div class="goal-card future">
-      <div class="goal-phase">Month 12</div>
-      <div class="goal-time">22:00</div>
-      <div class="goal-desc">Back to my high school PR. This time on a real aerobic foundation with healthy connective tissue underneath it.</div>
-      <div class="goal-timeline">→ Base + threshold work</div>
-    </div>
-    <div class="goal-card dream">
-      <div class="goal-phase">Month 24–30</div>
-      <div class="goal-time">18:00</div>
-      <div class="goal-desc">The real target. 5:48/mile pace. Requires MAF pace at 7:30/mile and lactate threshold around 7:00/mile. It's coming.</div>
-      <div class="goal-timeline">→ Full Norwegian method</div>
-    </div>
-  </div>
-</section>
-
-<!-- MAF PROGRESS -->
-<section class="section" id="maf" style="max-width:1040px; margin:0 auto; padding-left:40px; padding-right:40px;">
-  <div class="section-label">Training Data</div>
-  <div class="section-title">MAF <span>Progress Log</span></div>
-  <div class="maf-grid">
-    <div class="maf-card">
-      <div class="maf-card-head">
-        <div class="maf-card-title">Current MAF Pace</div>
-        <div class="maf-card-date">Week 1 baseline</div>
-      </div>
-      <div class="maf-card-body">
-        <div class="maf-pace">17:00</div>
-        <div class="maf-pace-label">min/mile at 153 bpm</div>
-        <div class="maf-hr">Heart rate ceiling — 153 bpm · Age 22 − 5 health adjustment</div>
-      </div>
-    </div>
-    <div class="maf-card">
-      <div class="maf-card-head">
-        <div class="maf-card-title">Target MAF Pace</div>
-        <div class="maf-card-date">Month 6 goal</div>
-      </div>
-      <div class="maf-card-body">
-        <div class="maf-pace" style="color:rgba(201,168,76,0.35);">11:00</div>
-        <div class="maf-pace-label">min/mile at 153 bpm</div>
-        <div class="maf-hr">6 min/mile improvement over 6 months of pure Zone 2</div>
-      </div>
-    </div>
-    <div class="maf-log">
-      <div class="maf-log-head">MAF Test History — every 4 weeks, same flat route</div>
-      <div class="maf-log-row">
-        <div class="log-date">Week 1 · Mar 2026</div>
-        <div class="log-pace">17:00 /mi</div>
-        <div class="log-hr">153 bpm</div>
-        <div class="log-notes">Baseline. Lots of walking. Starting point.</div>
-        <div class="log-badge badge-baseline">Baseline</div>
-      </div>
-      <div class="maf-log-row empty">
-        <div class="log-date">Week 5 · Apr 2026</div>
-        <div class="log-pace">— /mi</div>
-        <div class="log-hr">153 bpm</div>
-        <div class="log-notes">Not yet</div>
-        <div class="log-badge badge-pending">Upcoming</div>
-      </div>
-      <div class="maf-log-row empty">
-        <div class="log-date">Week 9 · May 2026</div>
-        <div class="log-pace">— /mi</div>
-        <div class="log-hr">153 bpm</div>
-        <div class="log-notes">Not yet</div>
-        <div class="log-badge badge-pending">Upcoming</div>
-      </div>
-      <div class="maf-log-row empty">
-        <div class="log-date">Week 13 · Jun 2026</div>
-        <div class="log-pace">— /mi</div>
-        <div class="log-hr">153 bpm</div>
-        <div class="log-notes">Phase 2 checkpoint</div>
-        <div class="log-badge badge-pending">Upcoming</div>
-      </div>
-      <div class="maf-log-row empty">
-        <div class="log-date">Week 17 · Jul 2026</div>
-        <div class="log-pace">— /mi</div>
-        <div class="log-hr">153 bpm</div>
-        <div class="log-notes">Not yet</div>
-        <div class="log-badge badge-pending">Upcoming</div>
-      </div>
-      <div class="maf-log-row empty">
-        <div class="log-date">Week 25 · Sep 2026</div>
-        <div class="log-pace">— /mi</div>
-        <div class="log-hr">153 bpm</div>
-        <div class="log-notes">6 month milestone — most important test</div>
-        <div class="log-badge badge-pending">Milestone</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- RACES -->
-<section class="section races-section" id="races">
-  <div class="section-label">Race History</div>
-  <div class="section-title">On the <span>Start Line</span></div>
-  <div class="races-list">
-    <div class="race-row upcoming">
-      <div class="race-num">01</div>
-      <div class="race-info">
-        <div class="race-name">Benchmark 5K — Month 12</div>
-        <div class="race-details">East Bay · December 2026 · Goal: 21–23 minutes</div>
-      </div>
-      <div class="race-time">TBD</div>
-      <div class="race-tag tag-upcoming">Upcoming</div>
-    </div>
-    <div class="race-row upcoming">
-      <div class="race-num">02</div>
-      <div class="race-info">
-        <div class="race-name">Goal Race 5K — Month 18</div>
-        <div class="race-details">East Bay · June 2027 · Target: sub-21 minutes</div>
-      </div>
-      <div class="race-time">TBD</div>
-      <div class="race-tag tag-upcoming">Upcoming</div>
-    </div>
-    <div class="race-row upcoming">
-      <div class="race-num">03</div>
-      <div class="race-info">
-        <div class="race-name">18 Minute Attempt — Month 24–30</div>
-        <div class="race-details">TBD · 2027–2028 · The real target</div>
-      </div>
-      <div class="race-time">TBD</div>
-      <div class="race-tag tag-upcoming">Dream Race</div>
-    </div>
-    <div class="race-row">
-      <div class="race-num">—</div>
-      <div class="race-info">
-        <div class="race-name">Cross Country 5K — High School</div>
-        <div class="race-details">Age 15 · 5 months of training · Personal best</div>
-      </div>
-      <div class="race-time">22:00</div>
-      <div class="race-tag tag-pr">All-time PR</div>
-    </div>
-  </div>
-</section>
-
-<!-- INJURIES -->
-<section class="section" id="injuries" style="max-width:1040px; margin:0 auto; padding-left:40px; padding-right:40px;">
-  <div class="section-label">Injury Prevention Log</div>
-  <div class="section-title">Staying <span>Unbroken</span></div>
-  <div class="injury-list">
-    <div class="injury-item managing">
-      <div class="injury-area">Knee</div>
-      <div class="injury-name">Runner's Knee — Patellofemoral Pain</div>
-      <div class="injury-protocol">Ben Patrick ATG protocol — tibialis raises, ATG split squat, clamshells, step-downs. 3x per week.</div>
-      <span class="injury-status">Managing — protocol active</span>
-    </div>
-    <div class="injury-item managing">
-      <div class="injury-area">Lower Back</div>
-      <div class="injury-name">Lumbar Pain — Spinal Instability</div>
-      <div class="injury-protocol">McGill Big Three daily — curl-up, bird dog, side plank. Every morning without exception.</div>
-      <span class="injury-status">Managing — daily routine</span>
-    </div>
-    <div class="injury-item managing">
-      <div class="injury-area">Hip</div>
-      <div class="injury-name">Hip Flexor Tightness — Glute Weakness</div>
-      <div class="injury-protocol">Starrett kneeling hip flexor stretch, 90/90 hip mobility, single leg glute bridge. Daily evening routine.</div>
-      <span class="injury-status">Managing — improving</span>
-    </div>
-    <div class="injury-item managing">
-      <div class="injury-area">Shin / Ankle</div>
-      <div class="injury-name">Shin Splints — Tibialis Weakness</div>
-      <div class="injury-protocol">Tibialis raises daily, eccentric calf raises, cadence drill at 170–175 bpm during runs. Dicharry gait work.</div>
-      <span class="injury-status">Managing — prevention focus</span>
-    </div>
-  </div>
-</section>
-
-<!-- MAF WHY -->
-<section class="section maf-why-section" id="maf-why">
-  <div class="section-label">Why I Train This Way</div>
-  <div class="section-title">The <span>MAF Method</span></div>
-  <div class="maf-why-grid">
-    <div class="maf-why-card">
-      <div class="maf-why-num">01</div>
-      <div class="maf-why-title">The <span>Aerobic Base</span></div>
-      <div class="maf-why-body">Your aerobic system uses oxygen and fat to produce energy. When it's underdeveloped your body compensates by going anaerobic — burning sugar, producing lactic acid, getting winded fast. <strong>Building this base is the most important thing a runner can do.</strong> Everything else — speed, endurance, recovery — depends on it.</div>
-    </div>
-    <div class="maf-why-card">
-      <div class="maf-why-num">02</div>
-      <div class="maf-why-title">The <span>Grey Zone Problem</span></div>
-      <div class="maf-why-body">Most runners live in the grey zone — too hard to build aerobic fitness, too easy to build real speed. It feels productive but it isn't. <strong>You accumulate fatigue without getting adaptation.</strong> Maffetone calls this aerobic deficiency syndrome. I had it. Most people do.</div>
-    </div>
-    <div class="maf-why-card">
-      <div class="maf-why-num">03</div>
-      <div class="maf-why-title">The <span>80/20 Rule</span></div>
-      <div class="maf-why-body">80% of every week's running is at or below MAF heart rate. 20% can be harder — but only after the base is built. <strong>Every elite endurance athlete in the world trains this way</strong>, from Eliud Kipchoge to Jakob Ingebrigtsen. Run slow to race fast.</div>
-    </div>
-    <div class="maf-why-card">
-      <div class="maf-why-num">04</div>
-      <div class="maf-why-title">Why It's <span>Personal</span></div>
-      <div class="maf-why-body">I have gastritis, a history of injuries in four areas, and spent years running too hard and getting hurt. <strong>The MAF method is the only training approach that builds fitness while letting my body heal.</strong> Low intensity means low cortisol. Low cortisol means less inflammation. Less inflammation means my gut calms down and my connective tissue adapts.</div>
-    </div>
-    <div class="maf-formula">
-      <div class="formula-block">
-        <div class="formula-val">180</div>
-        <div class="formula-desc">Base number</div>
-      </div>
-      <div class="formula-op">−</div>
-      <div class="formula-block">
-        <div class="formula-val">22</div>
-        <div class="formula-desc">My age</div>
-      </div>
-      <div class="formula-op">−</div>
-      <div class="formula-block">
-        <div class="formula-val">5</div>
-        <div class="formula-desc">Health adjustment</div>
-      </div>
-      <div class="formula-op">=</div>
-      <div class="formula-block formula-result">
-        <div class="formula-val">153</div>
-        <div class="formula-desc">My MAF ceiling · every easy run</div>
-      </div>
-    </div>
-  </div>
-</section>
+</div>
 
 <!-- TRAINING PLAN -->
-<section class="section training-section" id="training">
-  <div class="section-label">The Roadmap</div>
-  <div class="section-title">My <span>Training Plan</span></div>
-  <div class="phases-list">
+<section id="plan">
+  <div class="section-label">Training</div>
+  <div class="section-title">18-Week MAF 5K Plan</div>
 
-    <div class="plan-phase-row">
-      <div class="plan-phase-head" onclick="this.nextElementSibling.classList.toggle('open')">
-        <div class="plan-phase-dot" style="background:var(--green-mid);"></div>
-        <div class="plan-phase-info">
-          <div class="plan-phase-name">Phase 1 — The Foundation</div>
-          <div class="plan-phase-sub">Months 1–3 · Pure Zone 2 · Walk as needed · MAF test week 1 and week 12</div>
-        </div>
-        <div class="plan-phase-badge" style="background:rgba(46,125,68,0.15); color:var(--green-mid); border:1px solid rgba(46,125,68,0.2);">Active ↓</div>
-      </div>
-      <div class="plan-phase-body open">
-        <div class="plan-week-grid">
-          <div class="plan-day z2"><div class="plan-day-name">Mon</div><div class="plan-day-run">25 min</div><div class="plan-day-note">≤153 bpm</div></div>
-          <div class="plan-day rst"><div class="plan-day-name">Tue</div><div class="plan-day-run">Rest</div><div class="plan-day-note">Big Three</div></div>
-          <div class="plan-day z2"><div class="plan-day-name">Wed</div><div class="plan-day-run">25 min</div><div class="plan-day-note">≤153 bpm</div></div>
-          <div class="plan-day rst"><div class="plan-day-name">Thu</div><div class="plan-day-run">Rest</div><div class="plan-day-note">injury work</div></div>
-          <div class="plan-day rst"><div class="plan-day-name">Fri</div><div class="plan-day-run">Rest</div><div class="plan-day-note">or walk</div></div>
-          <div class="plan-day cls"><div class="plan-day-name">Sat</div><div class="plan-day-run">Club Run</div><div class="plan-day-note">30 min MAF</div></div>
-          <div class="plan-day rst"><div class="plan-day-name">Sun</div><div class="plan-day-run">Full Rest</div><div class="plan-day-note">always</div></div>
-        </div>
-        <div class="plan-phase-focus">
-          <div class="plan-focus-item"><strong>Walk as much as needed.</strong> Time on feet matters — not continuous running. Stay under 153 bpm at all costs.</div>
-          <div class="plan-focus-item"><strong>McGill Big Three every morning.</strong> Curl-up, bird dog, side plank. 6 minutes. Never skip it.</div>
-          <div class="plan-focus-item"><strong>Target by end of phase:</strong> MAF pace 14–16 min/mile. Estimated 5K: 27–28 min.</div>
-        </div>
-      </div>
+  <div class="injury-note">
+    <div class="injury-icon">🦵</div>
+    <div>
+      <div class="injury-title">Currently in Recovery — Phase 0</div>
+      <div class="injury-text">Left knee medial irritation. Taking a full week off before Phase 1 begins. Pain level: 2–3/10. Icing daily, no running until pain-free on stairs.</div>
     </div>
+  </div>
 
-    <div class="plan-phase-row">
-      <div class="plan-phase-head" onclick="this.nextElementSibling.classList.toggle('open')">
-        <div class="plan-phase-dot" style="background:var(--green-mid); opacity:0.5;"></div>
-        <div class="plan-phase-info">
-          <div class="plan-phase-name">Phase 2 — Building Volume</div>
-          <div class="plan-phase-sub">Months 4–6 · Add 4th run day · Extend long run · No speedwork yet</div>
-        </div>
-        <div class="plan-phase-badge" style="background:var(--surface2); color:var(--muted); border:1px solid var(--border);">Upcoming ↓</div>
-      </div>
-      <div class="plan-phase-body">
-        <div class="plan-week-grid">
-          <div class="plan-day z2"><div class="plan-day-name">Mon</div><div class="plan-day-run">30 min</div><div class="plan-day-note">≤153 bpm</div></div>
-          <div class="plan-day z2"><div class="plan-day-name">Tue</div><div class="plan-day-run">25 min</div><div class="plan-day-note">≤153 bpm</div></div>
-          <div class="plan-day rst"><div class="plan-day-name">Wed</div><div class="plan-day-run">Rest</div><div class="plan-day-note">Big Three</div></div>
-          <div class="plan-day z2"><div class="plan-day-name">Thu</div><div class="plan-day-run">30 min</div><div class="plan-day-note">≤153 bpm</div></div>
-          <div class="plan-day rst"><div class="plan-day-name">Fri</div><div class="plan-day-run">Rest</div><div class="plan-day-note">or walk</div></div>
-          <div class="plan-day cls"><div class="plan-day-name">Sat</div><div class="plan-day-run">Club Run</div><div class="plan-day-note">40–45 min</div></div>
-          <div class="plan-day rst"><div class="plan-day-name">Sun</div><div class="plan-day-run">Full Rest</div><div class="plan-day-note">always</div></div>
-        </div>
-        <div class="plan-phase-focus">
-          <div class="plan-focus-item"><strong>Cross country memory activates.</strong> Body starts remembering how to run efficiently. Expect noticeable MAF pace improvements.</div>
-          <div class="plan-focus-item"><strong>Month 6 — biggest MAF test of the plan.</strong> This is the most important checkpoint. Determines readiness for speedwork.</div>
-          <div class="plan-focus-item"><strong>Target by end of phase:</strong> MAF pace 11–13 min/mile. Estimated 5K: 26–27 min.</div>
-        </div>
-      </div>
+  <div class="current-week">
+    <div class="current-week-label">This Week</div>
+    <div class="current-week-title">Phase 0 — Full Stop</div>
+    <div class="current-week-desc">Rest, ice, heal. No running until the knee passes the green light checklist.</div>
+    <div class="day-pills">
+      <div class="day-pill active">Mon · Ice</div>
+      <div class="day-pill">Tue · Strength</div>
+      <div class="day-pill xt">Wed · Swim</div>
+      <div class="day-pill">Thu · Strength</div>
+      <div class="day-pill rest">Fri · Rest</div>
+      <div class="day-pill">Sat · Walk</div>
+      <div class="day-pill rest">Sun · Rest</div>
     </div>
+  </div>
 
-    <div class="plan-phase-row">
-      <div class="plan-phase-head" onclick="this.nextElementSibling.classList.toggle('open')">
-        <div class="plan-phase-dot" style="background:var(--gold); opacity:0.5;"></div>
-        <div class="plan-phase-info">
-          <div class="plan-phase-name">Phase 3 — Strides & Hills</div>
-          <div class="plan-phase-sub">Months 7–8 · First intensity · Strides + hill repeats · Still 80% Zone 2</div>
-        </div>
-        <div class="plan-phase-badge" style="background:var(--surface2); color:var(--muted); border:1px solid var(--border);">Upcoming ↓</div>
+  <div class="phase-list">
+    <div class="phase-item">
+      <div class="phase-num-wrap"><div class="phase-num">00</div></div>
+      <div class="phase-content">
+        <div class="phase-title">Knee Recovery</div>
+        <div class="phase-weeks">This week · No running</div>
+        <div class="phase-desc">Ice, rest, upper body strength only. Green light: zero pain on stairs, no swelling.</div>
       </div>
-      <div class="plan-phase-body">
-        <div class="plan-week-grid">
-          <div class="plan-day z2"><div class="plan-day-name">Mon</div><div class="plan-day-run">30 min</div><div class="plan-day-note">+ strides</div></div>
-          <div class="plan-day z2"><div class="plan-day-name">Tue</div><div class="plan-day-run">25 min</div><div class="plan-day-note">easy MAF</div></div>
-          <div class="plan-day rst"><div class="plan-day-name">Wed</div><div class="plan-day-run">Rest</div><div class="plan-day-note">Big Three</div></div>
-          <div class="plan-day hrd"><div class="plan-day-name">Thu</div><div class="plan-day-run">Hill reps</div><div class="plan-day-note">6 × 60 sec</div></div>
-          <div class="plan-day rst"><div class="plan-day-name">Fri</div><div class="plan-day-run">Rest</div><div class="plan-day-note">recovery</div></div>
-          <div class="plan-day cls"><div class="plan-day-name">Sat</div><div class="plan-day-run">Club Run</div><div class="plan-day-note">40 min MAF</div></div>
-          <div class="plan-day rst"><div class="plan-day-name">Sun</div><div class="plan-day-run">Full Rest</div><div class="plan-day-note">always</div></div>
-        </div>
-        <div class="plan-phase-focus">
-          <div class="plan-focus-item"><strong>Strides at end of Monday run.</strong> 4–6 × 20 second gentle accelerations. Not sprinting — just faster turnover.</div>
-          <div class="plan-focus-item"><strong>Hill repeats are safer than flat intervals</strong> for injury-prone runners. Lower impact force on the shin and knee.</div>
-          <div class="plan-focus-item"><strong>Target by end of phase:</strong> MAF pace 10–12 min/mile. Estimated 5K: 24–25 min.</div>
-        </div>
-      </div>
+      <div class="phase-miles">0 mi/wk</div>
     </div>
-
-    <div class="plan-phase-row">
-      <div class="plan-phase-head" onclick="this.nextElementSibling.classList.toggle('open')">
-        <div class="plan-phase-dot" style="background:var(--gold); opacity:0.4;"></div>
-        <div class="plan-phase-info">
-          <div class="plan-phase-name">Phase 4 — Fartlek & Tempo</div>
-          <div class="plan-phase-sub">Months 9–12 · Threshold work · Benchmark race at month 12</div>
-        </div>
-        <div class="plan-phase-badge" style="background:var(--surface2); color:var(--muted); border:1px solid var(--border);">Upcoming ↓</div>
+    <div class="phase-item">
+      <div class="phase-num-wrap"><div class="phase-num">01</div></div>
+      <div class="phase-content">
+        <div class="phase-title">Return to Running</div>
+        <div class="phase-weeks">Weeks 1–4 · Kayano 30 only</div>
+        <div class="phase-desc">Short runs, walk breaks welcome. Connective tissue re-adapting. Strength routines begin.</div>
       </div>
-      <div class="plan-phase-body">
-        <div class="plan-week-grid">
-          <div class="plan-day z2"><div class="plan-day-name">Mon</div><div class="plan-day-run">35 min</div><div class="plan-day-note">easy MAF</div></div>
-          <div class="plan-day z2"><div class="plan-day-name">Tue</div><div class="plan-day-run">30 min</div><div class="plan-day-note">easy MAF</div></div>
-          <div class="plan-day rst"><div class="plan-day-name">Wed</div><div class="plan-day-run">Rest</div><div class="plan-day-note">Big Three</div></div>
-          <div class="plan-day hrd"><div class="plan-day-name">Thu</div><div class="plan-day-run">Tempo</div><div class="plan-day-note">10→25 min</div></div>
-          <div class="plan-day rst"><div class="plan-day-name">Fri</div><div class="plan-day-run">Rest</div><div class="plan-day-note">recovery</div></div>
-          <div class="plan-day cls"><div class="plan-day-name">Sat</div><div class="plan-day-run">Club Run</div><div class="plan-day-note">45 min MAF</div></div>
-          <div class="plan-day rst"><div class="plan-day-name">Sun</div><div class="plan-day-run">Full Rest</div><div class="plan-day-note">always</div></div>
-        </div>
-        <div class="plan-phase-focus">
-          <div class="plan-focus-item"><strong>Month 9 — fartlek first.</strong> Unstructured surges during easy runs. Self-regulated. 4 weeks before moving to structured tempo.</div>
-          <div class="plan-focus-item"><strong>Tempo starts at 10 minutes</strong> and builds by 2 minutes per week up to 25 minutes by month 12.</div>
-          <div class="plan-focus-item"><strong>Month 12 benchmark race.</strong> First 5K since high school. Target: 21–23 minutes.</div>
-        </div>
-      </div>
+      <div class="phase-miles">4–6 mi/wk</div>
     </div>
-
-    <div class="plan-phase-row">
-      <div class="plan-phase-head" onclick="this.nextElementSibling.classList.toggle('open')">
-        <div class="plan-phase-dot" style="background:var(--red-mid); opacity:0.4;"></div>
-        <div class="plan-phase-info">
-          <div class="plan-phase-name">Phase 5 & 6 — Full Structure + 18 Min Target</div>
-          <div class="plan-phase-sub">Months 13–30 · Intervals added · Norwegian method · Sub-18 minute 5K</div>
-        </div>
-        <div class="plan-phase-badge" style="background:var(--red-pale); color:var(--red-mid); border:1px solid rgba(192,48,48,0.2);">The Goal ↓</div>
+    <div class="phase-item">
+      <div class="phase-num-wrap"><div class="phase-num">02</div></div>
+      <div class="phase-content">
+        <div class="phase-title">Building Confidence</div>
+        <div class="phase-weeks">Weeks 5–8 · First MAF test week 8</div>
+        <div class="phase-desc">Runs getting longer. Pace at same HR should start visibly improving.</div>
       </div>
-      <div class="plan-phase-body">
-        <div class="plan-week-grid">
-          <div class="plan-day z2"><div class="plan-day-name">Mon</div><div class="plan-day-run">35 min</div><div class="plan-day-note">easy MAF</div></div>
-          <div class="plan-day hrd"><div class="plan-day-name">Tue</div><div class="plan-day-run">Intervals</div><div class="plan-day-note">200→800m</div></div>
-          <div class="plan-day z2"><div class="plan-day-name">Wed</div><div class="plan-day-run">30 min</div><div class="plan-day-note">easy MAF</div></div>
-          <div class="plan-day hrd"><div class="plan-day-name">Thu</div><div class="plan-day-run">Tempo</div><div class="plan-day-note">20–25 min</div></div>
-          <div class="plan-day rst"><div class="plan-day-name">Fri</div><div class="plan-day-run">Rest</div><div class="plan-day-note">recovery</div></div>
-          <div class="plan-day cls"><div class="plan-day-name">Sat</div><div class="plan-day-run">Long run</div><div class="plan-day-note">60–75 min</div></div>
-          <div class="plan-day rst"><div class="plan-day-name">Sun</div><div class="plan-day-run">Full Rest</div><div class="plan-day-note">always</div></div>
-        </div>
-        <div class="plan-phase-focus">
-          <div class="plan-focus-item"><strong>Never two hard days in a row.</strong> Tuesday intervals and Thursday tempo are always separated by Wednesday easy run. Non-negotiable.</div>
-          <div class="plan-focus-item"><strong>Norwegian double threshold</strong> introduced at month 18+ — one double threshold day per week with lactate testing at 2.0 mmol/L.</div>
-          <div class="plan-focus-item"><strong>Target month 18:</strong> sub-21 min 5K. <strong>Target month 24–30:</strong> 18 minute 5K. MAF pace 7:00–7:30/mile.</div>
-        </div>
-      </div>
+      <div class="phase-miles">6–10 mi/wk</div>
     </div>
-
+    <div class="phase-item">
+      <div class="phase-num-wrap"><div class="phase-num">03</div></div>
+      <div class="phase-content">
+        <div class="phase-title">Real Base Building</div>
+        <div class="phase-weeks">Weeks 9–12 · Second MAF test week 12</div>
+        <div class="phase-desc">Where most plans start. I'll be ready for it now. Aerobic engine genuinely growing.</div>
+      </div>
+      <div class="phase-miles">10–15 mi/wk</div>
+    </div>
+    <div class="phase-item">
+      <div class="phase-num-wrap"><div class="phase-num">04</div></div>
+      <div class="phase-content">
+        <div class="phase-title">Aerobic Strength + Strides</div>
+        <div class="phase-weeks">Weeks 13–16 · Third MAF test week 16</div>
+        <div class="phase-desc">One strides session per week. Everything else stays aerobic.</div>
+      </div>
+      <div class="phase-miles">15–20 mi/wk</div>
+    </div>
+    <div class="phase-item">
+      <div class="phase-num-wrap"><div class="phase-num">05</div></div>
+      <div class="phase-content">
+        <div class="phase-title">5K Race Prep</div>
+        <div class="phase-weeks">Weeks 17–18 · Final MAF test</div>
+        <div class="phase-desc">One tempo session per week. Race week: volume drops 40%. Streakfly laced up.</div>
+      </div>
+      <div class="phase-miles">20–22 mi/wk</div>
+    </div>
   </div>
 </section>
 
-<!-- INJURY PREVENTION WORKOUTS -->
-<section class="section injury-workouts-section" id="injury-workouts">
-  <div class="section-label">Staying on the Road</div>
-  <div class="section-title">Injury Prevention <span>Workouts</span></div>
-  <div class="workouts-grid">
+<!-- MAF EDUCATION -->
+<section id="maf">
+  <div class="section-label">Method</div>
+  <div class="section-title">Understanding MAF Training</div>
 
-    <div class="workout-block">
-      <div class="workout-block-head">
-        <div class="workout-block-title">🦵 Knee Protocol</div>
-        <div class="workout-block-source">Ben Patrick · ATG</div>
-      </div>
-      <div class="workout-exercises">
-        <div class="workout-ex">
-          <div class="workout-ex-name">Tibialis raises</div>
-          <div class="workout-ex-sets">3 × 20 reps · Daily</div>
-          <div class="workout-ex-how">Back against wall, heels forward. Raise toes as high as possible, hold 2 sec, lower slowly. Foundation of knee health.</div>
-        </div>
-        <div class="workout-divider"></div>
-        <div class="workout-ex">
-          <div class="workout-ex-name">ATG split squat</div>
-          <div class="workout-ex-sets">3 × 10 each leg · 3x/week</div>
-          <div class="workout-ex-how">Lunge position, drive front knee as far over toes as possible. Start shallow, build depth over weeks.</div>
-        </div>
-        <div class="workout-divider"></div>
-        <div class="workout-ex">
-          <div class="workout-ex-name">Clamshells with band</div>
-          <div class="workout-ex-sets">3 × 15 each side · 3x/week</div>
-          <div class="workout-ex-how">Lie on side, band above knees. Rotate top knee up keeping feet together. Targets glute med — controls knee tracking.</div>
-        </div>
-        <div class="workout-divider"></div>
-        <div class="workout-ex">
-          <div class="workout-ex-name">Step-downs</div>
-          <div class="workout-ex-sets">3 × 12 each leg · 3x/week</div>
-          <div class="workout-ex-how">Stand on step, lower other foot toward floor with 3–4 second count. Knee must track over second toe — no inward collapse.</div>
-        </div>
-      </div>
+  <div class="hr-formula">
+    <div class="formula-text">
+      180 <span>−</span> age (22) <span>−</span> 5 (health adj.) <span>=</span>
     </div>
-
-    <div class="workout-block">
-      <div class="workout-block-head">
-        <div class="workout-block-title">🔵 Back Protocol</div>
-        <div class="workout-block-source">McGill Big Three · Daily</div>
-      </div>
-      <div class="workout-exercises">
-        <div class="workout-ex">
-          <div class="workout-ex-name">McGill curl-up</div>
-          <div class="workout-ex-sets">3 × 8 reps · Hold 10 sec · Daily</div>
-          <div class="workout-ex-how">Lie on back, hands under lower back to maintain curve. Lift only head and shoulders slightly. Never flatten the spine.</div>
-        </div>
-        <div class="workout-divider"></div>
-        <div class="workout-ex">
-          <div class="workout-ex-name">Bird dog</div>
-          <div class="workout-ex-sets">3 × 8 each side · Hold 10 sec · Daily</div>
-          <div class="workout-ex-how">On hands and knees, extend opposite arm and leg parallel to floor. Hold 10 sec. Don't let hips rotate.</div>
-        </div>
-        <div class="workout-divider"></div>
-        <div class="workout-ex">
-          <div class="workout-ex-name">Side plank</div>
-          <div class="workout-ex-sets">3 × 30 seconds each side · Daily</div>
-          <div class="workout-ex-how">Propped on forearm, feet stacked, hips lifted. Targets quadratus lumborum — the deep lateral back muscle most runners never train.</div>
-        </div>
-        <div class="workout-divider"></div>
-        <div class="workout-ex">
-          <div class="workout-ex-name">Kneeling hip flexor stretch</div>
-          <div class="workout-ex-sets">60 sec each side · Daily evening</div>
-          <div class="workout-ex-how">Kneeling lunge, tuck pelvis, squeeze glute of back leg. Tight hip flexors are the #1 driver of lower back pain in runners.</div>
-        </div>
-      </div>
+    <div class="formula-result">
+      <div class="formula-num">153</div>
+      <div class="formula-label">My MAF Ceiling</div>
     </div>
+  </div>
 
-    <div class="workout-block">
-      <div class="workout-block-head">
-        <div class="workout-block-title">🟡 Hip Protocol</div>
-        <div class="workout-block-source">Dicharry · Starrett</div>
-      </div>
-      <div class="workout-exercises">
-        <div class="workout-ex">
-          <div class="workout-ex-name">Single leg glute bridge</div>
-          <div class="workout-ex-sets">3 × 15 each leg · Hold 2 sec · 3x/week</div>
-          <div class="workout-ex-how">Lie on back, one knee bent, other leg straight. Push through heel, lift hips to straight line. Squeeze glute hard at top.</div>
-        </div>
-        <div class="workout-divider"></div>
-        <div class="workout-ex">
-          <div class="workout-ex-name">Lateral band walks</div>
-          <div class="workout-ex-sets">3 × 20 steps each direction · 3x/week</div>
-          <div class="workout-ex-how">Band above knees, slight squat. Walk sideways maintaining constant tension. Targets glute medius — controls lateral hip stability during every running stride.</div>
-        </div>
-        <div class="workout-divider"></div>
-        <div class="workout-ex">
-          <div class="workout-ex-name">90/90 hip stretch</div>
-          <div class="workout-ex-sets">60 sec each position · Daily evening</div>
-          <div class="workout-ex-how">Both legs at 90 degrees, one forward one to side. Lean forward over front leg. Addresses both hip rotation directions.</div>
-        </div>
-      </div>
+  <div class="maf-grid">
+    <div class="maf-card">
+      <div class="maf-card-icon">❤️</div>
+      <div class="maf-card-title">What is MAF?</div>
+      <div class="maf-card-text">Maximum Aerobic Function — a method by Dr. Phil Maffetone that uses HR to build a deep aerobic base before adding speed work.</div>
     </div>
-
-    <div class="workout-block">
-      <div class="workout-block-head">
-        <div class="workout-block-title">🟢 Shin & Ankle</div>
-        <div class="workout-block-source">Ben Patrick · Dicharry</div>
-      </div>
-      <div class="workout-exercises">
-        <div class="workout-ex">
-          <div class="workout-ex-name">Tibialis raises</div>
-          <div class="workout-ex-sets">3 × 20 · Daily everywhere</div>
-          <div class="workout-ex-how">Can be done anywhere — waiting for kettle, bus stop, TV. The more frequent the better. Directly prevents shin splints.</div>
-        </div>
-        <div class="workout-divider"></div>
-        <div class="workout-ex">
-          <div class="workout-ex-name">Eccentric calf raises</div>
-          <div class="workout-ex-sets">3 × 15 · 4 seconds down · 3x/week</div>
-          <div class="workout-ex-how">Rise on two feet, lower on one foot slowly counting 4 seconds. Builds Achilles and calf tendon resilience for running impact.</div>
-        </div>
-        <div class="workout-divider"></div>
-        <div class="workout-ex">
-          <div class="workout-ex-name">Single leg balance progression</div>
-          <div class="workout-ex-sets">3 × 30 sec each leg · Daily</div>
-          <div class="workout-ex-how">Week 1: eyes open. Week 2: eyes closed. Week 3: on folded towel. Week 4: towel + eyes closed. Builds ankle proprioception.</div>
-        </div>
-        <div class="workout-divider"></div>
-        <div class="workout-ex">
-          <div class="workout-ex-name">Cadence drill</div>
-          <div class="workout-ex-sets">5 min per run · 170–175 bpm</div>
-          <div class="workout-ex-how">Metronome app set to 170. Run to the beat — stride shortens, foot lands under hips. Reduces shin impact by up to 20%.</div>
-        </div>
-      </div>
+    <div class="maf-card">
+      <div class="maf-card-icon">🔥</div>
+      <div class="maf-card-title">Fat as Fuel</div>
+      <div class="maf-card-text">Below your MAF ceiling, your body burns primarily fat. Above it, you shift to carbohydrates — burning through glycogen and generating more stress.</div>
     </div>
-
-    <div class="daily-strip">
-      <div class="daily-strip-block">
-        <div class="daily-strip-title">Every Morning</div>
-        <div class="daily-strip-items">
-          <div class="daily-strip-item">McGill curl-up</div>
-          <div class="daily-strip-item">Bird dog</div>
-          <div class="daily-strip-item">Side plank</div>
-          <div class="daily-strip-item">Tibialis raises × 20</div>
-        </div>
-      </div>
-      <div class="daily-strip-block">
-        <div class="daily-strip-title">Before Every Run</div>
-        <div class="daily-strip-items">
-          <div class="daily-strip-item">Leg swings 10 each</div>
-          <div class="daily-strip-item">Hip circles 10 each</div>
-          <div class="daily-strip-item">Walking lunges 10</div>
-          <div class="daily-strip-item">Ankle rolls 10 each</div>
-        </div>
-      </div>
-      <div class="daily-strip-block">
-        <div class="daily-strip-title">After Every Run</div>
-        <div class="daily-strip-items">
-          <div class="daily-strip-item">Calf stretch 45 sec</div>
-          <div class="daily-strip-item">Quad stretch 30 sec</div>
-          <div class="daily-strip-item">Glute bridge 20 reps</div>
-          <div class="daily-strip-item">Figure-four stretch</div>
-        </div>
-      </div>
-      <div class="daily-strip-block">
-        <div class="daily-strip-title">Every Evening</div>
-        <div class="daily-strip-items">
-          <div class="daily-strip-item">90/90 hip stretch</div>
-          <div class="daily-strip-item">Hip flexor stretch</div>
-          <div class="daily-strip-item">Figure-four stretch</div>
-          <div class="daily-strip-item">Single leg balance</div>
-        </div>
-      </div>
+    <div class="maf-card">
+      <div class="maf-card-icon">⏳</div>
+      <div class="maf-card-title">The Grey Zone</div>
+      <div class="maf-card-text">Most recreational runners spend too much time at moderate intensity — too hard to recover, too easy to stimulate. MAF fixes this.</div>
     </div>
+    <div class="maf-card">
+      <div class="maf-card-icon">📈</div>
+      <div class="maf-card-title">The Proof</div>
+      <div class="maf-card-text">Mark Allen trained so slowly cyclists asked if he was okay. A year later he was running faster at MAF HR than ever before at all-out effort.</div>
+    </div>
+  </div>
 
+  <div class="maf-explainer">
+    <h4>Why slow running feels harder than running fast</h4>
+    <p>This is the question every MAF runner asks in the first few weeks. When you run below your natural comfortable rhythm, you're fighting your own biomechanics. Your body has a preferred stride frequency designed for efficiency — running significantly slower than that feels clunky and uncoordinated.</p>
+    <p>Think of it like driving at 15 mph in a gear designed for 40 mph. The engine is working harder, not less. At very slow paces you also spend more time on one foot per stride, which demands more stability from muscles that haven't been trained for it yet.</p>
+    <blockquote>The awkwardness is temporary. As your aerobic base develops, your natural comfortable pace drops into MAF range — instead of shuffling at 17:00/mile, you'll cruise at 12:00/mile at the same heart rate.</blockquote>
+    <p>The body is also adapting at the cellular level — building mitochondrial density, improving fat oxidation, developing new capillary networks. None of this feels like progress. It is.</p>
+  </div>
+
+  <div class="maf-explainer">
+    <h4>Why your pace varies at the same heart rate</h4>
+    <p>Heart rate reflects the total demand on your body — not just running. Sleep, heat, stress, hydration, cumulative fatigue, and even time of day all change how hard your heart has to work to maintain a given pace.</p>
+    <p>A poor night's sleep raises resting HR by 5–10 bpm and makes every pace feel harder. Heat forces your heart to pump extra blood to your skin to cool you down on top of fueling your muscles. This is why MAF uses HR as the guide instead of pace — HR is the truth, pace is just the output.</p>
+    <p>When your MAF pace is slower than usual at the same HR, your body is telling you something. The slower pace on those days isn't weakness — it's your system correctly protecting itself.</p>
   </div>
 </section>
 
-<!-- MANIFESTO -->
-<section class="manifesto">
-  <div class="manifesto-text">
-    "Run slow enough to build something <span>that lasts.</span> Then smile through every mile of the way there."
+<!-- RUN LOG -->
+<section id="log">
+  <div class="section-label">Progress</div>
+  <div class="section-title">Run Log & MAF Tests</div>
+
+  <div style="margin-bottom: 32px;">
+    <div style="font-family: 'DM Serif Display', serif; font-size: 18px; margin-bottom: 16px; color: var(--black);">MAF Test Results</div>
+    <div class="maf-test-result maf-baseline">
+      <div class="maf-test-date">Baseline</div>
+      <div class="maf-test-pace">17:02 <span>/mi at 145 bpm</span></div>
+      <div class="maf-test-note">Starting point. Aerobic base thin. Normal.</div>
+    </div>
+    <div class="maf-test-result" style="opacity: 0.4;">
+      <div class="maf-test-date">Week 8</div>
+      <div class="maf-test-pace">— <span>/mi</span></div>
+      <div class="maf-test-note">Upcoming</div>
+    </div>
+    <div class="maf-test-result" style="opacity: 0.4;">
+      <div class="maf-test-date">Week 12</div>
+      <div class="maf-test-pace">— <span>/mi</span></div>
+      <div class="maf-test-note">Upcoming</div>
+    </div>
+    <div class="maf-test-result" style="opacity: 0.4;">
+      <div class="maf-test-date">Week 16</div>
+      <div class="maf-test-pace">— <span>/mi</span></div>
+      <div class="maf-test-note">Upcoming</div>
+    </div>
   </div>
-  <div class="manifesto-credit">Alex Santos · East Bay, CA · 2026</div>
+
+  <div style="font-family: 'DM Serif Display', serif; font-size: 18px; margin-bottom: 16px; color: var(--black);">Recent Runs</div>
+  <table class="log-table">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Distance</th>
+        <th>Pace / HR</th>
+        <th>Type</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="color: var(--gray-400); font-size: 13px;">Today</td>
+        <td><div class="log-pace">1.47 mi</div></td>
+        <td><div class="log-pace">17:02</div><div class="log-hr">145 avg · 156 max bpm</div></td>
+        <td><span class="log-tag tag-maf">MAF</span></td>
+        <td><div class="log-note">Knee at 2–3/10. Should have rested.</div></td>
+      </tr>
+      <tr>
+        <td style="color: var(--gray-400); font-size: 13px; opacity: 0.5;" colspan="5" style="text-align: center; padding: 24px 0;">
+          Add your runs here as you go →
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- SHOES -->
+<section id="shoes">
+  <div class="section-label">Gear</div>
+  <div class="section-title">Shoe Rotation</div>
+
+  <div class="shoe-grid">
+    <div class="shoe-item">
+      <div class="shoe-emoji">👟</div>
+      <div class="shoe-info">
+        <div class="shoe-name">ASICS Kayano 30</div>
+        <div class="shoe-use">Return-to-run · stability · borderline knee days</div>
+      </div>
+      <div class="shoe-status status-active">Phase 1 Default</div>
+    </div>
+    <div class="shoe-item">
+      <div class="shoe-emoji">👟</div>
+      <div class="shoe-info">
+        <div class="shoe-name">Hoka Bondi X</div>
+        <div class="shoe-use">Long runs · recovery · rocker reduces knee stress</div>
+      </div>
+      <div class="shoe-status status-active">Long Run</div>
+    </div>
+    <div class="shoe-item">
+      <div class="shoe-emoji">👟</div>
+      <div class="shoe-info">
+        <div class="shoe-name">ASICS Gel Nimbus 25</div>
+        <div class="shoe-use">Primary daily trainer from Phase 2 onward</div>
+      </div>
+      <div class="shoe-status status-active">Daily Trainer</div>
+    </div>
+    <div class="shoe-item">
+      <div class="shoe-emoji">👟</div>
+      <div class="shoe-info">
+        <div class="shoe-name">ASICS Novablast 3</div>
+        <div class="shoe-use">Feeling-good MAF days · Phase 3 onward only</div>
+      </div>
+      <div class="shoe-status status-active">Phase 3+</div>
+    </div>
+    <div class="shoe-item">
+      <div class="shoe-emoji">👟</div>
+      <div class="shoe-info">
+        <div class="shoe-name">Nike Metcon 7</div>
+        <div class="shoe-use">Strength routines A & B only — never run in this</div>
+      </div>
+      <div class="shoe-status status-gym">Gym Only</div>
+    </div>
+    <div class="shoe-item">
+      <div class="shoe-emoji">👟</div>
+      <div class="shoe-info">
+        <div class="shoe-name">Hoka Speedgoat 5</div>
+        <div class="shoe-use">Trail running only</div>
+      </div>
+      <div class="shoe-status status-special">Trail Only</div>
+    </div>
+    <div class="shoe-item">
+      <div class="shoe-emoji">👟</div>
+      <div class="shoe-info">
+        <div class="shoe-name">Nike Streakfly</div>
+        <div class="shoe-use">Road race day only</div>
+      </div>
+      <div class="shoe-status status-race">Race Day</div>
+    </div>
+    <div class="shoe-item">
+      <div class="shoe-emoji">👟</div>
+      <div class="shoe-info">
+        <div class="shoe-name">Nike Dragonfly (Track)</div>
+        <div class="shoe-use">Track races and time trials only</div>
+      </div>
+      <div class="shoe-status status-race">Track Only</div>
+    </div>
+    <div class="shoe-item">
+      <div class="shoe-emoji">👟</div>
+      <div class="shoe-info">
+        <div class="shoe-name">Nike Dragonfly XC</div>
+        <div class="shoe-use">Cross country and grass racing only</div>
+      </div>
+      <div class="shoe-status status-race">XC Only</div>
+    </div>
+  </div>
 </section>
 
 <!-- FOOTER -->
-<footer class="footer">
+<footer>
   <div>
-    <div class="footer-name">Alex <span>Santos</span></div>
-    <div class="footer-motto">"Smile through pain."</div>
+    <div class="footer-name">Alex Santos</div>
+    <div class="footer-sub">East Bay, CA · MAF Method · Run! Not Gasp Run Club</div>
   </div>
-  <div class="footer-club">
-    Run! Not Gasp Run Club founder<br>
-    Saturdays 9am · East Bay<br>
-    <a href="https://rng-runclub.netlify.app" target="_blank">rng-runclub.netlify.app</a>
+  <div class="footer-right">
+    Built with intention.<br>One slow mile at a time.
   </div>
 </footer>
 
