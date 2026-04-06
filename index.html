@@ -50,8 +50,8 @@
   .tag-str{background:#fae8ff;color:#7e22ce;} .tag-rec{background:#fff7ed;color:#c2410c;}
   .tag-injury{background:#fee2e2;color:#991b1b;} .tag-ok{background:#dcfce7;color:#166534;}
   .tag-tempo{background:#fef9c3;color:#854d0e;} .tag-strides{background:#f3e8ff;color:#6b21a8;}
+  .tag-race{background:#0e0e0e;color:white;}
 
-  /* WEEK BROWSER */
   .week-browser{background:var(--black);color:white;border-radius:14px;padding:22px;margin-bottom:22px;}
   .wb-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;}
   .wb-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.35);}
@@ -74,22 +74,24 @@
   .wb-day-shoe{font-size:10px;color:rgba(255,255,255,0.25);flex-shrink:0;}
   .now-badge{font-size:9px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;background:var(--accent);color:white;padding:2px 7px;border-radius:8px;margin-left:8px;vertical-align:middle;}
 
-  /* PHASE LIST */
-  .phase-list{display:flex;flex-direction:column;gap:1px;background:var(--gray-200);border-radius:12px;overflow:hidden;}
-  .phase-item{display:flex;align-items:flex-start;gap:16px;padding:18px 20px;background:var(--white);transition:background 0.15s;}
+  .phase-block{margin-bottom:24px;}
+  .phase-block-header{display:flex;align-items:center;gap:12px;padding:14px 18px;background:var(--black);border-radius:12px 12px 0 0;color:white;}
+  .phase-block-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);}
+  .phase-block-title{font-family:'DM Serif Display',serif;font-size:18px;flex:1;}
+  .phase-block-weeks{font-size:11px;color:rgba(255,255,255,0.35);}
+  .phase-list{display:flex;flex-direction:column;gap:1px;background:var(--gray-200);border-radius:0 0 12px 12px;overflow:hidden;}
+  .phase-item{display:flex;align-items:flex-start;gap:16px;padding:16px 20px;background:var(--white);transition:background 0.15s;}
   .phase-item:hover{background:var(--gray-100);}
-  .phase-num{font-family:'DM Serif Display',serif;font-size:12px;color:var(--gray-400);width:20px;flex-shrink:0;padding-top:3px;}
+  .phase-num{font-family:'DM Serif Display',serif;font-size:12px;color:var(--gray-400);width:28px;flex-shrink:0;padding-top:3px;}
   .phase-content{flex:1;}
-  .phase-title{font-family:'DM Serif Display',serif;font-size:17px;color:var(--black);margin-bottom:2px;}
+  .phase-title{font-family:'DM Serif Display',serif;font-size:16px;color:var(--black);margin-bottom:2px;}
   .phase-weeks{font-size:11px;color:var(--gray-400);margin-bottom:3px;}
   .phase-desc{font-size:13px;color:var(--gray-600);line-height:1.55;}
   .phase-miles{font-size:11px;font-weight:500;color:var(--blue);background:#eff6ff;padding:3px 9px;border-radius:10px;flex-shrink:0;align-self:flex-start;margin-top:3px;}
 
-  /* MAF CHART */
   .maf-graph-wrap{background:var(--white);border:1px solid var(--gray-200);border-radius:12px;padding:20px;margin-bottom:20px;}
   .maf-graph-title{font-family:'DM Serif Display',serif;font-size:17px;color:var(--black);margin-bottom:14px;}
 
-  /* RUN LOG */
   .run-entry{display:flex;align-items:flex-start;gap:12px;padding:14px 0;border-bottom:1px solid var(--gray-200);}
   .run-entry:last-child{border-bottom:none;}
   .run-date{font-size:11px;color:var(--gray-400);width:52px;flex-shrink:0;padding-top:2px;}
@@ -99,8 +101,7 @@
   .run-note-text{font-size:12px;color:var(--gray-400);margin-top:2px;font-style:italic;}
   .empty-state{text-align:center;padding:28px;color:var(--gray-400);font-size:13px;}
 
-  /* STRENGTH */
-  .routine-tabs{display:flex;gap:8px;margin-bottom:14px;}
+  .routine-tabs{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;}
   .routine-tab{font-size:12px;font-weight:500;padding:6px 14px;border-radius:20px;border:1px solid var(--gray-200);background:none;cursor:pointer;color:var(--gray-600);transition:all 0.15s;}
   .routine-tab.active{background:var(--black);color:white;border-color:var(--black);}
   .sc-grid{display:flex;flex-direction:column;gap:5px;}
@@ -113,7 +114,6 @@
   .sc-sets{font-size:12px;color:var(--gray-400);}
   .reset-link{font-size:12px;color:var(--gray-400);text-decoration:underline;cursor:pointer;display:block;margin-top:10px;}
 
-  /* KNEE */
   .pain-scale{display:flex;gap:5px;margin:10px 0;flex-wrap:wrap;}
   .pain-btn{width:40px;height:40px;border-radius:9px;border:2px solid var(--gray-200);background:none;cursor:pointer;font-size:14px;font-weight:600;color:var(--gray-400);transition:all 0.15s;font-family:'DM Sans',sans-serif;}
   .pain-btn:hover{border-color:var(--blue);color:var(--blue);}
@@ -130,7 +130,6 @@
   .checkin-date{font-size:11px;color:var(--gray-400);}
   .pain-alert{background:#fff1f2;border:1px solid #fecdd3;border-radius:9px;padding:11px 13px;font-size:13px;color:#9f1239;margin-top:8px;display:none;}
 
-  /* INJURY */
   .injury-entry{display:flex;align-items:flex-start;gap:10px;padding:13px 0;border-bottom:1px solid var(--gray-200);}
   .injury-entry:last-child{border-bottom:none;}
   .inj-date{font-size:11px;color:var(--gray-400);width:52px;flex-shrink:0;padding-top:2px;}
@@ -138,21 +137,18 @@
   .inj-location{font-size:14px;font-weight:500;color:var(--text);}
   .inj-note-text{font-size:12px;color:var(--gray-600);margin-top:2px;}
 
-  /* SHOES */
   .shoe-track{padding:14px 0;border-bottom:1px solid var(--gray-200);}
   .shoe-track:last-child{border-bottom:none;}
   .shoe-track-name{font-family:'DM Serif Display',serif;font-size:16px;margin-bottom:5px;}
   .shoe-track-bar-wrap{background:var(--gray-200);border-radius:20px;height:5px;overflow:hidden;margin:6px 0 8px;}
   .shoe-track-bar{height:100%;border-radius:20px;background:var(--blue);transition:width 0.4s;}
 
-  /* REFLECTION */
   .reflection-entry{padding:14px 0;border-bottom:1px solid var(--gray-200);}
   .reflection-entry:last-child{border-bottom:none;}
   .reflection-week{font-family:'DM Serif Display',serif;font-size:16px;color:var(--black);margin-bottom:3px;}
   .reflection-text{font-size:13px;color:var(--gray-600);line-height:1.65;}
   .reflection-date{font-size:11px;color:var(--gray-400);margin-top:3px;}
 
-  /* MAF EDU */
   .maf-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;}
   .maf-card{background:var(--gray-100);border-radius:12px;padding:18px;}
   .maf-card-icon{font-size:20px;margin-bottom:8px;}
@@ -170,26 +166,63 @@
   .formula-num{font-family:'DM Serif Display',serif;font-size:40px;color:white;line-height:1;}
   .formula-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:2px;}
 
-  /* INJURY NOTE */
   .injury-note{background:#fff7ed;border:1px solid #fed7aa;border-radius:12px;padding:16px 18px;margin-bottom:18px;display:flex;gap:10px;align-items:flex-start;}
   .injury-icon{font-size:17px;flex-shrink:0;margin-top:2px;}
   .injury-title{font-family:'DM Serif Display',serif;font-size:14px;color:#92400e;margin-bottom:2px;}
   .injury-text{font-size:13px;color:#78350f;line-height:1.55;}
 
-  /* FOOTER */
+  /* CAREER */
+  .career-timeline{position:relative;padding-left:28px;margin-bottom:28px;}
+  .career-timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:var(--gray-200);}
+  .career-phase{position:relative;margin-bottom:20px;}
+  .career-phase::before{content:'';position:absolute;left:-24px;top:18px;width:10px;height:10px;border-radius:50%;background:var(--gray-200);border:2px solid var(--white);}
+  .career-phase.active::before{background:var(--accent);}
+  .career-phase-inner{background:var(--white);border:1px solid var(--gray-200);border-radius:12px;padding:18px 20px;}
+  .career-phase.active .career-phase-inner{border-color:var(--accent);background:#fff9f8;}
+  .career-phase-header{display:flex;align-items:flex-start;gap:12px;margin-bottom:8px;}
+  .career-phase-num{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gray-400);padding-top:4px;width:52px;flex-shrink:0;}
+  .career-phase.active .career-phase-num{color:var(--accent);}
+  .career-phase-title{font-family:'DM Serif Display',serif;font-size:18px;color:var(--black);flex:1;}
+  .career-phase-year{font-size:11px;color:var(--gray-400);flex-shrink:0;padding-top:4px;}
+  .career-phase-goal{font-size:12px;font-weight:500;color:var(--blue);background:#eff6ff;padding:3px 9px;border-radius:10px;display:inline-block;margin-bottom:8px;}
+  .career-phase-desc{font-size:13px;color:var(--gray-600);line-height:1.6;margin-bottom:10px;}
+  .career-targets{display:flex;gap:8px;flex-wrap:wrap;}
+  .career-target{font-size:11px;font-weight:500;padding:4px 10px;border-radius:8px;background:var(--gray-100);color:var(--gray-600);}
+  .career-target.highlight{background:#0e0e0e;color:white;}
+  .timeline-table{width:100%;border-collapse:collapse;margin-bottom:24px;font-size:13px;}
+  .timeline-table th{font-size:10px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-400);padding:8px 12px;text-align:left;border-bottom:2px solid var(--gray-200);}
+  .timeline-table td{padding:11px 12px;border-bottom:1px solid var(--gray-200);color:var(--text);}
+  .timeline-table tr:last-child td{border-bottom:none;}
+  .timeline-table tr:hover td{background:var(--gray-100);}
+  .timeline-table td:first-child{font-family:'DM Serif Display',serif;font-size:16px;}
+  .timeline-table td.pace{font-family:'DM Serif Display',serif;font-size:15px;color:var(--black);}
+  .timeline-table tr.current-year td{background:#fff9f8;}
+  .timeline-table tr.current-year td:first-child{color:var(--accent);}
+  .principles-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px;}
+  .principle-card{background:var(--gray-100);border-radius:10px;padding:16px;}
+  .principle-num{font-family:'DM Serif Display',serif;font-size:28px;color:var(--gray-200);line-height:1;margin-bottom:4px;}
+  .principle-text{font-size:13px;color:var(--gray-600);line-height:1.55;}
+
   footer{border-top:1px solid var(--gray-200);padding:32px 28px;max-width:740px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;}
   .footer-name{font-family:'DM Serif Display',serif;font-size:15px;color:var(--black);}
   .footer-sub{font-size:12px;color:var(--gray-400);margin-top:2px;}
   .footer-right{font-size:12px;color:var(--gray-400);text-align:right;}
 
+  /* progress bar */
+  .plan-progress-wrap{margin-bottom:22px;}
+  .plan-progress-label{display:flex;justify-content:space-between;font-size:11px;color:var(--gray-400);margin-bottom:6px;}
+  .plan-progress-bar{height:4px;background:var(--gray-200);border-radius:4px;overflow:hidden;}
+  .plan-progress-fill{height:100%;background:var(--accent);border-radius:4px;transition:width 0.4s;}
+
   @media(max-width:580px){
     nav{padding:12px 16px;} .nav-links{gap:12px;}
     .hero{padding:104px 16px 52px;} .hero-stats{gap:20px;}
     section{padding:52px 16px;}
-    .maf-grid,.form-row{grid-template-columns:1fr;}
+    .maf-grid,.form-row,.principles-grid{grid-template-columns:1fr;}
     .hr-formula{flex-direction:column;}
     .formula-result{border-left:none;border-top:1px solid rgba(255,255,255,0.1);padding-left:0;padding-top:12px;}
     footer{flex-direction:column;gap:8px;padding:24px 16px;} .footer-right{text-align:left;}
+    .career-timeline{padding-left:20px;}
   }
 </style>
 </head>
@@ -199,32 +232,41 @@
   <div class="nav-name">Alex Santos</div>
   <div class="nav-links">
     <a href="#plan">Plan</a><a href="#log">Log</a><a href="#strength">Strength</a>
-    <a href="#knee">Knee</a><a href="#injuries">Injuries</a><a href="#shoes">Shoes</a>
-    <a href="#reflect">Reflect</a><a href="#maf">MAF</a>
+    <a href="#pain">Pain</a><a href="#injuries">Injuries</a><a href="#shoes">Shoes</a>
+    <a href="#reflect">Reflect</a><a href="#career">Career</a><a href="#maf">MAF</a>
   </div>
 </nav>
 
 <div class="hero">
   <div class="hero-eyebrow">Personal Running Journal</div>
   <h1>Training with <em>intention,</em> not ego.</h1>
-  <p class="hero-desc">Documenting my MAF training journey — building an aerobic base the right way, one slow mile at a time. East Bay, CA.</p>
+  <p class="hero-desc">45 weeks. Rehab → base → speed. Building toward sub-20 the right way. East Bay, CA.</p>
   <div class="hero-stats">
     <div><div class="hero-stat-val">153</div><div class="hero-stat-label">MAF Ceiling</div></div>
-    <div><div class="hero-stat-val" id="hero-pace">17:02</div><div class="hero-stat-label">MAF Pace</div></div>
-    <div><div class="hero-stat-val">~22 min</div><div class="hero-stat-label">5K Goal</div></div>
-    <div><div class="hero-stat-val" id="hero-week">Wk 0</div><div class="hero-stat-label">Current Phase</div></div>
+    <div><div class="hero-stat-val" id="hero-pace">14:30</div><div class="hero-stat-label">MAF Pace</div></div>
+    <div><div class="hero-stat-val">Sub-20</div><div class="hero-stat-label">Goal 5K</div></div>
+    <div><div class="hero-stat-val" id="hero-week">Wk 0</div><div class="hero-stat-label">Current Week</div></div>
   </div>
 </div>
 
 <!-- PLAN -->
 <section id="plan">
   <div class="section-label">Training</div>
-  <div class="section-title">18-Week MAF 5K Plan</div>
+  <div class="section-title">45-Week Sub-20 5K Plan</div>
+
   <div class="injury-note">
-    <div class="injury-icon">🦵</div>
-    <div><div class="injury-title">Currently in Recovery — Phase 0</div>
-    <div class="injury-text">Left knee medial irritation. Full week off before Phase 1. No running until pain-free on stairs.</div></div>
+    <div class="injury-icon">🦴</div>
+    <div>
+      <div class="injury-title">Phase 1 — Sciatica / Piriformis Rehab</div>
+      <div class="injury-text">No running until tingling resolves for 2 consecutive weeks. Daily nerve floss, piriformis stretch, glute activation. Book Sutter Health PCP via MyChart this week.</div>
+    </div>
   </div>
+
+  <div class="plan-progress-wrap">
+    <div class="plan-progress-label"><span id="prog-label">Week 0 of 45</span><span id="prog-pct">0%</span></div>
+    <div class="plan-progress-bar"><div class="plan-progress-fill" id="prog-fill" style="width:0%"></div></div>
+  </div>
+
   <div class="week-browser">
     <div class="wb-header">
       <div><div class="wb-label" id="wb-label">This Week</div><div class="wb-title" id="wb-title"></div><div class="wb-desc" id="wb-desc"></div></div>
@@ -237,13 +279,84 @@
     </div>
     <div class="wb-days" id="wb-days"></div>
   </div>
-  <div class="phase-list">
-    <div class="phase-item"><div class="phase-num">00</div><div class="phase-content"><div class="phase-title">Knee Recovery</div><div class="phase-weeks">Recovery week · No running</div><div class="phase-desc">Ice, rest, upper body only. Green light: zero pain on stairs.</div></div><div class="phase-miles">0 mi/wk</div></div>
-    <div class="phase-item"><div class="phase-num">01</div><div class="phase-content"><div class="phase-title">Return to Running</div><div class="phase-weeks">Weeks 1–4 · Kayano 30 only</div><div class="phase-desc">Short runs, walk breaks welcome. Connective tissue re-adapting.</div></div><div class="phase-miles">4–6 mi/wk</div></div>
-    <div class="phase-item"><div class="phase-num">02</div><div class="phase-content"><div class="phase-title">Building Confidence</div><div class="phase-weeks">Weeks 5–8 · MAF test week 8</div><div class="phase-desc">Runs getting longer. MAF pace visibly improving.</div></div><div class="phase-miles">6–10 mi/wk</div></div>
-    <div class="phase-item"><div class="phase-num">03</div><div class="phase-content"><div class="phase-title">Real Base Building</div><div class="phase-weeks">Weeks 9–12 · MAF test week 12</div><div class="phase-desc">Where most plans start. Aerobic engine genuinely growing.</div></div><div class="phase-miles">10–15 mi/wk</div></div>
-    <div class="phase-item"><div class="phase-num">04</div><div class="phase-content"><div class="phase-title">Aerobic Strength + Strides</div><div class="phase-weeks">Weeks 13–16 · MAF test week 16</div><div class="phase-desc">One strides session Thursday. Everything else strict MAF.</div></div><div class="phase-miles">15–20 mi/wk</div></div>
-    <div class="phase-item"><div class="phase-num">05</div><div class="phase-content"><div class="phase-title">5K Race Prep</div><div class="phase-weeks">Weeks 17–18 · Final MAF test</div><div class="phase-desc">One tempo per week. Race week volume drops 40%.</div></div><div class="phase-miles">20–22 mi/wk</div></div>
+
+  <!-- PHASE 1: REHAB -->
+  <div class="phase-block">
+    <div class="phase-block-header">
+      <div>
+        <div class="phase-block-label">Phase 1 · Weeks 1–8</div>
+        <div class="phase-block-title">Sciatica Rehab + Walking</div>
+      </div>
+      <div class="phase-block-weeks">Apr 6 – May 31</div>
+    </div>
+    <div class="phase-list">
+      <div class="phase-item"><div class="phase-num">01–02</div><div class="phase-content"><div class="phase-title">Full Stop — Nerve Recovery</div><div class="phase-weeks">Weeks 1–2 · Zero running</div><div class="phase-desc">Nerve floss, figure-4 stretch, McKenzie press-ups twice daily. Walk 20–30 min. Book PCP + PT. Heat on lower back daily.</div></div><div class="phase-miles">0 mi/wk</div></div>
+      <div class="phase-item"><div class="phase-num">03–05</div><div class="phase-content"><div class="phase-title">Rehab + Easy Walking</div><div class="phase-weeks">Weeks 3–5 · Walking only</div><div class="phase-desc">Tingling reducing. Extend walks to 45 min. Add resistance band clamshells and bird dogs. PT sessions.</div></div><div class="phase-miles">0 run / walk only</div></div>
+      <div class="phase-item"><div class="phase-num">06–08</div><div class="phase-content"><div class="phase-title">Green Light Assessment</div><div class="phase-weeks">Weeks 6–8 · PT clearance</div><div class="phase-desc">Zero tingling for 2 consecutive weeks = cleared to run. If symptoms persist, extend Phase 1. No shortcuts.</div></div><div class="phase-miles">0–2 mi/wk if cleared</div></div>
+    </div>
+  </div>
+
+  <!-- PHASE 2: MAF BASE 1 -->
+  <div class="phase-block">
+    <div class="phase-block-header">
+      <div>
+        <div class="phase-block-label">Phase 2 · Weeks 9–20</div>
+        <div class="phase-block-title">MAF Base — Foundation</div>
+      </div>
+      <div class="phase-block-weeks">Jun – Aug 2026</div>
+    </div>
+    <div class="phase-list">
+      <div class="phase-item"><div class="phase-num">09–12</div><div class="phase-content"><div class="phase-title">Return to Running</div><div class="phase-weeks">Weeks 9–12 · Walk/run intervals</div><div class="phase-desc">1 min run / 2 min walk. Strict MAF HR 153 bpm. Rehab warmup before every run. Kayano 30 only.</div></div><div class="phase-miles">4–8 mi/wk</div></div>
+      <div class="phase-item"><div class="phase-num">13–16</div><div class="phase-content"><div class="phase-title">Building Consistency</div><div class="phase-weeks">Weeks 13–16 · MAF test week 16</div><div class="phase-desc">Continuous easy running. Runs getting longer. First MAF test at end of block. Target: sub-14:00/mi.</div></div><div class="phase-miles">8–14 mi/wk</div></div>
+      <div class="phase-item"><div class="phase-num">17–20</div><div class="phase-content"><div class="phase-title">Aerobic Engine Growing</div><div class="phase-weeks">Weeks 17–20 · MAF test week 20</div><div class="phase-desc">Where most runners start. You'll be ready. Run Club long run every Saturday. MAF pace visibly dropping.</div></div><div class="phase-miles">14–20 mi/wk</div></div>
+    </div>
+  </div>
+
+  <!-- PHASE 3: MAF BASE 2 -->
+  <div class="phase-block">
+    <div class="phase-block-header">
+      <div>
+        <div class="phase-block-label">Phase 3 · Weeks 21–32</div>
+        <div class="phase-block-title">MAF Base — Development</div>
+      </div>
+      <div class="phase-block-weeks">Sep – Nov 2026</div>
+    </div>
+    <div class="phase-list">
+      <div class="phase-item"><div class="phase-num">21–24</div><div class="phase-content"><div class="phase-title">Volume Build</div><div class="phase-weeks">Weeks 21–24 · MAF test week 24</div><div class="phase-desc">Building toward 25 mi/week. Four run days. Aerobic system genuinely compounding. Target MAF pace: sub-12:30.</div></div><div class="phase-miles">20–26 mi/wk</div></div>
+      <div class="phase-item"><div class="phase-num">25–28</div><div class="phase-content"><div class="phase-title">Aerobic Strength</div><div class="phase-weeks">Weeks 25–28 · MAF test week 28</div><div class="phase-desc">Add strides once per week — 4×20 sec after easy run. Everything else strict MAF. First tune-up 5K race optional.</div></div><div class="phase-miles">26–30 mi/wk</div></div>
+      <div class="phase-item"><div class="phase-num">29–32</div><div class="phase-content"><div class="phase-title">Peak Base</div><div class="phase-weeks">Weeks 29–32 · MAF test week 32</div><div class="phase-desc">Highest volume before speed introduction. 30+ miles/week. Long runs 70–80 min. MAF pace target: sub-11:00.</div></div><div class="phase-miles">28–34 mi/wk</div></div>
+    </div>
+  </div>
+
+  <!-- PHASE 4: SPEED INTRO -->
+  <div class="phase-block">
+    <div class="phase-block-header">
+      <div>
+        <div class="phase-block-label">Phase 4 · Weeks 33–40</div>
+        <div class="phase-block-title">Speed Introduction</div>
+      </div>
+      <div class="phase-block-weeks">Dec 2026 – Jan 2027</div>
+    </div>
+    <div class="phase-list">
+      <div class="phase-item"><div class="phase-num">33–36</div><div class="phase-content"><div class="phase-title">Threshold Work Begins</div><div class="phase-weeks">Weeks 33–36</div><div class="phase-desc">One tempo run per week (20–30 min at comfortably hard effort). 80/20 split — 80% MAF, 20% quality. MAF test week 36.</div></div><div class="phase-miles">30–34 mi/wk</div></div>
+      <div class="phase-item"><div class="phase-num">37–40</div><div class="phase-content"><div class="phase-title">VO2 Max Intervals</div><div class="phase-weeks">Weeks 37–40</div><div class="phase-desc">Add one track session per week — 6×800m or 5×1000m. Tempo stays. Base stays. Three quality weeks, one recovery week.</div></div><div class="phase-miles">30–36 mi/wk</div></div>
+    </div>
+  </div>
+
+  <!-- PHASE 5: RACE PREP -->
+  <div class="phase-block">
+    <div class="phase-block-header">
+      <div>
+        <div class="phase-block-label">Phase 5 · Weeks 41–45</div>
+        <div class="phase-block-title">Race Prep + Sub-20 5K</div>
+      </div>
+      <div class="phase-block-weeks">Feb 2027</div>
+    </div>
+    <div class="phase-list">
+      <div class="phase-item"><div class="phase-num">41–43</div><div class="phase-content"><div class="phase-title">Sharpening</div><div class="phase-weeks">Weeks 41–43</div><div class="phase-desc">Peak fitness. Race pace intervals. Tune-up 5K in week 42. Final long tempo run week 43. Body at its sharpest.</div></div><div class="phase-miles">28–32 mi/wk</div></div>
+      <div class="phase-item"><div class="phase-num">44</div><div class="phase-content"><div class="phase-title">Taper</div><div class="phase-weeks">Week 44</div><div class="phase-desc">Volume drops 40%. Short sharp workouts only. Trust the training. Stay off your feet. Sleep becomes training.</div></div><div class="phase-miles">16–18 mi/wk</div></div>
+      <div class="phase-item"><div class="phase-num">45</div><div class="phase-content"><div class="phase-title">🏁 Sub-20 5K Race Week</div><div class="phase-weeks">Week 45 · Goal: 19:59</div><div class="phase-desc">Easy shakeouts Mon–Thu. Full rest Fri–Sat. Race Sunday. Everything you built for 44 weeks comes out in 20 minutes.</div></div><div class="phase-miles">Race week</div></div>
+    </div>
   </div>
 </section>
 
@@ -257,7 +370,7 @@
     <div style="margin-top:16px;border-top:1px solid var(--gray-200);padding-top:14px;">
       <div style="font-size:13px;color:var(--gray-600);margin-bottom:10px;">Log a MAF test result</div>
       <div class="form-row">
-        <div class="form-group"><label>Week #</label><input type="number" id="maf-week" placeholder="8" min="1" max="18"></div>
+        <div class="form-group"><label>Week #</label><input type="number" id="maf-week" placeholder="16" min="1" max="45"></div>
         <div class="form-group"><label>Avg Pace (min/mi)</label><input type="text" id="maf-pace-in" placeholder="14:30"></div>
       </div>
       <button class="btn btn-primary" onclick="addMAFTest()">Save MAF Test</button>
@@ -268,18 +381,18 @@
     <div class="card-title">Log a Run</div>
     <div class="form-row">
       <div class="form-group"><label>Date</label><input type="date" id="run-date"></div>
-      <div class="form-group"><label>Distance (mi)</label><input type="number" id="run-dist" placeholder="1.47" step="0.01"></div>
+      <div class="form-group"><label>Distance (mi)</label><input type="number" id="run-dist" placeholder="3.0" step="0.01"></div>
     </div>
     <div class="form-row">
-      <div class="form-group"><label>Avg Pace (min/mi)</label><input type="text" id="run-pace" placeholder="17:02"></div>
-      <div class="form-group"><label>Avg HR</label><input type="number" id="run-hr" placeholder="145"></div>
+      <div class="form-group"><label>Avg Pace (min/mi)</label><input type="text" id="run-pace" placeholder="14:30"></div>
+      <div class="form-group"><label>Avg HR</label><input type="number" id="run-hr" placeholder="149"></div>
     </div>
     <div class="form-row">
-      <div class="form-group"><label>Max HR</label><input type="number" id="run-maxhr" placeholder="156"></div>
-      <div class="form-group"><label>Type</label><select id="run-type"><option value="maf">MAF Easy</option><option value="long">Long Run</option><option value="xt">Cross-Train</option><option value="tempo">Tempo</option><option value="strides">Strides</option></select></div>
+      <div class="form-group"><label>Max HR</label><input type="number" id="run-maxhr" placeholder="153"></div>
+      <div class="form-group"><label>Type</label><select id="run-type"><option value="maf">MAF Easy</option><option value="long">Long Run</option><option value="xt">Cross-Train</option><option value="tempo">Tempo</option><option value="strides">Strides</option><option value="race">Race</option></select></div>
     </div>
     <div class="form-group"><label>Shoe</label><select id="run-shoe"><option>Kayano 30</option><option>Bondi X</option><option>Nimbus 25</option><option>Novablast 3</option><option>Streakfly</option><option>Speedgoat 5</option><option>Other</option></select></div>
-    <div class="form-group"><label>Notes / How it felt</label><textarea id="run-notes" placeholder="e.g. Felt strong, HR stable. Knee quiet."></textarea></div>
+    <div class="form-group"><label>Notes / How it felt</label><textarea id="run-notes" placeholder="e.g. Felt strong, HR stable. No tingling today."></textarea></div>
     <button class="btn btn-primary" onclick="addRun()">Save Run</button>
   </div>
   <div id="run-list"></div>
@@ -291,31 +404,49 @@
   <div class="section-title">Weekly Routines</div>
   <p style="font-size:13px;color:var(--gray-600);margin-bottom:18px;">Tap to check off. Resets every Monday.</p>
   <div class="routine-tabs">
-    <button class="routine-tab active" onclick="switchRoutine('A',this)">Routine A — Glutes & Knee</button>
-    <button class="routine-tab" onclick="switchRoutine('B',this)">Routine B — Calves & Core</button>
+    <button class="routine-tab active" onclick="switchRoutine('C',this)">Sciatic Rehab</button>
+    <button class="routine-tab" onclick="switchRoutine('A',this)">Glutes & Knee</button>
+    <button class="routine-tab" onclick="switchRoutine('B',this)">Calves & Core</button>
   </div>
-  <div id="routine-A" class="sc-grid">
+
+  <div id="routine-C" class="sc-grid">
+    <div class="sc-item" onclick="toggleSC('C','nf')"><div class="sc-check" id="sc-C-nf"></div><div class="sc-name">Sciatic Nerve Floss</div><div class="sc-sets">10 reps each side · slow</div></div>
+    <div class="sc-item" onclick="toggleSC('C','f4')"><div class="sc-check" id="sc-C-f4"></div><div class="sc-name">Figure-4 Piriformis Stretch</div><div class="sc-sets">3 × 30 sec each side</div></div>
+    <div class="sc-item" onclick="toggleSC('C','mk')"><div class="sc-check" id="sc-C-mk"></div><div class="sc-name">McKenzie Press-Ups</div><div class="sc-sets">10 reps · lying face down</div></div>
+    <div class="sc-item" onclick="toggleSC('C','gb2')"><div class="sc-check" id="sc-C-gb2"></div><div class="sc-name">Glute Bridges</div><div class="sc-sets">3 × 15</div></div>
+    <div class="sc-item" onclick="toggleSC('C','cl2')"><div class="sc-check" id="sc-C-cl2"></div><div class="sc-name">Clamshells with Band</div><div class="sc-sets">3 × 15 each side</div></div>
+    <div class="sc-item" onclick="toggleSC('C','bd')"><div class="sc-check" id="sc-C-bd"></div><div class="sc-name">Bird Dogs</div><div class="sc-sets">3 × 10 each side</div></div>
+    <div class="sc-item" onclick="toggleSC('C','db2')"><div class="sc-check" id="sc-C-db2"></div><div class="sc-name">Dead Bugs</div><div class="sc-sets">3 × 10 each side</div></div>
+    <div class="sc-item" onclick="toggleSC('C','wk')"><div class="sc-check" id="sc-C-wk"></div><div class="sc-name">Easy Walk</div><div class="sc-sets">20–30 min · daily</div></div>
+  </div>
+
+  <div id="routine-A" class="sc-grid" style="display:none;">
     <div class="sc-item" onclick="toggleSC('A','gb')"><div class="sc-check" id="sc-A-gb"></div><div class="sc-name">Glute Bridges</div><div class="sc-sets">3 × 15</div></div>
+    <div class="sc-item" onclick="toggleSC('A','slgb')"><div class="sc-check" id="sc-A-slgb"></div><div class="sc-name">Single-Leg Glute Bridge</div><div class="sc-sets">3 × 10 each</div></div>
     <div class="sc-item" onclick="toggleSC('A','sldl')"><div class="sc-check" id="sc-A-sldl"></div><div class="sc-name">Single-Leg Deadlift</div><div class="sc-sets">3 × 8 each</div></div>
     <div class="sc-item" onclick="toggleSC('A','clam')"><div class="sc-check" id="sc-A-clam"></div><div class="sc-name">Clamshells</div><div class="sc-sets">3 × 15 each</div></div>
+    <div class="sc-item" onclick="toggleSC('A','ha')"><div class="sc-check" id="sc-A-ha"></div><div class="sc-name">Hip Abduction (band)</div><div class="sc-sets">3 × 15 each</div></div>
     <div class="sc-item" onclick="toggleSC('A','db')"><div class="sc-check" id="sc-A-db"></div><div class="sc-name">Dead Bug</div><div class="sc-sets">3 × 8 each</div></div>
   </div>
+
   <div id="routine-B" class="sc-grid" style="display:none;">
     <div class="sc-item" onclick="toggleSC('B','cr')"><div class="sc-check" id="sc-B-cr"></div><div class="sc-name">Single-Leg Calf Raises</div><div class="sc-sets">3 × 15 each</div></div>
     <div class="sc-item" onclick="toggleSC('B','tr')"><div class="sc-check" id="sc-B-tr"></div><div class="sc-name">Tibialis Raises</div><div class="sc-sets">3 × 20</div></div>
     <div class="sc-item" onclick="toggleSC('B','ts')"><div class="sc-check" id="sc-B-ts"></div><div class="sc-name">Towel Scrunches</div><div class="sc-sets">2 × 30 sec each</div></div>
     <div class="sc-item" onclick="toggleSC('B','pl')"><div class="sc-check" id="sc-B-pl"></div><div class="sc-name">Plank</div><div class="sc-sets">3 × 45 sec</div></div>
+    <div class="sc-item" onclick="toggleSC('B','sp')"><div class="sc-check" id="sc-B-sp"></div><div class="sc-name">Side Plank</div><div class="sc-sets">3 × 30 sec each</div></div>
+    <div class="sc-item" onclick="toggleSC('B','rr')"><div class="sc-check" id="sc-B-rr"></div><div class="sc-name">Romanian Deadlift (light)</div><div class="sc-sets">3 × 10</div></div>
   </div>
   <span class="reset-link" onclick="resetSC()">Reset all exercises</span>
 </section>
 
-<!-- KNEE CHECK-IN -->
-<section id="knee">
+<!-- PAIN LOG -->
+<section id="pain">
   <div class="section-label">Check-In</div>
-  <div class="section-title">Daily Knee Log</div>
-  <p style="font-size:14px;color:var(--gray-600);margin-bottom:18px;">Log pain before each run. Catching trends early is everything.</p>
+  <div class="section-title">Daily Pain Log</div>
+  <p style="font-size:14px;color:var(--gray-600);margin-bottom:18px;">Log nerve and joint pain every day. Trends matter more than single readings.</p>
   <div class="card-white" style="margin-bottom:18px;">
-    <div class="card-title">How's the left knee today?</div>
+    <div class="card-title">How's the left side today?</div>
     <div style="font-size:12px;color:var(--gray-400);margin-bottom:8px;">0 = zero pain · 10 = severe</div>
     <div class="pain-scale" id="pain-scale">
       <button class="pain-btn p0" onclick="selectPain(0)">0</button><button class="pain-btn p1" onclick="selectPain(1)">1</button>
@@ -325,9 +456,9 @@
       <button class="pain-btn p8" onclick="selectPain(8)">8</button><button class="pain-btn p9" onclick="selectPain(9)">9</button>
       <button class="pain-btn p10" onclick="selectPain(10)">10</button>
     </div>
-    <div class="form-group"><label>Notes (optional)</label><input type="text" id="knee-note" placeholder="e.g. Felt it on stairs this morning"></div>
+    <div class="form-group" style="margin-top:8px;"><label>Notes (optional)</label><input type="text" id="knee-note" placeholder="e.g. Tingling in left foot, IT band sore, lower back tight"></div>
     <button class="btn btn-primary" onclick="saveCheckin()" style="margin-top:4px;">Log Check-In</button>
-    <div class="pain-alert" id="pain-alert">⚠️ Pain at 4+: no running today. Ice, rest, monitor. If it persists 3+ days, see a physio.</div>
+    <div class="pain-alert" id="pain-alert">⚠️ Pain at 4+: no running today. Ice, rest, monitor. Persists 3+ days → see PT.</div>
   </div>
   <div style="font-family:'DM Serif Display',serif;font-size:17px;margin-bottom:10px;">Recent Check-Ins</div>
   <div class="checkin-log" id="checkin-log"></div>
@@ -342,13 +473,21 @@
     <div class="card-title">Log an Issue</div>
     <div class="form-row">
       <div class="form-group"><label>Date</label><input type="date" id="inj-date"></div>
-      <div class="form-group"><label>Body Part</label><select id="inj-loc"><option>Left knee (inner)</option><option>Left knee (outer)</option><option>Right knee</option><option>Left shin</option><option>Right shin</option><option>Left foot / plantar</option><option>Right foot / plantar</option><option>Lower back</option><option>IT band</option><option>Achilles</option><option>Other</option></select></div>
+      <div class="form-group"><label>Body Part</label><select id="inj-loc">
+        <option>Left sciatic nerve</option><option>Left piriformis</option>
+        <option>Lower back (L4/L5)</option><option>Left foot tingling</option>
+        <option>Left IT band</option><option>Left knee (inner)</option>
+        <option>Left knee (outer)</option><option>Right knee</option>
+        <option>Left shin</option><option>Right shin</option>
+        <option>Left foot / plantar</option><option>Right foot / plantar</option>
+        <option>Right IT band</option><option>Achilles</option><option>Other</option>
+      </select></div>
     </div>
     <div class="form-row">
-      <div class="form-group"><label>Pain Level (0–10)</label><input type="number" id="inj-pain" min="0" max="10" placeholder="3"></div>
+      <div class="form-group"><label>Pain Level (0–10)</label><input type="number" id="inj-pain" min="0" max="10" placeholder="4"></div>
       <div class="form-group"><label>Status</label><select id="inj-status"><option value="new">New issue</option><option value="ongoing">Ongoing</option><option value="resolved">Resolved</option></select></div>
     </div>
-    <div class="form-group"><label>Notes</label><textarea id="inj-notes" placeholder="e.g. Inner knee ache during mile 2, 2–3/10 all day"></textarea></div>
+    <div class="form-group"><label>Notes</label><textarea id="inj-notes" placeholder="e.g. Tingling down left leg into foot. IT band sore. Worsens with sitting."></textarea></div>
     <button class="btn btn-primary" onclick="addInjury()">Log Issue</button>
   </div>
   <div id="injury-list"></div>
@@ -369,13 +508,156 @@
   <p style="font-size:14px;color:var(--gray-600);margin-bottom:18px;">One thought on how the week went. Future you will love reading this.</p>
   <div class="card-white" style="margin-bottom:18px;">
     <div class="card-title" id="reflect-label">This Week's Reflection</div>
-    <div class="form-group"><label>How did the week go?</label><textarea id="reflect-text" placeholder="e.g. Stayed disciplined. Knee feels better. Pace improving on Thursday run." style="min-height:90px;"></textarea></div>
+    <div class="form-group"><label>How did the week go?</label><textarea id="reflect-text" placeholder="e.g. Rehab consistent. Tingling slightly less. Slept well. Stress lower." style="min-height:90px;"></textarea></div>
     <button class="btn btn-primary" onclick="saveReflection()">Save Reflection</button>
   </div>
   <div id="reflection-list"></div>
 </section>
 
-<!-- MAF EDUCATION -->
+<!-- CAREER ROADMAP -->
+<section id="career">
+  <div class="section-label">The Long Game</div>
+  <div class="section-title">Running Career Roadmap</div>
+  <p style="font-size:14px;color:var(--gray-600);margin-bottom:28px;">Nine phases. One direction. Built to last a decade and beyond.</p>
+  <div class="career-timeline">
+    <div class="career-phase active">
+      <div class="career-phase-inner">
+        <div class="career-phase-header">
+          <div class="career-phase-num">Phase 0</div>
+          <div class="career-phase-title">Heal First</div>
+          <div class="career-phase-year">Now → 2026</div>
+        </div>
+        <div class="career-phase-goal">Current Phase</div>
+        <div class="career-phase-desc">Sciatic nerve recovery. Daily rehab, no running until tingling resolves for 2 consecutive weeks. See Sutter Health PCP. Get lumbar MRI referral. This is the foundation everything else is built on.</div>
+        <div class="career-targets"><span class="career-target highlight">Zero tingling</span><span class="career-target">Daily rehab</span><span class="career-target">PCP + PT visit</span></div>
+      </div>
+    </div>
+    <div class="career-phase">
+      <div class="career-phase-inner">
+        <div class="career-phase-header">
+          <div class="career-phase-num">Phase 1</div>
+          <div class="career-phase-title">Base Rebuild → Sub-20 5K</div>
+          <div class="career-phase-year">2026–2027</div>
+        </div>
+        <div class="career-phase-goal">This 45-Week Plan</div>
+        <div class="career-phase-desc">Rehab → MAF base → speed introduction → sub-20 5K. Walk/run intervals building to 30+ miles/week. Rehab exercises become permanent pre-run warmup.</div>
+        <div class="career-targets"><span class="career-target highlight">Sub-20 5K</span><span class="career-target">30+ mi/week</span><span class="career-target">Sub-11:00 MAF</span></div>
+      </div>
+    </div>
+    <div class="career-phase">
+      <div class="career-phase-inner">
+        <div class="career-phase-header">
+          <div class="career-phase-num">Phase 2</div>
+          <div class="career-phase-title">5K Mastery</div>
+          <div class="career-phase-year">2027</div>
+        </div>
+        <div class="career-phase-goal">Age 23</div>
+        <div class="career-phase-desc">Build to 35 miles/week. VO2 max workouts on track. Norwegian method doubles introduced. Spring and fall 5K race seasons.</div>
+        <div class="career-targets"><span class="career-target highlight">Sub-18 5K</span><span class="career-target">35 mi/week</span><span class="career-target">Track workouts</span></div>
+      </div>
+    </div>
+    <div class="career-phase">
+      <div class="career-phase-inner">
+        <div class="career-phase-header">
+          <div class="career-phase-num">Phase 3</div>
+          <div class="career-phase-title">Bridge to Marathon</div>
+          <div class="career-phase-year">2027–2028</div>
+        </div>
+        <div class="career-phase-goal">Age 23–24</div>
+        <div class="career-phase-desc">Mileage builds to 40–50 miles/week. Long runs to 20 miles. First marathon goal: finish strong. 5K used as speed work between marathon cycles.</div>
+        <div class="career-targets"><span class="career-target highlight">First marathon</span><span class="career-target">Sub-17 5K</span><span class="career-target">40–50 mi/week</span></div>
+      </div>
+    </div>
+    <div class="career-phase">
+      <div class="career-phase-inner">
+        <div class="career-phase-header">
+          <div class="career-phase-num">Phase 4</div>
+          <div class="career-phase-title">Serious Marathon</div>
+          <div class="career-phase-year">2028–2029</div>
+        </div>
+        <div class="career-phase-goal">Age 24–25</div>
+        <div class="career-phase-desc">Peak weeks 55–65 miles. Two quality sessions/week. One marathon per year minimum. Sub-3:30 marathon, sub-17 5K territory.</div>
+        <div class="career-targets"><span class="career-target highlight">Sub-3:30 marathon</span><span class="career-target">Sub-17 5K</span><span class="career-target">55–65 mi/week</span></div>
+      </div>
+    </div>
+    <div class="career-phase">
+      <div class="career-phase-inner">
+        <div class="career-phase-header">
+          <div class="career-phase-num">Phase 5</div>
+          <div class="career-phase-title">Elite Amateur</div>
+          <div class="career-phase-year">2029–2031</div>
+        </div>
+        <div class="career-phase-goal">Age 25–27</div>
+        <div class="career-phase-desc">65–75 miles/week peak. Double threshold days. Spring 5K season, fall marathon season. Race 4–5 times per year.</div>
+        <div class="career-targets"><span class="career-target highlight">Sub-3:00 marathon</span><span class="career-target">Sub-16:30 5K</span><span class="career-target">65–75 mi/week</span></div>
+      </div>
+    </div>
+    <div class="career-phase">
+      <div class="career-phase-inner">
+        <div class="career-phase-header">
+          <div class="career-phase-num">Phase 6</div>
+          <div class="career-phase-title">Peak Performance</div>
+          <div class="career-phase-year">2031–2033</div>
+        </div>
+        <div class="career-phase-goal">Age 27–29 · Physiological Peak</div>
+        <div class="career-phase-desc">75–85 miles/week. Full Norwegian method. Altitude camps if feasible. Coach strongly recommended. This is the ceiling.</div>
+        <div class="career-targets"><span class="career-target highlight">Sub-2:45 marathon</span><span class="career-target">Sub-16:00 5K</span><span class="career-target">75–85 mi/week</span></div>
+      </div>
+    </div>
+    <div class="career-phase">
+      <div class="career-phase-inner">
+        <div class="career-phase-header">
+          <div class="career-phase-num">Phase 7</div>
+          <div class="career-phase-title">Masters Preparation</div>
+          <div class="career-phase-year">2033–2035</div>
+        </div>
+        <div class="career-phase-goal">Age 29–31</div>
+        <div class="career-phase-desc">Recovery between hard sessions increases. Strength training 2×/week permanently. Injury prevention equals performance in priority.</div>
+        <div class="career-targets"><span class="career-target highlight">Sub-2:50 marathon</span><span class="career-target">Maintain speed</span><span class="career-target">Stay healthy</span></div>
+      </div>
+    </div>
+    <div class="career-phase">
+      <div class="career-phase-inner">
+        <div class="career-phase-header">
+          <div class="career-phase-num">Phase 8</div>
+          <div class="career-phase-title">Masters Runner</div>
+          <div class="career-phase-year">2035+</div>
+        </div>
+        <div class="career-phase-goal">Age 31+ · A New Arena</div>
+        <div class="career-phase-desc">USATF Masters Championships. Boston qualifier (easier with age group adjustments). 60–70 miles/week. Consistency over volume.</div>
+        <div class="career-targets"><span class="career-target highlight">Boston qualifier</span><span class="career-target">USATF Masters</span><span class="career-target">Sub-17 AG</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="font-family:'DM Serif Display',serif;font-size:22px;letter-spacing:-0.5px;margin-bottom:16px;color:var(--black);">10-Year Projections</div>
+  <div class="card-white" style="padding:0;overflow:hidden;">
+    <table class="timeline-table">
+      <thead><tr><th>Year</th><th>Age</th><th>Phase</th><th>5K</th><th>Marathon</th></tr></thead>
+      <tbody>
+        <tr class="current-year"><td>2027</td><td>22–23</td><td style="color:var(--gray-600);font-size:12px;">This Plan</td><td class="pace">Sub-20:00</td><td style="color:var(--gray-400);">—</td></tr>
+        <tr><td>2027</td><td>23</td><td style="color:var(--gray-600);font-size:12px;">5K Mastery</td><td class="pace">Sub-18:00</td><td style="color:var(--gray-400);">—</td></tr>
+        <tr><td>2028</td><td>24</td><td style="color:var(--gray-600);font-size:12px;">Marathon Bridge</td><td class="pace">Sub-17:00</td><td class="pace">First finish</td></tr>
+        <tr><td>2029</td><td>25</td><td style="color:var(--gray-600);font-size:12px;">Serious Marathon</td><td class="pace">Sub-17:00</td><td class="pace">Sub-3:30</td></tr>
+        <tr><td>2030</td><td>26</td><td style="color:var(--gray-600);font-size:12px;">Elite Amateur</td><td class="pace">Sub-16:30</td><td class="pace">Sub-3:00</td></tr>
+        <tr><td>2032</td><td>28</td><td style="color:var(--gray-600);font-size:12px;">Peak Performance</td><td class="pace">Sub-16:00</td><td class="pace">Sub-2:45</td></tr>
+        <tr><td>2035</td><td>31</td><td style="color:var(--gray-600);font-size:12px;">Masters Runner</td><td class="pace">Sub-16:30 AG</td><td class="pace">Sub-2:50</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="font-family:'DM Serif Display',serif;font-size:22px;letter-spacing:-0.5px;margin:28px 0 16px;color:var(--black);">Non-Negotiable Principles</div>
+  <div class="principles-grid">
+    <div class="principle-card"><div class="principle-num">01</div><div class="principle-text">MAF base always comes first. Never skip easy running for hard running.</div></div>
+    <div class="principle-card"><div class="principle-num">02</div><div class="principle-text">Rehab exercises are permanent. Every run starts with hip and glute activation.</div></div>
+    <div class="principle-card"><div class="principle-num">03</div><div class="principle-text">10% mileage increase rule. Never exceed it, no exceptions.</div></div>
+    <div class="principle-card"><div class="principle-num">04</div><div class="principle-text">One hard workout max per week until 40+ miles/week.</div></div>
+    <div class="principle-card"><div class="principle-num">05</div><div class="principle-text">Sleep 8 hours. Non-negotiable for nerve healing and aerobic adaptation.</div></div>
+    <div class="principle-card"><div class="principle-num">06</div><div class="principle-text">Stress management directly affects injury risk. Protect your nervous system.</div></div>
+  </div>
+</section>
+
+<!-- MAF -->
 <section id="maf">
   <div class="section-label">Method</div>
   <div class="section-title">Understanding MAF</div>
@@ -393,127 +675,291 @@
     <h4>Why slow running feels harder than running fast</h4>
     <p>When you run below your natural comfortable rhythm, you're fighting your own biomechanics. Your body has a preferred stride frequency — running significantly slower feels clunky and uncoordinated.</p>
     <p>Think of it like driving at 15 mph in a gear designed for 40 mph. At very slow paces you also spend more time on one foot per stride, demanding more stability from muscles not yet trained for it.</p>
-    <blockquote>The awkwardness is temporary. As your base develops your natural pace drops into MAF range — instead of shuffling at 17:00/mile, you'll cruise at 12:00/mile at the same heart rate.</blockquote>
+    <blockquote>The awkwardness is temporary. As your base develops your natural pace drops into MAF range — instead of shuffling at 14:30/mile, you'll cruise at 10:00/mile at the same heart rate.</blockquote>
     <p>The body adapts at the cellular level — building mitochondrial density, improving fat oxidation, developing capillary networks. None of this feels like progress. It is.</p>
   </div>
   <div class="maf-explainer">
     <h4>Why your pace varies at the same heart rate</h4>
     <p>HR reflects the total demand on your body — not just running. Sleep, heat, stress, hydration, and cumulative fatigue all change how hard your heart works at a given pace.</p>
     <p>A poor night's sleep raises resting HR by 5–10 bpm. Heat forces your heart to cool your skin on top of fueling your muscles. HR is the truth. Pace is just the output.</p>
-    <p>When your MAF pace is slower than usual, your body is telling you something. Listen to it — the same way you should have listened to that knee last week.</p>
+    <p>When your MAF pace is slower than usual, your body is telling you something. Listen to it.</p>
   </div>
 </section>
 
 <footer>
   <div><div class="footer-name">Alex Santos</div><div class="footer-sub">East Bay, CA · MAF Method · Run! Not Gasp Run Club</div></div>
-  <div class="footer-right">Built with intention.<br>One slow mile at a time.</div>
+  <div class="footer-right">45 weeks.<br>One direction.</div>
 </footer>
 
 <script>
-// ── STORAGE ──────────────────────────────────────────────────────
 const ld=(k,f)=>{try{const v=localStorage.getItem(k);return v?JSON.parse(v):f;}catch{return f;}};
 const sv=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v));}catch{}};
 
-// ── PLAN DATA ─────────────────────────────────────────────────────
-const PLAN_START=new Date('2026-03-23');
-const TOTAL_WEEKS=19;
-const tagMap={maf:'tag-maf',long:'tag-long',xt:'tag-xt',rest:'tag-rest',str:'tag-str',rec:'tag-rec',tempo:'tag-tempo'};
+// Plan starts April 6 2026
+const PLAN_START = new Date('2026-04-06');
+const TOTAL_WEEKS = 45;
+const tagMap={maf:'tag-maf',long:'tag-long',xt:'tag-xt',rest:'tag-rest',str:'tag-str',rec:'tag-rec',tempo:'tag-tempo',race:'tag-race',strides:'tag-strides'};
 
-const buildWeeks=()=>{
-  const w=[];
-  // Week 0
-  w.push({phase:'Phase 0',title:'Full Stop — Knee Recovery',desc:'Rest, ice, heal. No running until pain-free on stairs.',miles:'0 mi',
-    days:[{n:'Mon',t:'rec',tl:'RICE',tx:'Ice knee 3× · 15–20 min · elevate',sh:''},{n:'Tue',t:'str',tl:'STR',tx:'Upper body + core only · Metcon 7',sh:''},{n:'Wed',t:'xt',tl:'CROSS',tx:'Swim if pain-free · or rest',sh:''},{n:'Thu',t:'str',tl:'STR',tx:'Upper body + dead bug + plank',sh:''},{n:'Fri',t:'rest',tl:'REST',tx:'Full rest',sh:''},{n:'Sat',t:'rec',tl:'WALK',tx:'20–30 min easy walk · assess knee',sh:'Kayano'},{n:'Sun',t:'rest',tl:'REST',tx:'Full rest',sh:''}]});
-  // Phase 1
-  for(let i=0;i<4;i++) w.push({phase:'Phase 1',title:`Return to Running — Week ${i+1}`,desc:'Short runs, walk breaks welcome. Kayano 30 only.',miles:`${(4.4*Math.pow(1.1,i)).toFixed(1)} mi`,
-    days:[{n:'Mon',t:'maf',tl:'MAF',tx:'20 min easy run/walk',sh:'Kayano 30'},{n:'Tue',t:'str',tl:'STR',tx:'Strength Routine A · 15 min',sh:'Metcon 7'},{n:'Wed',t:'xt',tl:'CROSS',tx:'25 min bike/swim · ≤148 bpm',sh:''},{n:'Thu',t:'maf',tl:'MAF',tx:'20 min easy run + Strength B',sh:'Kayano 30'},{n:'Fri',t:'rest',tl:'REST',tx:'Full rest · foot roll',sh:''},{n:'Sat',t:'long',tl:'LONG',tx:'25–30 min long MAF · Run Club!',sh:'Bondi X'},{n:'Sun',t:'rest',tl:'REST',tx:'Full rest',sh:''}]});
-  // Phase 2
-  for(let i=0;i<4;i++) w.push({phase:'Phase 2',title:`Building Confidence — Week ${i+5}`,desc:i===3?'MAF TEST this week! Flat route, 20 min at 148–150 bpm.':'Runs getting longer. MAF pace visibly improving.',miles:`${6+i}–${7+i} mi`,
-    days:[{n:'Mon',t:'maf',tl:'MAF',tx:'25–30 min easy run',sh:'Nimbus 25'},{n:'Tue',t:'str',tl:'STR',tx:'Strength A + resistance band',sh:'Metcon 7'},{n:'Wed',t:'xt',tl:'CROSS',tx:'35 min bike/swim · 145–148 bpm',sh:''},{n:'Thu',t:'maf',tl:'MAF',tx:'30 min easy run + Strength B',sh:'Kayano 30'},{n:'Fri',t:'rest',tl:'REST',tx:'Full rest',sh:''},{n:'Sat',t:'long',tl:i===3?'TEST':'LONG',tx:i===3?'MAF TEST + Run Club!':'35–40 min long MAF · Run Club!',sh:'Bondi X'},{n:'Sun',t:'rest',tl:'REST',tx:'Full rest',sh:''}]});
-  // Phase 3
-  for(let i=0;i<4;i++) w.push({phase:'Phase 3',title:`Real Base Building — Week ${i+9}`,desc:i===3?'MAF TEST! Aerobic gains should be very visible.':'Aerobic engine growing. Where most plans start — you\'re ready.',miles:`${10+Math.round(i*1.2)}–${12+Math.round(i*1.2)} mi`,
-    days:[{n:'Mon',t:'maf',tl:'MAF',tx:'35–40 min easy run',sh:'Nimbus 25'},{n:'Tue',t:'maf',tl:'MAF',tx:'35 min easy run + Strength A',sh:'Kayano 30'},{n:'Wed',t:'xt',tl:'CROSS',tx:'40 min bike/swim',sh:''},{n:'Thu',t:'maf',tl:'MAF',tx:'40 min easy run + Strength B',sh:'Nimbus 25'},{n:'Fri',t:'rest',tl:'REST',tx:'Full rest',sh:''},{n:'Sat',t:'long',tl:i===3?'TEST':'LONG',tx:i===3?'MAF TEST + Run Club!':'50–55 min long MAF · Run Club!',sh:'Bondi X'},{n:'Sun',t:'rest',tl:'REST',tx:'Full rest',sh:''}]});
-  // Phase 4
-  for(let i=0;i<4;i++) w.push({phase:'Phase 4',title:`Aerobic Strength + Strides — Week ${i+13}`,desc:i===3?'MAF TEST! Strides translating to pace.':'One strides Thursday. Everything else strict MAF.',miles:`${15+Math.round(i*1.2)}–${17+Math.round(i*1.2)} mi`,
-    days:[{n:'Mon',t:'maf',tl:'MAF',tx:'40 min easy run',sh:'Nimbus 25'},{n:'Tue',t:'maf',tl:'MAF',tx:'40 min easy run + Strength A',sh:'Kayano 30'},{n:'Wed',t:'xt',tl:'CROSS',tx:'40 min bike/swim',sh:''},{n:'Thu',t:'maf',tl:'MAF',tx:'40 min MAF + 4–6×20sec strides + Strength B',sh:'Novablast 3'},{n:'Fri',t:'rest',tl:'REST',tx:'Full rest',sh:''},{n:'Sat',t:'long',tl:i===3?'TEST':'LONG',tx:i===3?'MAF TEST + Run Club!':'60 min long MAF · Run Club!',sh:'Bondi X'},{n:'Sun',t:'rest',tl:'REST',tx:'Full rest',sh:''}]});
-  // Phase 5
-  w.push({phase:'Phase 5',title:'Race Prep — Week 17',desc:'One tempo Thursday. Final MAF test Saturday.',miles:'20–22 mi',
-    days:[{n:'Mon',t:'maf',tl:'MAF',tx:'40 min easy run',sh:'Nimbus 25'},{n:'Tue',t:'maf',tl:'MAF',tx:'40 min easy run + Strength A',sh:'Kayano 30'},{n:'Wed',t:'xt',tl:'CROSS',tx:'35 min bike/swim',sh:''},{n:'Thu',t:'tempo',tl:'TEMPO',tx:'30 min MAF + 10 min tempo',sh:'Novablast 3'},{n:'Fri',t:'rest',tl:'REST',tx:'Full rest',sh:''},{n:'Sat',t:'long',tl:'TEST',tx:'Final MAF TEST + Run Club!',sh:'Nimbus 25'},{n:'Sun',t:'rest',tl:'REST',tx:'Full rest',sh:''}]});
-  w.push({phase:'Phase 5',title:'🏁 Race Week — Week 18',desc:'Volume drops 40%. Stay sharp, stay fresh. Race day Sunday.',miles:'12–14 mi',
-    days:[{n:'Mon',t:'maf',tl:'MAF',tx:'25 min easy shakeout',sh:'Nimbus 25'},{n:'Tue',t:'maf',tl:'MAF',tx:'20 min easy + 4×strides',sh:'Novablast 3'},{n:'Wed',t:'xt',tl:'CROSS',tx:'20 min easy bike',sh:''},{n:'Thu',t:'maf',tl:'MAF',tx:'20 min easy shakeout',sh:'Nimbus 25'},{n:'Fri',t:'rest',tl:'REST',tx:'Full rest · lay out gear',sh:''},{n:'Sat',t:'rest',tl:'REST',tx:'Rest · easy walk',sh:''},{n:'Sun',t:'long',tl:'5K!',tx:'🏁 Race Day',sh:'Streakfly'}]});
+// ── WEEK DATA ─────────────────────────────────────────────────────
+const REHAB_MORNING = 'Nerve floss · Figure-4 stretch · McKenzie press-ups';
+const REHAB_EVE = 'Glute bridges · Clamshells · Bird dogs · Dead bugs';
+
+const buildWeeks = () => {
+  const w = [];
+
+  // PHASE 1: REHAB (weeks 0-7)
+  const rehabDays = (walkNote) => [
+    {n:'Mon',t:'rec',tl:'REHAB',tx:REHAB_MORNING + ' · 15 min',sh:''},
+    {n:'Tue',t:'str',tl:'STR',tx:REHAB_EVE + ' · 20 min',sh:''},
+    {n:'Wed',t:'xt',tl:'WALK',tx:walkNote,sh:''},
+    {n:'Thu',t:'str',tl:'REHAB',tx:REHAB_MORNING + ' · Routine A',sh:''},
+    {n:'Fri',t:'rest',tl:'REST',tx:'Rest · heat on lower back 15 min',sh:''},
+    {n:'Sat',t:'rec',tl:'WALK',tx:'30 min walk · assess symptoms',sh:''},
+    {n:'Sun',t:'rest',tl:'REST',tx:'Full rest · sleep 8 hrs',sh:''},
+  ];
+  for(let i=0;i<2;i++) w.push({phase:'Phase 1',title:`Full Stop — Nerve Recovery`,desc:'Zero running. Nerve floss and piriformis stretch twice daily. Book PCP + PT this week.',miles:'0 mi',days:rehabDays('20–30 min easy walk')});
+  for(let i=0;i<3;i++) w.push({phase:'Phase 1',title:`Rehab + Walking — Week ${i+3}`,desc:'Tingling reducing. Extend walks to 45 min. Add resistance band to clamshells.',miles:'Walk only',days:rehabDays('45 min easy walk · no running')});
+  for(let i=0;i<3;i++) w.push({phase:'Phase 1',title:`Green Light Assessment — Week ${i+6}`,desc:i===2?'2 weeks zero tingling = cleared to run. PT sign-off required.':'Zero tingling for 2 consecutive weeks = green light. No shortcuts.',miles:'0–2 mi if cleared',days:rehabDays('40 min walk · monitor closely')});
+
+  // PHASE 2: MAF BASE FOUNDATION (weeks 8-19)
+  const mafBase1 = [
+    // weeks 8-11: walk/run
+    ...Array.from({length:4},(_,i)=>({phase:'Phase 2',title:`Return to Running — Week ${i+9}`,desc:'Walk/run intervals. 1 min run / 2 min walk. Strict MAF HR 153. Rehab warmup before every run.',miles:`${4+i*1}-${5+i*1} mi`,
+      days:[
+        {n:'Mon',t:'maf',tl:'MAF',tx:'Rehab warmup · 20 min walk/run intervals',sh:'Kayano 30'},
+        {n:'Tue',t:'str',tl:'STR',tx:'Routine A · 20 min',sh:''},
+        {n:'Wed',t:'xt',tl:'CROSS',tx:'25 min bike or swim · easy',sh:''},
+        {n:'Thu',t:'maf',tl:'MAF',tx:'Rehab warmup · 20 min walk/run',sh:'Kayano 30'},
+        {n:'Fri',t:'rest',tl:'REST',tx:'Full rest · nerve floss',sh:''},
+        {n:'Sat',t:'long',tl:'LONG',tx:'25 min MAF walk/run · Run Club!',sh:'Bondi X'},
+        {n:'Sun',t:'rest',tl:'REST',tx:'Full rest',sh:''},
+      ]})),
+    // weeks 12-15: building continuous running
+    ...Array.from({length:4},(_,i)=>({phase:'Phase 2',title:`Building Consistency — Week ${i+13}`,desc:i===3?'MAF TEST this week — flat route, 20 min at 148–153 bpm.':'Continuous easy running. Runs getting longer. MAF pace dropping.',miles:`${8+i*1.5}-${10+i*1.5} mi`,
+      days:[
+        {n:'Mon',t:'maf',tl:'MAF',tx:'25 min easy run · MAF HR',sh:'Nimbus 25'},
+        {n:'Tue',t:'str',tl:'STR',tx:'Routine A + B · 25 min',sh:''},
+        {n:'Wed',t:'xt',tl:'CROSS',tx:'30 min bike or swim',sh:''},
+        {n:'Thu',t:'maf',tl:'MAF',tx:'25 min easy run + Routine A',sh:'Kayano 30'},
+        {n:'Fri',t:'rest',tl:'REST',tx:'Full rest',sh:''},
+        {n:'Sat',t:'long',tl:i===3?'TEST':'LONG',tx:i===3?'MAF TEST + Run Club!':'35 min long MAF · Run Club!',sh:'Bondi X'},
+        {n:'Sun',t:'rest',tl:'REST',tx:'Full rest',sh:''},
+      ]})),
+    // weeks 16-19: aerobic engine
+    ...Array.from({length:4},(_,i)=>({phase:'Phase 2',title:`Aerobic Engine — Week ${i+17}`,desc:i===3?'MAF TEST week 20 — aerobic gains should be very visible.':'Aerobic base genuinely compounding. Run Club long run every Saturday.',miles:`${13+i}-${15+i} mi`,
+      days:[
+        {n:'Mon',t:'maf',tl:'MAF',tx:'30–35 min easy run',sh:'Nimbus 25'},
+        {n:'Tue',t:'maf',tl:'MAF',tx:'30 min easy run + Routine A',sh:'Kayano 30'},
+        {n:'Wed',t:'xt',tl:'CROSS',tx:'35 min bike or swim',sh:''},
+        {n:'Thu',t:'maf',tl:'MAF',tx:'30 min easy run + Routine B',sh:'Nimbus 25'},
+        {n:'Fri',t:'rest',tl:'REST',tx:'Full rest',sh:''},
+        {n:'Sat',t:'long',tl:i===3?'TEST':'LONG',tx:i===3?'MAF TEST + Run Club!':'45 min long MAF · Run Club!',sh:'Bondi X'},
+        {n:'Sun',t:'rest',tl:'REST',tx:'Full rest',sh:''},
+      ]})),
+  ];
+  w.push(...mafBase1);
+
+  // PHASE 3: MAF BASE DEVELOPMENT (weeks 20-31)
+  const mafBase2 = [
+    ...Array.from({length:4},(_,i)=>({phase:'Phase 3',title:`Volume Build — Week ${i+21}`,desc:i===3?'MAF TEST week 24 — sub-12:30 target.':'Building toward 25 miles/week. Four run days. Aerobic system compounding.',miles:`${20+i}-${23+i} mi`,
+      days:[
+        {n:'Mon',t:'maf',tl:'MAF',tx:'35–40 min easy run',sh:'Nimbus 25'},
+        {n:'Tue',t:'maf',tl:'MAF',tx:'35 min easy run + Routine A',sh:'Kayano 30'},
+        {n:'Wed',t:'xt',tl:'CROSS',tx:'40 min bike or swim',sh:''},
+        {n:'Thu',t:'maf',tl:'MAF',tx:'40 min easy run + Routine B',sh:'Nimbus 25'},
+        {n:'Fri',t:'rest',tl:'REST',tx:'Full rest',sh:''},
+        {n:'Sat',t:'long',tl:i===3?'TEST':'LONG',tx:i===3?'MAF TEST + Run Club!':'55 min long MAF · Run Club!',sh:'Bondi X'},
+        {n:'Sun',t:'rest',tl:'REST',tx:'Full rest',sh:''},
+      ]})),
+    ...Array.from({length:4},(_,i)=>({phase:'Phase 3',title:`Aerobic Strength + Strides — Week ${i+25}`,desc:i===3?'MAF TEST week 28 — strides translating to pace.':'Add strides once per week. 4×20 sec after easy run. Everything else strict MAF.',miles:`${25+i}-${28+i} mi`,
+      days:[
+        {n:'Mon',t:'maf',tl:'MAF',tx:'40 min easy run',sh:'Nimbus 25'},
+        {n:'Tue',t:'maf',tl:'MAF',tx:'40 min easy run + Routine A',sh:'Kayano 30'},
+        {n:'Wed',t:'xt',tl:'CROSS',tx:'40 min bike or swim',sh:''},
+        {n:'Thu',t:'strides',tl:'STRD',tx:'40 min MAF + 4×20 sec strides + Routine B',sh:'Novablast 3'},
+        {n:'Fri',t:'rest',tl:'REST',tx:'Full rest',sh:''},
+        {n:'Sat',t:'long',tl:i===3?'TEST':'LONG',tx:i===3?'MAF TEST + Run Club!':'65 min long MAF · Run Club!',sh:'Bondi X'},
+        {n:'Sun',t:'rest',tl:'REST',tx:'Full rest',sh:''},
+      ]})),
+    ...Array.from({length:4},(_,i)=>({phase:'Phase 3',title:`Peak Base — Week ${i+29}`,desc:i===3?'MAF TEST week 32 — sub-11:00 target.':'Highest volume before speed. 30+ miles/week. Long runs 70–80 min.',miles:`${29+i}-${33+i} mi`,
+      days:[
+        {n:'Mon',t:'maf',tl:'MAF',tx:'40 min easy run',sh:'Nimbus 25'},
+        {n:'Tue',t:'maf',tl:'MAF',tx:'45 min easy run + Routine A',sh:'Kayano 30'},
+        {n:'Wed',t:'xt',tl:'CROSS',tx:'40 min bike or swim',sh:''},
+        {n:'Thu',t:'strides',tl:'STRD',tx:'45 min MAF + 6×20 sec strides + Routine B',sh:'Novablast 3'},
+        {n:'Fri',t:'rest',tl:'REST',tx:'Full rest',sh:''},
+        {n:'Sat',t:'long',tl:i===3?'TEST':'LONG',tx:i===3?'MAF TEST + Run Club!':'75 min long MAF · Run Club!',sh:'Bondi X'},
+        {n:'Sun',t:'maf',tl:'MAF',tx:'30 min easy recovery run',sh:'Kayano 30'},
+      ]})),
+  ];
+  w.push(...mafBase2);
+
+  // PHASE 4: SPEED (weeks 32-39)
+  const speed = [
+    ...Array.from({length:4},(_,i)=>({phase:'Phase 4',title:`Threshold Begins — Week ${i+33}`,desc:i===3?'MAF TEST week 36.':'One tempo per week, 20–30 min comfortably hard. 80% MAF, 20% quality.',miles:`${30+i}-${33+i} mi`,
+      days:[
+        {n:'Mon',t:'maf',tl:'MAF',tx:'40 min easy run',sh:'Nimbus 25'},
+        {n:'Tue',t:'maf',tl:'MAF',tx:'40 min easy run + Routine A',sh:'Kayano 30'},
+        {n:'Wed',t:'xt',tl:'CROSS',tx:'35 min bike or swim',sh:''},
+        {n:'Thu',t:'tempo',tl:'TEMPO',tx:'15 min MAF warmup + 20 min tempo + 10 min cooldown',sh:'Novablast 3'},
+        {n:'Fri',t:'rest',tl:'REST',tx:'Full rest',sh:''},
+        {n:'Sat',t:'long',tl:i===3?'TEST':'LONG',tx:i===3?'MAF TEST + Run Club!':'65 min long MAF · Run Club!',sh:'Bondi X'},
+        {n:'Sun',t:'maf',tl:'MAF',tx:'30 min easy recovery',sh:'Kayano 30'},
+      ]})),
+    ...Array.from({length:4},(_,i)=>({phase:'Phase 4',title:`VO2 Max Intervals — Week ${i+37}`,desc:i===2?'Recovery week — drop volume 20%.':'Track session added. 6×800m or 5×1000m. Tempo stays. Three hard weeks, one recovery.',miles:i===2?'22–25 mi':`${31+i}-${35+i} mi`,
+      days:[
+        {n:'Mon',t:'maf',tl:'MAF',tx:'40 min easy run',sh:'Nimbus 25'},
+        {n:'Tue',t:'maf',tl:'MAF',tx:'40 min easy + Routine A',sh:'Kayano 30'},
+        {n:'Wed',t:'tempo',tl:'TEMPO',tx:'15 min warmup + 25 min tempo + cooldown',sh:'Novablast 3'},
+        {n:'Thu',t:'rest',tl:'REST',tx:'Full rest · legs up',sh:''},
+        {n:'Fri',t:'maf',tl:'MAF',tx:i===2?'30 min easy shakeout':'35 min easy run',sh:'Nimbus 25'},
+        {n:'Sat',t:'long',tl:'TRACK',tx:i===2?'30 min easy · Run Club!':'Track: 6×800m w/ 90 sec rest · Run Club!',sh:'Novablast 3'},
+        {n:'Sun',t:'maf',tl:'MAF',tx:'30 min easy recovery',sh:'Kayano 30'},
+      ]})),
+  ];
+  w.push(...speed);
+
+  // PHASE 5: RACE PREP (weeks 40-44)
+  w.push({phase:'Phase 5',title:'Sharpening — Week 41',desc:'Peak fitness. Race pace intervals. Body at its sharpest.',miles:'30–32 mi',
+    days:[
+      {n:'Mon',t:'maf',tl:'MAF',tx:'35 min easy run',sh:'Nimbus 25'},
+      {n:'Tue',t:'tempo',tl:'TEMPO',tx:'15 min warmup + 30 min tempo + cooldown',sh:'Novablast 3'},
+      {n:'Wed',t:'maf',tl:'MAF',tx:'35 min easy + Routine A',sh:'Kayano 30'},
+      {n:'Thu',t:'rest',tl:'REST',tx:'Full rest',sh:''},
+      {n:'Fri',t:'maf',tl:'MAF',tx:'30 min easy run',sh:'Nimbus 25'},
+      {n:'Sat',t:'long',tl:'TRACK',tx:'8×600m at 5K pace · Run Club!',sh:'Novablast 3'},
+      {n:'Sun',t:'maf',tl:'MAF',tx:'25 min easy recovery',sh:'Kayano 30'},
+    ]});
+  w.push({phase:'Phase 5',title:'Tune-Up Race — Week 42',desc:'Tune-up 5K race. Not goal pace — fitness test only. See where you are.',miles:'25–28 mi',
+    days:[
+      {n:'Mon',t:'maf',tl:'MAF',tx:'30 min easy run',sh:'Nimbus 25'},
+      {n:'Tue',t:'strides',tl:'STRD',tx:'20 min easy + 6×20 sec strides',sh:'Novablast 3'},
+      {n:'Wed',t:'maf',tl:'MAF',tx:'25 min easy',sh:'Kayano 30'},
+      {n:'Thu',t:'rest',tl:'REST',tx:'Full rest',sh:''},
+      {n:'Fri',t:'rest',tl:'REST',tx:'Rest · easy walk · lay out gear',sh:''},
+      {n:'Sat',t:'race',tl:'RACE!',tx:'Tune-up 5K · fitness test · Run Club!',sh:'Streakfly'},
+      {n:'Sun',t:'maf',tl:'MAF',tx:'20 min easy shakeout',sh:'Kayano 30'},
+    ]});
+  w.push({phase:'Phase 5',title:'Final Tempo — Week 43',desc:'Last hard week. Final long tempo run. Peak fitness.',miles:'28–30 mi',
+    days:[
+      {n:'Mon',t:'maf',tl:'MAF',tx:'35 min easy run',sh:'Nimbus 25'},
+      {n:'Tue',t:'tempo',tl:'TEMPO',tx:'10 min warmup + 35 min tempo + cooldown',sh:'Novablast 3'},
+      {n:'Wed',t:'maf',tl:'MAF',tx:'30 min easy',sh:'Kayano 30'},
+      {n:'Thu',t:'rest',tl:'REST',tx:'Full rest',sh:''},
+      {n:'Fri',t:'maf',tl:'MAF',tx:'30 min easy',sh:'Nimbus 25'},
+      {n:'Sat',t:'long',tl:'TRACK',tx:'6×800m at goal 5K pace · Run Club!',sh:'Novablast 3'},
+      {n:'Sun',t:'maf',tl:'MAF',tx:'20 min easy recovery',sh:'Kayano 30'},
+    ]});
+  w.push({phase:'Phase 5',title:'Taper — Week 44',desc:'Volume drops 40%. Short sharp workouts only. Trust the training. Sleep is training.',miles:'16–18 mi',
+    days:[
+      {n:'Mon',t:'maf',tl:'MAF',tx:'25 min easy shakeout',sh:'Nimbus 25'},
+      {n:'Tue',t:'strides',tl:'STRD',tx:'20 min easy + 4×20 sec strides',sh:'Novablast 3'},
+      {n:'Wed',t:'maf',tl:'MAF',tx:'20 min easy',sh:'Kayano 30'},
+      {n:'Thu',t:'rest',tl:'REST',tx:'Full rest · foam roll · sleep early',sh:''},
+      {n:'Fri',t:'maf',tl:'MAF',tx:'15 min easy shakeout',sh:'Nimbus 25'},
+      {n:'Sat',t:'rest',tl:'REST',tx:'Rest · easy walk · visualize',sh:''},
+      {n:'Sun',t:'rest',tl:'REST',tx:'Full rest',sh:''},
+    ]});
+  w.push({phase:'Phase 5',title:'🏁 Race Week — Week 45',desc:'Everything you built for 44 weeks comes out in 20 minutes. Race Sunday.',miles:'Race week',
+    days:[
+      {n:'Mon',t:'maf',tl:'MAF',tx:'20 min easy shakeout',sh:'Nimbus 25'},
+      {n:'Tue',t:'strides',tl:'STRD',tx:'15 min easy + 4×20 sec strides',sh:'Novablast 3'},
+      {n:'Wed',t:'maf',tl:'MAF',tx:'15 min easy',sh:'Kayano 30'},
+      {n:'Thu',t:'rest',tl:'REST',tx:'Full rest · lay out gear',sh:''},
+      {n:'Fri',t:'rest',tl:'REST',tx:'Full rest · easy walk · eat well',sh:''},
+      {n:'Sat',t:'rest',tl:'REST',tx:'Rest · sleep 9 hrs',sh:''},
+      {n:'Sun',t:'race',tl:'SUB-20!',tx:'🏁 Goal Race — Sub-20 5K',sh:'Streakfly'},
+    ]});
+
   return w;
 };
-const WEEKS=buildWeeks();
 
-const getCurWeek=()=>Math.max(0,Math.min(Math.floor((new Date()-PLAN_START)/(7*24*60*60*1000)),TOTAL_WEEKS-1));
-const getTodayIdx=()=>{const d=new Date().getDay();return d===0?6:d-1;};
-const dateRange=wi=>{const s=new Date(PLAN_START.getTime()+wi*7*24*60*60*1000),e=new Date(s.getTime()+6*24*60*60*1000),f=d=>d.toLocaleDateString('en-US',{month:'short',day:'numeric'});return`${f(s)} – ${f(e)}`;};
+const WEEKS = buildWeeks();
+const getCurWeek = () => Math.max(0, Math.min(Math.floor((new Date() - PLAN_START) / (7*24*60*60*1000)), TOTAL_WEEKS-1));
+const getTodayIdx = () => { const d = new Date().getDay(); return d===0?6:d-1; };
+const dateRange = wi => {
+  const s = new Date(PLAN_START.getTime() + wi*7*24*60*60*1000);
+  const e = new Date(s.getTime() + 6*24*60*60*1000);
+  const f = d => d.toLocaleDateString('en-US',{month:'short',day:'numeric'});
+  return `${f(s)} – ${f(e)}`;
+};
 
-let viewW=getCurWeek();
-function renderWeek(wi){
-  const data=WEEKS[wi],cur=getCurWeek(),isCur=wi===cur,todayI=getTodayIdx();
-  document.getElementById('wb-label').textContent=isCur?'This Week':'Week Preview';
-  document.getElementById('wb-title').innerHTML=data.title+(isCur?'<span class="now-badge">NOW</span>':'');
-  document.getElementById('wb-desc').textContent=data.desc;
-  document.getElementById('wb-miles').textContent=data.miles;
-  document.getElementById('wb-dates').textContent=dateRange(wi);
-  document.getElementById('wb-wnum').textContent=wi===0?'Recovery Week':`Week ${wi} of 18`;
-  document.getElementById('btn-prev').disabled=wi===0;
-  document.getElementById('btn-next').disabled=wi===TOTAL_WEEKS-1;
-  document.getElementById('wb-days').innerHTML=data.days.map((d,i)=>{
-    const isT=isCur&&i===todayI,isR=d.t==='rest';
-    return`<div class="wb-day${isT?' today':''}${isR&&!isT?' is-rest':''}">
+let viewW = getCurWeek();
+
+function renderWeek(wi) {
+  const data = WEEKS[wi], cur = getCurWeek(), isCur = wi===cur, todayI = getTodayIdx();
+  document.getElementById('wb-label').textContent = isCur ? 'This Week' : 'Week Preview';
+  document.getElementById('wb-title').innerHTML = data.title + (isCur ? '<span class="now-badge">NOW</span>' : '');
+  document.getElementById('wb-desc').textContent = data.desc;
+  document.getElementById('wb-miles').textContent = data.miles;
+  document.getElementById('wb-dates').textContent = dateRange(wi);
+  document.getElementById('wb-wnum').textContent = `Week ${wi+1} of ${TOTAL_WEEKS} · ${data.phase}`;
+  document.getElementById('btn-prev').disabled = wi===0;
+  document.getElementById('btn-next').disabled = wi===TOTAL_WEEKS-1;
+  document.getElementById('wb-days').innerHTML = data.days.map((d,i) => {
+    const isT = isCur && i===todayI, isR = d.t==='rest';
+    return `<div class="wb-day${isT?' today':''}${isR&&!isT?' is-rest':''}">
       <div class="wb-day-name">${d.n}${isT?' →':''}</div>
       <span class="tag ${tagMap[d.t]||'tag-rest'}" style="font-size:9px;flex-shrink:0;">${d.tl}</span>
       <div class="wb-day-text">${d.tx}</div>
-      ${d.sh?`<div class="wb-day-shoe">${d.sh}</div>`:''}
+      ${d.sh ? `<div class="wb-day-shoe">${d.sh}</div>` : ''}
     </div>`;
   }).join('');
-  document.getElementById('hero-week').textContent=wi===0?'Ph.0':`Wk${wi}`;
+  document.getElementById('hero-week').textContent = `Wk ${wi+1}`;
+  // progress bar
+  const pct = Math.round(((wi+1)/TOTAL_WEEKS)*100);
+  document.getElementById('prog-fill').style.width = pct + '%';
+  document.getElementById('prog-label').textContent = `Week ${wi+1} of ${TOTAL_WEEKS}`;
+  document.getElementById('prog-pct').textContent = pct + '%';
 }
-function changeWeek(dir){viewW=Math.max(0,Math.min(TOTAL_WEEKS-1,viewW+dir));renderWeek(viewW);}
 
-// ── MAF TESTS ─────────────────────────────────────────────────────
-const paceToMin=s=>{const p=s.split(':');return p.length===2?+p[0]+(+p[1])/60:parseFloat(s);};
-function addMAFTest(){
-  const wk=+document.getElementById('maf-week').value,pace=document.getElementById('maf-pace-in').value.trim();
-  if(!wk||!pace)return;
-  const tests=ld('maf-tests',[]).filter(t=>t.week!==wk);
-  tests.push({week:wk,pace,date:new Date().toLocaleDateString()});
-  tests.sort((a,b)=>a.week-b.week);
-  sv('maf-tests',tests);
-  document.getElementById('maf-week').value='';
-  document.getElementById('maf-pace-in').value='';
-  const latest=tests[tests.length-1];
-  if(latest)document.getElementById('hero-pace').textContent=latest.pace;
+function changeWeek(dir) { viewW = Math.max(0, Math.min(TOTAL_WEEKS-1, viewW+dir)); renderWeek(viewW); }
+
+// ── MAF TESTS ────────────────────────────────────────────────────
+const paceToMin = s => { const p = s.split(':'); return p.length===2 ? +p[0]+(+p[1])/60 : parseFloat(s); };
+function addMAFTest() {
+  const wk = +document.getElementById('maf-week').value, pace = document.getElementById('maf-pace-in').value.trim();
+  if(!wk || !pace) return;
+  const tests = ld('maf-tests',[]).filter(t => t.week!==wk);
+  tests.push({week:wk, pace, date:new Date().toLocaleDateString()});
+  tests.sort((a,b) => a.week-b.week);
+  sv('maf-tests', tests);
+  document.getElementById('maf-week').value = '';
+  document.getElementById('maf-pace-in').value = '';
+  const latest = tests[tests.length-1];
+  if(latest) document.getElementById('hero-pace').textContent = latest.pace;
   renderMAF();
 }
-function delMAF(wk){sv('maf-tests',ld('maf-tests',[]).filter(t=>t.week!==wk));renderMAF();}
-function renderMAF(){
-  const tests=ld('maf-tests',[]);
-  const pts=[{week:0,pace:'17:02',label:'Base'},...tests];
-  const canvas=document.getElementById('mafChart');
-  const ctx=canvas.getContext('2d');
-  const W=canvas.parentElement.clientWidth-40,H=150;
-  canvas.width=W;canvas.height=H;ctx.clearRect(0,0,W,H);
-  if(pts.length<2){ctx.fillStyle='#a0a098';ctx.font='13px DM Sans';ctx.fillText('Add MAF test results to see your progress chart.',16,H/2);document.getElementById('maf-list').innerHTML='';return;}
-  const paces=pts.map(p=>paceToMin(p.pace)),maxP=Math.max(...paces),minP=Math.min(...paces);
+function delMAF(wk) { sv('maf-tests', ld('maf-tests',[]).filter(t => t.week!==wk)); renderMAF(); }
+function renderMAF() {
+  const tests = ld('maf-tests',[]);
+  const pts = [{week:0, pace:'14:30', label:'Base'}, ...tests];
+  const canvas = document.getElementById('mafChart');
+  const ctx = canvas.getContext('2d');
+  const W = canvas.parentElement.clientWidth-40, H = 150;
+  canvas.width = W; canvas.height = H; ctx.clearRect(0,0,W,H);
+  if(pts.length < 2) {
+    ctx.fillStyle='#a0a098'; ctx.font='13px DM Sans';
+    ctx.fillText('Add MAF test results to see your progress chart.', 16, H/2);
+    document.getElementById('maf-list').innerHTML = ''; return;
+  }
+  const paces = pts.map(p => paceToMin(p.pace)), maxP = Math.max(...paces), minP = Math.min(...paces);
   const pX=28,pY=18,gW=W-pX*2,gH=H-pY*2;
-  const xS=i=>pX+(i/(pts.length-1))*gW,yS=p=>pY+((maxP-p)/(maxP-minP||1))*gH;
-  ctx.strokeStyle='#e8e8e4';ctx.lineWidth=1;
+  const xS = i => pX+(i/(pts.length-1))*gW, yS = p => pY+((maxP-p)/(maxP-minP||1))*gH;
+  ctx.strokeStyle='#e8e8e4'; ctx.lineWidth=1;
   for(let i=0;i<=4;i++){const y=pY+(i/4)*gH;ctx.beginPath();ctx.moveTo(pX,y);ctx.lineTo(W-pX,y);ctx.stroke();}
-  ctx.beginPath();ctx.strokeStyle='#1A4FA0';ctx.lineWidth=2.5;ctx.lineJoin='round';
-  pts.forEach((p,i)=>{const x=xS(i),y=yS(paceToMin(p.pace));i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});ctx.stroke();
-  ctx.beginPath();ctx.fillStyle='rgba(26,79,160,0.07)';
+  ctx.beginPath(); ctx.strokeStyle='#1A4FA0'; ctx.lineWidth=2.5; ctx.lineJoin='round';
+  pts.forEach((p,i)=>{const x=xS(i),y=yS(paceToMin(p.pace));i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);}); ctx.stroke();
+  ctx.beginPath(); ctx.fillStyle='rgba(26,79,160,0.07)';
   pts.forEach((p,i)=>{const x=xS(i),y=yS(paceToMin(p.pace));i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});
-  ctx.lineTo(xS(pts.length-1),H-pY);ctx.lineTo(pX,H-pY);ctx.closePath();ctx.fill();
+  ctx.lineTo(xS(pts.length-1),H-pY); ctx.lineTo(pX,H-pY); ctx.closePath(); ctx.fill();
   pts.forEach((p,i)=>{
     const x=xS(i),y=yS(paceToMin(p.pace));
     ctx.beginPath();ctx.arc(x,y,4,0,Math.PI*2);ctx.fillStyle=i===0?'#a0a098':'#1A4FA0';ctx.fill();
     ctx.fillStyle='#1c1c1a';ctx.font='11px DM Sans';ctx.textAlign='center';ctx.fillText(p.pace,x,y-9);
     ctx.fillStyle='#a0a098';ctx.font='10px DM Sans';ctx.fillText(i===0?'Base':`W${p.week}`,x,H-3);
   });
-  document.getElementById('maf-list').innerHTML=tests.map(t=>`<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--gray-200);">
+  document.getElementById('maf-list').innerHTML = tests.map(t => `<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--gray-200);">
     <div style="font-family:'DM Serif Display',serif;font-size:18px;">${t.pace}<span style="font-size:11px;color:var(--gray-400);font-family:'DM Sans',sans-serif;">/mi</span></div>
     <div style="flex:1;font-size:12px;color:var(--gray-600);">Week ${t.week} · ${t.date}</div>
     <button class="btn btn-ghost btn-sm" onclick="delMAF(${t.week})">×</button>
@@ -521,11 +967,11 @@ function renderMAF(){
 }
 
 // ── RUN LOG ───────────────────────────────────────────────────────
-function addRun(){
-  const date=document.getElementById('run-date').value,dist=document.getElementById('run-dist').value,pace=document.getElementById('run-pace').value.trim();
+function addRun() {
+  const date=document.getElementById('run-date').value, dist=document.getElementById('run-dist').value, pace=document.getElementById('run-pace').value.trim();
   if(!date||!dist||!pace){alert('Date, distance and pace are required.');return;}
   const r={id:Date.now(),date,dist:+dist,pace,hr:document.getElementById('run-hr').value,maxhr:document.getElementById('run-maxhr').value,type:document.getElementById('run-type').value,shoe:document.getElementById('run-shoe').value,notes:document.getElementById('run-notes').value.trim()};
-  const runs=ld('runs',[]);runs.unshift(r);sv('runs',runs);
+  const runs=ld('runs',[]); runs.unshift(r); sv('runs',runs);
   ['run-dist','run-pace','run-hr','run-maxhr','run-notes'].forEach(id=>document.getElementById(id).value='');
   if(r.shoe&&r.dist){const sm=ld('shoe-miles',{});sm[r.shoe]=(sm[r.shoe]||0)+r.dist;sv('shoe-miles',sm);renderShoes();}
   renderRuns();
@@ -534,7 +980,7 @@ function delRun(id){sv('runs',ld('runs',[]).filter(r=>r.id!==id));renderRuns();}
 function renderRuns(){
   const runs=ld('runs',[]),el=document.getElementById('run-list');
   if(!runs.length){el.innerHTML='<div class="empty-state">No runs logged yet.</div>';return;}
-  const tl={maf:'MAF',long:'Long',xt:'Cross',tempo:'Tempo',strides:'Strides'};
+  const tl={maf:'MAF',long:'Long',xt:'Cross',tempo:'Tempo',strides:'Strides',race:'Race'};
   el.innerHTML=`<div class="card-white">${runs.map(r=>`<div class="run-entry">
     <div class="run-date">${r.date}</div>
     <div class="run-main">
@@ -550,12 +996,12 @@ function renderRuns(){
 }
 
 // ── STRENGTH ─────────────────────────────────────────────────────
-const scKey=()=>{const w=Math.max(0,Math.floor((new Date()-PLAN_START)/(7*24*60*60*1000)));return`sc-wk${w}`;};
+const scKey = () => { const w=Math.max(0,Math.floor((new Date()-PLAN_START)/(7*24*60*60*1000))); return `sc-wk${w}`; };
 function toggleSC(r,k){const key=scKey(),d=ld(key,{});const id=`${r}-${k}`;d[id]=!d[id];sv(key,d);renderSC();}
 function resetSC(){sv(scKey(),{});renderSC();}
 function renderSC(){
   const d=ld(scKey(),{});
-  ['A-gb','A-sldl','A-clam','A-db','B-cr','B-tr','B-ts','B-pl'].forEach(id=>{
+  ['A-gb','A-slgb','A-sldl','A-clam','A-ha','A-db','B-cr','B-tr','B-ts','B-pl','B-sp','B-rr','C-nf','C-f4','C-mk','C-gb2','C-cl2','C-bd','C-db2','C-wk'].forEach(id=>{
     const el=document.getElementById(`sc-${id}`),row=el?.closest('.sc-item');
     if(!el||!row)return;
     if(d[id]){row.classList.add('done');el.textContent='✓';}else{row.classList.remove('done');el.textContent='';}
@@ -563,19 +1009,21 @@ function renderSC(){
 }
 function switchRoutine(name,btn){
   document.querySelectorAll('.routine-tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
-  document.getElementById('routine-A').style.display=name==='A'?'flex':'none';
-  document.getElementById('routine-B').style.display=name==='B'?'flex':'none';
+  ['A','B','C'].forEach(r=>document.getElementById(`routine-${r}`).style.display=r===name?'flex':'none');
 }
 
-// ── KNEE ─────────────────────────────────────────────────────────
+// ── PAIN LOG ─────────────────────────────────────────────────────
 let selPain=null;
 function selectPain(v){selPain=v;document.querySelectorAll('.pain-btn').forEach(b=>b.classList.remove('sel'));document.querySelectorAll('.pain-btn')[v].classList.add('sel');document.getElementById('pain-alert').style.display=v>=4?'block':'none';}
 function saveCheckin(){
   if(selPain===null){alert('Select a pain level first.');return;}
   const note=document.getElementById('knee-note').value.trim();
-  const c=ld('knee-checkins',[]);c.unshift({id:Date.now(),pain:selPain,note,date:new Date().toLocaleDateString()});
-  sv('knee-checkins',c.slice(0,60));document.getElementById('knee-note').value='';selPain=null;
-  document.querySelectorAll('.pain-btn').forEach(b=>b.classList.remove('sel'));document.getElementById('pain-alert').style.display='none';renderCheckins();
+  const c=ld('knee-checkins',[]); c.unshift({id:Date.now(),pain:selPain,note,date:new Date().toLocaleDateString()});
+  sv('knee-checkins',c.slice(0,90));
+  document.getElementById('knee-note').value=''; selPain=null;
+  document.querySelectorAll('.pain-btn').forEach(b=>b.classList.remove('sel'));
+  document.getElementById('pain-alert').style.display='none';
+  renderCheckins();
 }
 function delCheckin(id){sv('knee-checkins',ld('knee-checkins',[]).filter(c=>c.id!==id));renderCheckins();}
 function renderCheckins(){
@@ -587,10 +1035,11 @@ function renderCheckins(){
 
 // ── INJURY ────────────────────────────────────────────────────────
 function addInjury(){
-  const date=document.getElementById('inj-date').value;if(!date){alert('Date required.');return;}
+  const date=document.getElementById('inj-date').value; if(!date){alert('Date required.');return;}
   const i={id:Date.now(),date,location:document.getElementById('inj-loc').value,pain:document.getElementById('inj-pain').value,status:document.getElementById('inj-status').value,notes:document.getElementById('inj-notes').value.trim()};
-  const inj=ld('injuries',[]);inj.unshift(i);sv('injuries',inj);
-  document.getElementById('inj-pain').value='';document.getElementById('inj-notes').value='';renderInjuries();
+  const inj=ld('injuries',[]); inj.unshift(i); sv('injuries',inj);
+  document.getElementById('inj-pain').value=''; document.getElementById('inj-notes').value='';
+  renderInjuries();
 }
 function delInjury(id){sv('injuries',ld('injuries',[]).filter(x=>x.id!==id));renderInjuries();}
 function renderInjuries(){
@@ -604,7 +1053,7 @@ function renderInjuries(){
 const SHOES=[{name:'Kayano 30',max:450},{name:'Bondi X',max:450},{name:'Nimbus 25',max:450},{name:'Novablast 3',max:400},{name:'Speedgoat 5',max:400},{name:'Streakfly',max:300}];
 function addShoeMiles(name){
   const inp=document.getElementById(`si-${name.replace(/\s/g,'_')}`),v=parseFloat(inp.value);
-  if(!v||v<=0)return;const sm=ld('shoe-miles',{});sm[name]=(sm[name]||0)+v;sv('shoe-miles',sm);inp.value='';renderShoes();
+  if(!v||v<=0)return; const sm=ld('shoe-miles',{}); sm[name]=(sm[name]||0)+v; sv('shoe-miles',sm); inp.value=''; renderShoes();
 }
 function resetShoe(name){if(!confirm(`Reset ${name} to 0?`))return;const sm=ld('shoe-miles',{});sm[name]=0;sv('shoe-miles',sm);renderShoes();}
 function renderShoes(){
@@ -620,16 +1069,16 @@ function renderShoes(){
 
 // ── REFLECTION ────────────────────────────────────────────────────
 function saveReflection(){
-  const text=document.getElementById('reflect-text').value.trim();if(!text)return;
-  const wi=getCurWeek(),refs=ld('reflections',[]).filter(r=>r.week!==wi);
-  refs.unshift({week:wi,text,date:new Date().toLocaleDateString()});sv('reflections',refs);
-  document.getElementById('reflect-text').value='';renderReflections();
+  const text=document.getElementById('reflect-text').value.trim(); if(!text)return;
+  const wi=getCurWeek(), refs=ld('reflections',[]).filter(r=>r.week!==wi);
+  refs.unshift({week:wi,text,date:new Date().toLocaleDateString()}); sv('reflections',refs);
+  document.getElementById('reflect-text').value=''; renderReflections();
 }
 function delReflection(wk){sv('reflections',ld('reflections',[]).filter(r=>r.week!==wk));renderReflections();}
 function renderReflections(){
   const refs=ld('reflections',[]),el=document.getElementById('reflection-list');
   if(!refs.length){el.innerHTML='<div class="empty-state">No reflections yet. Write your first one above.</div>';return;}
-  el.innerHTML=`<div class="card-white">${refs.map(r=>`<div class="reflection-entry"><div style="display:flex;justify-content:space-between;"><div class="reflection-week">${r.week===0?'Recovery Week':`Week ${r.week}`}</div><button class="btn btn-ghost btn-sm" onclick="delReflection(${r.week})">×</button></div><div class="reflection-text">${r.text}</div><div class="reflection-date">${r.date}</div></div>`).join('')}</div>`;
+  el.innerHTML=`<div class="card-white">${refs.map(r=>`<div class="reflection-entry"><div style="display:flex;justify-content:space-between;"><div class="reflection-week">Week ${r.week+1}</div><button class="btn btn-ghost btn-sm" onclick="delReflection(${r.week})">×</button></div><div class="reflection-text">${r.text}</div><div class="reflection-date">${r.date}</div></div>`).join('')}</div>`;
 }
 
 // ── INIT ──────────────────────────────────────────────────────────
@@ -638,10 +1087,9 @@ function renderReflections(){
   document.getElementById('run-date').value=today;
   document.getElementById('inj-date').value=today;
   const wi=getCurWeek();
-  document.getElementById('reflect-label').textContent=wi===0?'Recovery Week Reflection':`Week ${wi} Reflection`;
-  renderWeek(viewW);renderMAF();renderRuns();renderSC();renderCheckins();renderInjuries();renderShoes();renderReflections();
-  // update hero pace from latest MAF test
-  const tests=ld('maf-tests',[]);if(tests.length)document.getElementById('hero-pace').textContent=tests[tests.length-1].pace;
+  document.getElementById('reflect-label').textContent=`Week ${wi+1} Reflection`;
+  renderWeek(viewW); renderMAF(); renderRuns(); renderSC(); renderCheckins(); renderInjuries(); renderShoes(); renderReflections();
+  const tests=ld('maf-tests',[]); if(tests.length) document.getElementById('hero-pace').textContent=tests[tests.length-1].pace;
 })();
 </script>
 </body>
